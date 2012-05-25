@@ -1,1 +1,5 @@
-<a href="/auth/github">Login with GitHub</a>
+<% if @user %>
+  <a href="/logout">Logout</a>
+<% else %>
+  <a href="/auth/github">Login with GitHub</a>
+<% end %>
