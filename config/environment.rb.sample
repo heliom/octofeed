@@ -1,0 +1,4 @@
+# cp config/environment.rb.sample config/environment.rb
+
+ENV['GITHUB_KEY'] = 'GITHUB APP KEY'
+ENV['GITHUB_SECRET'] = 'GITHUB APP SECRET'
