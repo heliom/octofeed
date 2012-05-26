@@ -43,7 +43,7 @@ module GitHubNewsFeed
         request = Net::HTTP::Get.new(uri.request_uri)
         response = http.request(request)
 
-        @data = JSON.parse(response.body)
+        GitHubNewsFeed::EventParser.parse response.body
       end
 
       erb :index
