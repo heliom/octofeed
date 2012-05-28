@@ -9,6 +9,13 @@ if defined?(Bundler)
   Bundler.require(:default, ENV['RACK_ENV'])
 end
 
+# Helpers
+Dir[File.expand_path('../../app/helpers/**/*.rb', __FILE__)].each do |file|
+  dirname = File.dirname(file)
+  file_basename = File.basename(file, File.extname(file))
+  require "#{dirname}/#{file_basename}"
+end
+
 # Lib
 Dir[File.expand_path('../../lib/**/*.rb', __FILE__)].each do |file|
   dirname = File.dirname(file)
