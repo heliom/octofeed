@@ -42,6 +42,23 @@ module GitHubNewsFeed
       @events = []
 
       if @user
+        # Repos watched
+        repos_uri = URI.parse("https://api.github.com/user/watched?access_token=#{@user[:token]}")
+
+        repos_http = Net::HTTP.new(repos_uri.host, repos_uri.port)
+        repos_http.use_ssl = true
+        repos_http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+        repos_request = Net::HTTP::Get.new(repos_uri.request_uri)
+        repos_response = repos_http.request(repos_request)
+
+        repos = JSON.parse(repos_response.body)
+        watched_repos = []
+        repos.each do |repo|
+          watched_repos << repo['full_name']
+        end
+
+        # Events
         uri = URI.parse("https://api.github.com/users/#{@user[:username]}/received_events?access_token=#{@user[:token]}")
 
         http = Net::HTTP.new(uri.host, uri.port)
@@ -51,7 +68,7 @@ module GitHubNewsFeed
         request = Net::HTTP::Get.new(uri.request_uri)
         response = http.request(request)
 
-        @events = GitHubNewsFeed::EventParser.parse response.body
+        @events = GitHubNewsFeed::EventParser.parse(response.body, watched_repos)
       end
 
       erb :index

@@ -18,7 +18,8 @@ module GitHubNewsFeed
       # Repo
       @repo = {
         :id => json['repo']['id'],
-        :name => json['repo']['name']
+        :name => json['repo']['name'],
+        :watched => false
       }
     end
 
