@@ -39,6 +39,7 @@ module GitHubNewsFeed
 
     get '/' do
       @user = session[:user]
+      @events = []
 
       if @user
         uri = URI.parse("https://api.github.com/users/#{@user[:username]}/received_events?access_token=#{@user[:token]}")
@@ -50,7 +51,7 @@ module GitHubNewsFeed
         request = Net::HTTP::Get.new(uri.request_uri)
         response = http.request(request)
 
-        GitHubNewsFeed::EventParser.parse response.body
+        @events = GitHubNewsFeed::EventParser.parse response.body
       end
 
       erb :index

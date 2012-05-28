@@ -3,3 +3,9 @@
 <% else %>
   <a href="/auth/github">Login with GitHub</a>
 <% end %>
+
+<ul>
+  <% @events.each do |event| %>
+    <li><%= event.print %></li>
+  <% end %>
+</ul>
