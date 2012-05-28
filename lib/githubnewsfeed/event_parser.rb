@@ -9,7 +9,9 @@ module GitHubNewsFeed
     # Instance
     def initialize(events)
       events.each do |event_json|
-        event = GitHubNewsFeed::Event.new event_json
+        event_classname = "GitHubNewsFeed::#{event_json['type']}"
+        event_class = event_classname.split('::').inject(Object) { |o,c| o.const_get c }
+        event = event_class.new event_json
       end
     end
 
