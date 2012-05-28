@@ -22,7 +22,7 @@ module GitHubNewsFeed
     def print
       commits_content = ''
       @object[:commits].reverse.each do |commit|
-        commits_content << "<li>#{gh_sha_link @repo[:name], commit[:sha]} #{commit[:message]}</li>"
+        commits_content << "<li>#{gh_sha_link @repo[:name], commit[:sha]} #{commit[:message].split(/\n\n/).first}</li>"
       end
 
       "#{gh_link @actor[:username]}
