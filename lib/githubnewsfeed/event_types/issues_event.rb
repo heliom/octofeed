@@ -13,5 +13,13 @@ module GitHubNewsFeed
       }
     end
 
+    def print
+      "#{gh_link @actor[:username]}
+      #{@object[:action]}
+      <a href=\"#{@object[:url]}\">issue #{@object[:number]}</a>
+      on #{gh_link @repo[:name]}
+      #{time_ago_in_words Time.parse(@created_at)} ago"
+    end
+
   end
 end

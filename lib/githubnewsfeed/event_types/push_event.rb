@@ -19,5 +19,21 @@ module GitHubNewsFeed
       }
     end
 
+    def print
+      commits_content = ''
+      @object[:commits].reverse.each do |commit|
+        commits_content << "<li>#{gh_sha_link @repo[:name], commit[:sha]} #{commit[:message]}</li>"
+      end
+
+      "#{gh_link @actor[:username]}
+      pushed to
+      #{@object[:ref].gsub('refs/heads/', '')}
+      at #{gh_link @repo[:name]}
+      #{time_ago_in_words Time.parse(@created_at)} ago
+      <ul>
+        #{commits_content}
+      </ul>"
+    end
+
   end
 end

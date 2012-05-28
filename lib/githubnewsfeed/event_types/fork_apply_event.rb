@@ -9,5 +9,9 @@ module GitHubNewsFeed
       @object = {}
     end
 
+    def print
+      "#{@type}"
+    end
+
   end
 end

@@ -10,8 +10,20 @@ module GitHubNewsFeed
         :title => json['payload']['pull_request']['title'],
         :commits => json['payload']['pull_request']['commits'],
         :additions => json['payload']['pull_request']['additions'],
-        :deletitions => json['payload']['pull_request']['deletitions']
+        :deletitions => json['payload']['pull_request']['deletitions'],
+        :merged => json['payload']['pull_request']['merged'],
+        :url => json['payload']['pull_request']['_links']['html']['href']
       }
+    end
+
+    def print
+      action = @object[:merged] ? 'merged' : @object[:action]
+
+      "#{gh_link @actor[:username]}
+      #{action}
+      <a href=\"#{@object[:url]}\">pull request #{@object[:number]}</a>
+      on #{gh_link @repo[:name]}
+      #{time_ago_in_words Time.parse(@created_at)} ago"
     end
 
   end

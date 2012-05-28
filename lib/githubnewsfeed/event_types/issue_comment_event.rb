@@ -17,5 +17,13 @@ module GitHubNewsFeed
       }
     end
 
+    def print
+      "#{gh_link @actor[:username]}
+      commented
+      on #{gh_issue_comment_link @object[:issue][:url], @object[:id], @object[:issue][:number], @object[:issue][:is_pull]}
+      on #{gh_link @repo[:name]}
+      #{time_ago_in_words Time.parse(@created_at)} ago"
+    end
+
   end
 end
