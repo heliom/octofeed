@@ -22,15 +22,15 @@ def distance_of_time_in_words(from_time, to_time = 0, include_seconds = false, o
         when 10..19 then "less than 20 seconds"
         when 20..39 then "half a minute"
         when 40..59 then "less than a minute"
-        else             "1 minute"
+        else             "a minute"
       end
 
     when 2..44           then "#{distance_in_minutes} minutes"
-    when 45..89          then "1 hour"
+    when 45..89          then "an hour"
     when 90..1439        then "#{(distance_in_minutes.to_f / 60.0).round} hours"
-    when 1440..2519      then "1 day"
+    when 1440..2519      then "a day"
     when 2520..43199     then "#{(distance_in_minutes.to_f / 1440.0).round} days"
-    when 43200..86399    then "1 month"
+    when 43200..86399    then "a month"
     when 86400..525599   then "#{(distance_in_minutes.to_f / 43200.0).round} months"
     else
       fyear = from_time.year
@@ -49,19 +49,19 @@ def distance_of_time_in_words(from_time, to_time = 0, include_seconds = false, o
       distance_in_years           = (minutes_with_offset / 525600)
       if remainder < 131400
         if distance_in_years == 1
-          "about #{distance_in_years} year"
+          "about a year"
         else
           "about #{distance_in_years} years"
         end
       elsif remainder < 394200
         if distance_in_years == 1
-          "over #{distance_in_years} year"
+          "over a year"
         else
           "over #{distance_in_years} years"
         end
       else
         if distance_in_years + 1 == 1
-          "almost #{distance_in_years} year"
+          "almost a year"
         else
           "almost #{distance_in_years} years"
         end
