@@ -9,3 +9,6 @@
     <li><%= event.print %></li>
   <% end %>
 </ul>
+<% if @page_number < 10 %>
+  <a href="/page/<%= @page_number + 1 %>">More</a>
+<% end %>
