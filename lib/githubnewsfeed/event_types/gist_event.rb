@@ -8,7 +8,7 @@ module GitHubNewsFeed
         :action => json['payload']['action'],
         :id => json['payload']['gist']['id'],
         :url => json['payload']['gist']['html_url'],
-        :description => json['payload']['gist']['description']
+        :description => CGI::escapeHTML(json['payload']['gist']['description'])
       }
     end
 

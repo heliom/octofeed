@@ -7,7 +7,7 @@ module GitHubNewsFeed
       @object = {
         :id => json['payload']['comment']['id'],
         :commit => json['payload']['comment']['commit_id'],
-        :body => json['payload']['comment']['body'],
+        :body => CGI::escapeHTML(json['payload']['comment']['body']),
         :url => json['payload']['comment']['html_url']
       }
     end

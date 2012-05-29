@@ -7,7 +7,7 @@ module GitHubNewsFeed
       commits = []
       json['payload']['commits'].each do |commit|
         commits << {
-          :message => commit['message'],
+          :message => CGI::escapeHTML(commit['message']),
           :sha => commit['sha'],
           :author => commit['author']['name']
         }
