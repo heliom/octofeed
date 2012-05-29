@@ -4,11 +4,18 @@
   <a href="/auth/github">Login with GitHub</a>
 <% end %>
 
-<ul>
-  <% @events.each do |event| %>
-    <li><%= event.print %></li>
-  <% end %>
-</ul>
+<% @event_groups.each do |event_group| %>
+  <h2>
+    <%= %(<img width="30" height="30" src="#{event_group.icon}">) if event_group.icon %>
+    <%= event_group.title %>
+  </h2>
+  <ul>
+    <% event_group.events.each do |event| %>
+      <li><img width="20" height="20" src="<%= event.actor[:avatar] %>"><%= event.print %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <% if @page_number < 10 %>
   <a href="/page/<%= @page_number + 1 %>">More</a>
 <% end %>

@@ -34,6 +34,18 @@ module GitHubNewsFeed
         #{commits_content}
       </ul>"
     end
+    
+    def get_group_hash
+      { :id => "#{@repo[:name]}-commits" }
+    end
+
+    def set_user_group
+      super get_group_hash
+    end
+
+    def set_repo_group
+      super get_group_hash
+    end
 
   end
 end

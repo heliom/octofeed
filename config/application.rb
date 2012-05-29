@@ -40,6 +40,7 @@ module GitHubNewsFeed
     ['/', '/page/:page_number'].each do |path|
       get path do
         @user = session[:user]
+        @event_groups = []
         @page_number = params[:page_number].to_i || 1
 
         if @user
@@ -70,6 +71,7 @@ module GitHubNewsFeed
           response = http.request(request)
 
           GitHubNewsFeed::EventParser.parse(response.body, watched_repos)
+          @event_groups = GitHubNewsFeed::EventGroup.all
         end
 
         erb :index

@@ -13,12 +13,25 @@ module GitHubNewsFeed
       }
     end
 
+    def url
+      %(<a href="#{@object[:url]}">issue #{@object[:number]}</a>)
+    end
+
     def print
       "#{gh_link @actor[:username]}
       #{@object[:action]}
-      <a href=\"#{@object[:url]}\">issue #{@object[:number]}</a>
+      #{url}
       on #{gh_link @repo[:name]}
       #{time_ago_in_words Time.parse(@created_at)} ago"
+    end
+
+    def set_repo_group
+      type = @object[:is_pull] ? 'pullrequest' : 'issue'
+      hash = {
+        :id => "#{@repo[:name]}-#{type}-#{@object[:number]}",
+        :title => "#{@repo[:name]} #{url}"
+      }
+      super hash
     end
 
   end
