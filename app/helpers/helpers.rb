@@ -71,14 +71,14 @@ end
 
 # Link to `https://github.com/params`
 def gh_link(params)
-  "<a href=\"https://github.com/#{params}\">#{params}</a>"
+  %(<a href="https://github.com/#{params}">#{params}</a>)
 end
 
 # Link to an issue/pull request
 def gh_issue_link(repo, number, is_pull)
   type = is_pull ? 'pull' : 'issues'
   label = is_pull ? 'pull reqest' : 'issue'
-  "<a href=\"https://github.com/#{repo}/#{type}/#{number}\">#{label} #{number}</a>"
+  %(<a href="https://github.com/#{repo}/#{type}/#{number}">#{label} #{number}</a>)
 end
 
 # Link to an issue/pull request comment
@@ -89,25 +89,25 @@ def gh_issue_comment_link(url, comment_id, issue_number, is_pull)
     type = 'pull request'
   end
 
-  "<a href=\"#{url}#issuecomment-#{comment_id}\">#{type} #{issue_number}</a>"
+  %(<a href="#{url}#issuecomment-#{comment_id}">#{type} #{issue_number}</a>)
 end
 
 # Link to a gist
 def gh_gist_link(id, url)
-  "<a href=\"#{url}\">gist: #{id}</a>"
+  %(<a href="#{url}">gist: #{id}</a>)
 end
 
 # Link to a sha
 def gh_sha_link(repo, sha)
-  "<a href=\"https://github.com/#{repo}/commit/#{sha}\">#{sha[0..6]}</a>"
+  %(<a href="https://github.com/#{repo}/commit/#{sha}">#{sha[0..6]}</a>)
 end
 
 # Link to a branch/tag
 def gh_tree_link(repo, tree_node)
-  "<a href=\"https://github.com/#{repo}/tree/#{tree_node}\">#{tree_node}</a>"
+  %(<a href="https://github.com/#{repo}/tree/#{tree_node}">#{tree_node}</a>)
 end
 
 # Link to a file comment
 def gh_commit_comment_link(repo, comment_id, commit_id)
-  "<a href=\"https://github.com/#{repo}/commit/#{commit_id}#commitcomment-#{comment_id}\">#{commit_id[0..9]}</a>"
+  %(<a href="https://github.com/#{repo}/commit/#{commit_id}#commitcomment-#{comment_id}">#{commit_id[0..9]}</a>)
 end

@@ -19,11 +19,11 @@ module GitHubNewsFeed
     def print
       action = @object[:merged] ? 'merged' : @object[:action]
 
-      "#{gh_link @actor[:username]}
+      %(#{gh_link @actor[:username]}
       #{action}
-      <a href=\"#{@object[:url]}\">pull request #{@object[:number]}</a>
+      <a href="#{@object[:url]}">pull request #{@object[:number]}</a>
       on #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)} ago"
+      #{time_ago_in_words Time.parse(@created_at)} ago)
     end
 
     def set_repo_group

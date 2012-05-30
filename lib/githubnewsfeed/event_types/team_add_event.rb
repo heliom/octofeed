@@ -11,12 +11,12 @@ module GitHubNewsFeed
     end
 
     def print
-      "#{gh_link @actor[:username]}
+      %(#{gh_link @actor[:username]}
       added
       #{gh_link @object[:user]}
       to
-      <a href=\"https://github.com/#{@actor[:username]}\">#{@object[:team]}</a>
-      #{time_ago_in_words Time.parse(@created_at)} ago"
+      <a href="https://github.com/#{@actor[:username]}">#{@object[:team]}</a>
+      #{time_ago_in_words Time.parse(@created_at)} ago)
     end
 
   end

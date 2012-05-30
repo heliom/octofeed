@@ -15,13 +15,13 @@ module GitHubNewsFeed
     end
 
     def print
-      "#{gh_link @actor[:username]}
+      %(#{gh_link @actor[:username]}
       commented on
       #{gh_link @repo[:name]}
       #{time_ago_in_words Time.parse(@created_at)} ago
       <ul>
-        <li>Comment in <a href=\"#{@object[:url]}\">#{@object[:path]}</a> in <a href=\"#{@object[:url].split('#').first}\">pull request #{@object[:number]}</a></li>
-      </ul>"
+        <li>Comment in <a href="#{@object[:url]}">#{@object[:path]}</a> in <a href="#{@object[:url].split('#').first}">pull request #{@object[:number]}</a></li>
+      </ul>)
     end
 
     def set_repo_group

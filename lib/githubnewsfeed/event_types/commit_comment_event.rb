@@ -25,7 +25,7 @@ module GitHubNewsFeed
     def set_repo_group
       hash = {
         :id => "#{@repo[:name]}-commitcomment-#{@object[:commit]}",
-        :title => "#{@repo[:name]} <a href=\"https://github.com/#{@repo[:name]}/commit/#{@object[:commit]}\">commit #{@object[:commit][0..9]}</a>"
+        :title => %(#{@repo[:name]} <a href="https://github.com/#{@repo[:name]}/commit/#{@object[:commit]}">commit #{@object[:commit][0..9]}</a>)
       }
       super hash
     end

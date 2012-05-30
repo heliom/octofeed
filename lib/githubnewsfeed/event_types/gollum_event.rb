@@ -21,7 +21,7 @@ module GitHubNewsFeed
     def print
       pages_content = ''
       @object[:pages].each do |page|
-        pages_content << "<li>#{page[:action]} <a href=\"#{page[:url]}\">#{page[:name]}</a></li>"
+        pages_content << %(<li>#{page[:action]} <a href="#{page[:url]}">#{page[:name]}</a></li>)
       end
 
       "#{gh_link @actor[:username]}
