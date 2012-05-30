@@ -13,7 +13,7 @@ def distance_of_time_in_words(from_time, to_time = 0, include_seconds = false, o
   case distance_in_minutes
     when 0..1
       return distance_in_minutes == 0 ?
-             "less than 1 minute" :
+             "less than a minute" :
              "#{distance_in_minutes} minutes" unless include_seconds
 
       case distance_in_seconds
