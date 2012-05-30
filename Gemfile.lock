@@ -6,10 +6,13 @@ GEM
     faraday (0.8.0)
       multipart-post (~> 1.1)
     hashie (1.2.0)
+    html_truncator (0.3.0)
+      nokogiri (~> 1.4)
     httpauth (0.1)
     json (1.7.3)
     multi_json (1.3.5)
     multipart-post (1.1.5)
+    nokogiri (1.5.2)
     oauth2 (0.6.1)
       faraday (~> 0.7)
       httpauth (~> 0.1)
@@ -38,6 +41,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   erubis (~> 2.7.0)
+  html_truncator
   json
   omniauth-github
   sinatra (~> 1.3.2)
