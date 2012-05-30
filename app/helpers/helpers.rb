@@ -74,7 +74,14 @@ def gh_link(params)
   "<a href=\"https://github.com/#{params}\">#{params}</a>"
 end
 
-# Link to an issue/pull comment
+# Link to an issue/pull request
+def gh_issue_link(repo, number, is_pull)
+  type = is_pull ? 'pull' : 'issues'
+  label = is_pull ? 'pull reqest' : 'issue'
+  "<a href=\"https://github.com/#{repo}/#{type}/#{number}\">#{label} #{number}</a>"
+end
+
+# Link to an issue/pull request comment
 def gh_issue_comment_link(url, comment_id, issue_number, is_pull)
   type = 'issue'
   if is_pull
