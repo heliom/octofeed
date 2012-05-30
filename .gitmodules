@@ -1,0 +1,3 @@
+[submodule "app/assets/stylesheets/utils"]
+	path = app/assets/stylesheets/utils
+	url = git://github.com/heliom/stylus-utils.git
