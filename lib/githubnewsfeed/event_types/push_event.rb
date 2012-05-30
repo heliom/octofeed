@@ -37,7 +37,7 @@ module GitHubNewsFeed
       pushed to
       #{ref}
       at #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)} ago
+      #{time_ago_in_words Time.parse(@created_at)}
       <ul>
         #{commits_content}
       </ul>"

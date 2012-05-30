@@ -9,7 +9,7 @@ module GitHubNewsFeed
       "#{gh_link @actor[:username]}
       open sourced
       #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)} ago"
+      #{time_ago_in_words Time.parse(@created_at)}"
     end
 
   end

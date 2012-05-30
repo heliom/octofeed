@@ -17,7 +17,7 @@ module GitHubNewsFeed
       #{@object[:action]}
       #{gh_link @object[:username]}
       to #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)} ago"
+      #{time_ago_in_words Time.parse(@created_at)}"
     end
 
   end

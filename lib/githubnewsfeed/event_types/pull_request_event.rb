@@ -23,7 +23,7 @@ module GitHubNewsFeed
       #{action}
       <a href="#{@object[:url]}">pull request #{@object[:number]}</a>
       on #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)} ago)
+      #{time_ago_in_words Time.parse(@created_at)})
     end
 
     def set_repo_group

@@ -15,7 +15,7 @@ module GitHubNewsFeed
       %(#{gh_link @actor[:username]}
       uploaded a file to
       #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)} ago
+      #{time_ago_in_words Time.parse(@created_at)}
       <ul>
         <li>"#{@object[:name]}" is at <a href="#{@object[:url]}">#{@repo[:name]}/downloads</a></li>
       </ul>)

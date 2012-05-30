@@ -27,7 +27,7 @@ module GitHubNewsFeed
       "#{gh_link @actor[:username]}
       edited the
       #{gh_link @repo[:name]} wiki
-      #{time_ago_in_words Time.parse(@created_at)} ago
+      #{time_ago_in_words Time.parse(@created_at)}
       <ul>
         #{pages_content}
       </ul>"

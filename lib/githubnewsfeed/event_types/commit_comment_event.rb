@@ -16,7 +16,7 @@ module GitHubNewsFeed
       "#{gh_link @actor[:username]}
       commented on
       #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)} ago
+      #{time_ago_in_words Time.parse(@created_at)}
       <ul>
         <li>Comment in #{gh_commit_comment_link @repo[:name], @object[:id], @object[:commit]}</li>
       </ul>"

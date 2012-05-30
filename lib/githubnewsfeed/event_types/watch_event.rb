@@ -13,7 +13,7 @@ module GitHubNewsFeed
       "#{gh_link @actor[:username]}
       #{@object[:action]} watching
       #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)} ago"
+      #{time_ago_in_words Time.parse(@created_at)}"
     end
 
     def set_repo_group

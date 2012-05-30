@@ -16,7 +16,7 @@ module GitHubNewsFeed
       #{gh_link @object[:user]}
       to
       <a href="https://github.com/#{@actor[:username]}">#{@object[:team]}</a>
-      #{time_ago_in_words Time.parse(@created_at)} ago)
+      #{time_ago_in_words Time.parse(@created_at)})
     end
 
   end
