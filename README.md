@@ -4,6 +4,7 @@
 ```sh
 $ cp config/environment.rb.sample config/environment.rb
 # Then set your GitHub app id & secret in `config/environment.rb`
+$ git submodule init && git submodule update
 ```
 
 ### Collaborators
