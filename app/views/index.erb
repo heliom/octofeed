@@ -5,15 +5,17 @@
 <% end %>
 
 <% @event_groups.each do |event_group| %>
-  <h2>
-    <%= %(<img width="30" height="30" src="#{event_group.icon}">) if event_group.icon %>
-    <%= event_group.title %>
-  </h2>
-  <ul>
-    <% event_group.events.each do |event| %>
-      <li><img width="20" height="20" src="<%= event.actor[:avatar] %>"><%= event.print %></li>
-    <% end %>
-  </ul>
+  <article>
+    <h1>
+      <%= %(<img width="30" height="30" src="#{event_group.icon}">) if event_group.icon %>
+      <%= event_group.title %>
+    </h1>
+    <ul>
+      <% event_group.events.each do |event| %>
+        <li><img width="20" height="20" src="<%= event.actor[:avatar] %>"><%= event.print %></li>
+      <% end %>
+    </ul>
+  </article>
 <% end %>
 
 <% if @page_number < 10 && @event_groups.length > 0 %>
