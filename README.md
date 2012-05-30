@@ -33,3 +33,7 @@ Oh! Surely we should make that info more in evidence and group events accordingl
 * Generic user actions (follow, watch)
 
 Each group will have a different heading depending on its type (list above) and if you follow the user or watch the repo.
+
+
+## Quirks we “fixed”
+* A pull request is an issue. Its url is the same as an issue, but redirected from https://github.com/user/repo/issues/1 to https://github.com/user/repo/pull/1. When you click on a pull request comment (https://github.com/user/repo/issues/1#issuecomment-1234567) it is redirected to https://github.com/user/repo/issues/1 without the hash. In our version a pull request comment directly link to the correct pull url (https://github.com/user/repo/pull/1#issuecomment-1234567).
