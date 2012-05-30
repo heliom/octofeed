@@ -41,7 +41,7 @@ module GitHubNewsFeed
       get path do
         @user = session[:user]
         @event_groups = []
-        @page_number = params[:page_number].to_i || 1
+        @page_number = (params[:page_number] || 1).to_i
 
         if @user
           # Repos watched

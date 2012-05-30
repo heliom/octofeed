@@ -16,6 +16,6 @@
   </ul>
 <% end %>
 
-<% if @page_number < 10 %>
+<% if @page_number < 10 && @event_groups.length > 0 %>
   <a href="/page/<%= @page_number + 1 %>">More</a>
 <% end %>
