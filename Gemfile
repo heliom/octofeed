@@ -7,6 +7,11 @@ gem "omniauth-github"
 gem "json"
 gem "html_truncator"
 
+# Assets
+gem "coffee-script"
+gem "stylus"
+gem "sprockets"
+
 # Development dependencies
 group :development do
   gem 'awesome_print'
