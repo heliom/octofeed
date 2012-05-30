@@ -22,7 +22,10 @@ module GitHubNewsFeed
       #{@object[:action]}
       #{url}
       on #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)} ago"
+      #{time_ago_in_words Time.parse(@created_at)} ago
+      <ul>
+        <li>#{@object[:title]}</li>
+      </ul>"
     end
 
     def set_repo_group

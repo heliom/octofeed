@@ -22,7 +22,10 @@ module GitHubNewsFeed
       commented
       on #{gh_issue_comment_link @object[:issue][:url], @object[:id], @object[:issue][:number], @object[:issue][:is_pull]}
       on #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)} ago"
+      #{time_ago_in_words Time.parse(@created_at)} ago
+      <ul>
+        <li>#{HTML_Truncator.truncate @object[:body], 150, :length_in_chars => true}</li>
+      </ul>"
     end
 
     def set_repo_group
