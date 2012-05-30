@@ -1,8 +1,9 @@
 module GitHubNewsFeed
   class FollowEvent < GitHubNewsFeed::Event
 
-    def initialize(json)
+    def initialize(json, session=nil)
       super json
+      @session = session
 
       @object = {
         :id => json['payload']['target']['id'],
@@ -18,6 +19,18 @@ module GitHubNewsFeed
       started following
       #{gh_link @object[:username]}
       #{time_ago_in_words Time.parse(@created_at)} ago"
+    end
+
+    def set_user_group
+      if @session && @session[:user][:username] == @object[:username]
+        opts = {
+          :id => "being-followed",
+          :title => "#{@object[:username]} new followers",
+          :icon => @object[:avatar]
+        }
+      end
+
+      super opts || {}
     end
 
   end

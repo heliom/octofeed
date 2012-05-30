@@ -70,7 +70,7 @@ module GitHubNewsFeed
           request = Net::HTTP::Get.new(uri.request_uri)
           response = http.request(request)
 
-          GitHubNewsFeed::EventParser.parse(response.body, watched_repos)
+          GitHubNewsFeed::EventParser.parse(response.body, watched_repos, session)
           @event_groups = GitHubNewsFeed::EventGroup.all
         end
 
