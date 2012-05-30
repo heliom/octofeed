@@ -19,5 +19,13 @@ module GitHubNewsFeed
       #{time_ago_in_words Time.parse(@created_at)} ago"
     end
 
+    def set_user_group
+      hash = {
+        :id => "#{@actor[:username]}-gist-#{@object[:id]}",
+        :title => "#{@actor[:username]} #{gh_gist_link @object[:id], @object[:url]}"
+      }
+      super hash
+    end
+
   end
 end

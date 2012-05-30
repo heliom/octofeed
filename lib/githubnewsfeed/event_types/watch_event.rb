@@ -16,5 +16,9 @@ module GitHubNewsFeed
       #{time_ago_in_words Time.parse(@created_at)} ago"
     end
 
+    def set_repo_group
+      set_user_group
+    end
+
   end
 end

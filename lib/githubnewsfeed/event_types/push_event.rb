@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module GitHubNewsFeed
   class PushEvent < GitHubNewsFeed::Event
 
@@ -19,6 +21,12 @@ module GitHubNewsFeed
       }
     end
 
+    def ref
+      ref_name = @object[:ref].gsub('refs/heads/', '')
+      return ref_name if ref_name == 'master'
+      gh_tree_link @repo[:name], ref_name
+    end
+
     def print
       commits_content = ''
       @object[:commits].reverse.each do |commit|
@@ -27,24 +35,28 @@ module GitHubNewsFeed
 
       "#{gh_link @actor[:username]}
       pushed to
-      #{@object[:ref].gsub('refs/heads/', '')}
+      #{ref}
       at #{gh_link @repo[:name]}
       #{time_ago_in_words Time.parse(@created_at)} ago
       <ul>
         #{commits_content}
       </ul>"
     end
-    
+
     def get_group_hash
-      { :id => "#{@repo[:name]}-commits" }
+      { :id => "#{@repo[:name]}-commits-#{ref}" }
     end
 
     def set_user_group
-      super get_group_hash
+      hash = get_group_hash
+      hash[:title] = "#{@actor[:username]} pushed to #{ref} at #{gh_link @repo[:name]}"
+      super hash
     end
 
     def set_repo_group
-      super get_group_hash
+      hash = get_group_hash
+      hash[:title] = "#{@repo[:name]} — fresh new code"
+      super hash
     end
 
   end

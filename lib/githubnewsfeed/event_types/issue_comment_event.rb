@@ -27,7 +27,10 @@ module GitHubNewsFeed
 
     def set_repo_group
       type = @object[:issue][:is_pull] ? 'pullrequest' : 'issue'
-      hash = { :id => "#{@repo[:name]}-#{type}-#{@object[:issue][:number]}" }
+      hash = {
+        :id => "#{@repo[:name]}-#{type}-#{@object[:issue][:number]}",
+        :title => "#{@repo[:name]} #{gh_issue_link @repo[:name], @object[:issue][:number], @object[:issue][:is_pull]}"
+      }
       super hash
     end
 

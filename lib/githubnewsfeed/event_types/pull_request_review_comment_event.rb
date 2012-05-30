@@ -24,5 +24,13 @@ module GitHubNewsFeed
       </ul>"
     end
 
+    def set_repo_group
+      hash = {
+        :id => "#{@repo[:name]}-pullrequest-#{@object[:number]}",
+        :title => "#{@repo[:name]} #{gh_issue_link @repo[:name], @object[:number], true}"
+      }
+      super hash
+    end
+
   end
 end
