@@ -69,6 +69,12 @@ def distance_of_time_in_words(from_time, to_time = 0, include_seconds = false, o
   end
 end
 
+# Little-tiny-homemade Markdown parser.
+# Basically just convert [link](http://example.org)
+def md_renderer(content)
+  content.gsub /\[([^\]]+)\]\(([^)]+)\)/, '<a href="\2">\1</a>'
+end
+
 # Link to `https://github.com/params`
 def gh_link(params)
   %(<a href="https://github.com/#{params}">#{params}</a>)
