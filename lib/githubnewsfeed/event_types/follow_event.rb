@@ -15,10 +15,9 @@ module GitHubNewsFeed
     end
 
     def print
-      "#{gh_link @actor[:username]}
-      started following
-      #{gh_link @object[:username]}
-      #{time_ago_in_words Time.parse(@created_at)}"
+      super({
+        :title => "#{gh_link @actor[:username]} started following #{gh_link @object[:username]}"
+      })
     end
 
     def set_user_group

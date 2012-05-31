@@ -18,14 +18,14 @@ module GitHubNewsFeed
     end
 
     def print
-      "#{gh_link @actor[:username]}
-      commented
-      on #{gh_issue_comment_link @object[:issue][:url], @object[:id], @object[:issue][:number], @object[:issue][:is_pull]}
-      on #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)}
-      <ul>
-        <li>#{HTML_Truncator.truncate @object[:body], 150, :length_in_chars => true}</li>
-      </ul>"
+      comment_link = gh_issue_comment_link @object[:issue][:url], @object[:id], @object[:issue][:number], @object[:issue][:is_pull]
+      message = truncate @object[:body]
+      message = md_renderer(message)
+
+      super({
+        :title => "#{gh_link @actor[:username]} commented on #{comment_link} on #{gh_link @repo[:name]}",
+        :body => %(<blockquote title="#{@object[:body]}">#{message}</blockquote>)
+      })
     end
 
     def set_repo_group

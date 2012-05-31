@@ -6,15 +6,16 @@ module GitHubNewsFeed
       super json
 
       @object = {
-        :url => json['payload']['forkee']['html_url']
+        :name => json['payload']['forkee']['name']
       }
     end
 
     def print
-      "#{gh_link @actor[:username]}
-      forked
-      #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)}"
+      fork_full_name = "#{@actor[:username]}/#{@object[:name]}"
+      super({
+        :title => "#{gh_link @actor[:username]} forked #{gh_link @repo[:name]}",
+        :body => "Forked repository is at #{gh_link fork_full_name}"
+      })
     end
 
     def set_repo_group

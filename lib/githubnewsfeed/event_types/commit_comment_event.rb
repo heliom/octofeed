@@ -13,13 +13,13 @@ module GitHubNewsFeed
     end
 
     def print
-      "#{gh_link @actor[:username]}
-      commented on
-      #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)}
-      <ul>
-        <li>Comment in #{gh_commit_comment_link @repo[:name], @object[:id], @object[:commit]}</li>
-      </ul>"
+      message = truncate @object[:body]
+      message = md_renderer(message)
+
+      super({
+        :title => "#{gh_link @actor[:username]} commented on #{gh_link @repo[:name]}",
+        :body => %(<span>Comment in #{gh_commit_comment_link @repo[:name], @object[:id], @object[:commit]}</span> <blockquote title="#{@object[:body]}">#{message}</blockquote>)
+      })
     end
 
     def set_repo_group

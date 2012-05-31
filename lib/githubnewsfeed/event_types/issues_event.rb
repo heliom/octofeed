@@ -18,14 +18,13 @@ module GitHubNewsFeed
     end
 
     def print
-      "#{gh_link @actor[:username]}
-      #{@object[:action]}
-      #{url}
-      on #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)}
-      <ul>
-        <li>#{@object[:title]}</li>
-      </ul>"
+      title = truncate @object[:title]
+      title = md_renderer(title)
+
+      super({
+        :title => "#{gh_link @actor[:username]} #{@object[:action]} #{url} on #{gh_link @repo[:name]}",
+        :body => %(<blockquote title="#{@object[:title]}">#{title}</blockquote>)
+      })
     end
 
     def set_repo_group

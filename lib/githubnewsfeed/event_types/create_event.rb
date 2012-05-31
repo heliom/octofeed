@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 module GitHubNewsFeed
   class CreateEvent < GitHubNewsFeed::Event
 
@@ -6,20 +8,27 @@ module GitHubNewsFeed
 
       @object = {
         :type => json['payload']['ref_type'],
-        :ref => json['payload']['ref']
+        :ref => json['payload']['ref'],
+        :description => json['payload']['description']
       }
     end
 
     def print
-      action = case @object[:type]
-               when 'branch', 'tag' then "#{gh_tree_link @repo[:name], @object[:ref]} at #{gh_link @repo[:name]}"
-               else "#{gh_link @repo[:name]}"
-               end
+      link = case @object[:type]
+             when 'branch', 'tag' then "#{gh_tree_link @repo[:name], @object[:ref]} at #{gh_link @repo[:name]}"
+             else gh_link @repo[:name]
+             end
 
-      "#{gh_link @actor[:username]}
-      created #{@object[:type]}
-      #{action}
-      #{time_ago_in_words Time.parse(@created_at)}"
+      body = case @object[:type]
+             when 'repository' then @object[:description]
+             when 'branch' then gh_link "#{@repo[:name]}/compare/#{@object[:ref]}", "Compare #{@object[:ref]} branch with master »"
+             else ''
+             end
+
+      super({
+        :title => "#{gh_link @actor[:username]} created #{@object[:type]} #{link}",
+        :body => body
+      })
     end
 
   end

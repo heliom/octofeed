@@ -12,13 +12,14 @@ module GitHubNewsFeed
     end
 
     def print
-      %(#{gh_link @actor[:username]}
-      uploaded a file to
-      #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)}
-      <ul>
-        <li>"#{@object[:name]}" is at <a href="#{@object[:url]}">#{@repo[:name]}/downloads</a></li>
-      </ul>)
+      link = %(<a href="#{@object[:url]}">#{@repo[:name]}/downloads</a>)
+      description = truncate @object[:description]
+      description = md_renderer(description)
+
+      super({
+        :title => "#{gh_link @actor[:username]} uploaded a file to #{gh_link @repo[:name]}",
+        :body => %("#{@object[:name]}" is at #{link} <blockquote title="#{@object[:description]}">#{description}</blockquote>)
+      })
     end
 
   end

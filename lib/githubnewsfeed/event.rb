@@ -48,5 +48,16 @@ module GitHubNewsFeed
       }
     end
 
+    def print(msg)
+      body = msg[:body] && msg[:body].length > 0 ? %(<div class="body">#{msg[:body]}</div>) : ''
+      %(
+        <div class="title">
+          <img width="20" height="20" src="#{@actor[:avatar]}">
+          #{msg[:title]} #{time_ago_in_words Time.parse(@created_at)}
+        </div>
+        #{body}
+       )
+    end
+
   end
 end

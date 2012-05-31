@@ -10,7 +10,9 @@ module GitHubNewsFeed
     end
 
     def print
-      "#{@type}"
+      super({
+        :title => @type
+      })
     end
 
   end

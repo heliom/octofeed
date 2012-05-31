@@ -33,19 +33,15 @@ module GitHubNewsFeed
         commits_content << %(
           <li>
             <code>#{gh_sha_link @repo[:name], commit[:sha]}</code>
-            <blockquote title="#{commit[:message]}">#{commit[:message].split(/\n\n/).first}</blockquote>
+            <blockquote title="#{commit[:message]}">#{md_renderer commit[:message].split(/\n\n/).first}</blockquote>
           </li>
         )
       end
 
-      "#{gh_link @actor[:username]}
-      pushed to
-      #{ref}
-      at #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)}
-      <ul>
-        #{commits_content}
-      </ul>"
+      super({
+        :title => "#{gh_link @actor[:username]} pushed to #{ref} at #{gh_link @repo[:name]}",
+        :body => "<ul>#{commits_content}</ul>"
+      })
     end
 
     def get_group_hash

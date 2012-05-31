@@ -24,13 +24,10 @@ module GitHubNewsFeed
         pages_content << %(<li>#{page[:action]} <a href="#{page[:url]}">#{page[:name]}</a></li>)
       end
 
-      "#{gh_link @actor[:username]}
-      edited the
-      #{gh_link @repo[:name]} wiki
-      #{time_ago_in_words Time.parse(@created_at)}
-      <ul>
-        #{pages_content}
-      </ul>"
+      super({
+        :title => "#{gh_link @actor[:username]} edited the #{gh_link @repo[:name]} wiki",
+        :body => "<ul>#{pages_content}</ul>"
+      })
     end
 
   end

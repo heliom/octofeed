@@ -15,13 +15,15 @@ module GitHubNewsFeed
     end
 
     def print
-      %(#{gh_link @actor[:username]}
-      commented on
-      #{gh_link @repo[:name]}
-      #{time_ago_in_words Time.parse(@created_at)}
-      <ul>
-        <li>Comment in <a href="#{@object[:url]}">#{@object[:path]}</a> in <a href="#{@object[:url].split('#').first}">pull request #{@object[:number]}</a></li>
-      </ul>)
+      message = truncate @object[:body]
+      message = md_renderer(message)
+      path_link = %(<a href="#{@object[:url]}">#{@object[:path]}</a>)
+      pull_request_link = %(<a href="#{@object[:url].split('#').first}">pull request #{@object[:number]}</a>)
+
+      super({
+        :title => "#{gh_link @actor[:username]} commented on #{gh_link @repo[:name]}",
+        :body => %(Comment on #{path_link} in #{pull_request_link}: <blockquote title="#{@object[:body]}">#{message}</blockquote>)
+      })
     end
 
     def set_repo_group
