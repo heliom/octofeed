@@ -75,6 +75,14 @@ def md_renderer(content)
   content.gsub /\[([^\]]+)\]\(([^)]+)\)/, '<a href="\2">\1</a>'
 end
 
+# Long message/comment truncate helper
+def truncate(content, opts={})
+  length = opts[:length] || 150
+  length_in_chars = opts[:length_in_chars] || true
+
+  HTML_Truncator.truncate content, length, :length_in_chars => length_in_chars
+end
+
 # Link to `https://github.com/params`
 def gh_link(params)
   %(<a href="https://github.com/#{params}">#{params}</a>)
