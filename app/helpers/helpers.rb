@@ -84,8 +84,8 @@ def truncate(content, opts={})
 end
 
 # Link to `https://github.com/params`
-def gh_link(params)
-  %(<a href="https://github.com/#{params}">#{params}</a>)
+def gh_link(params, label=nil)
+  %(<a href="https://github.com/#{params}">#{label || params}</a>)
 end
 
 # Link to an issue/pull request
