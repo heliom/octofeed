@@ -8,11 +8,11 @@
   <article>
     <h1>
       <%= %(<img width="30" height="30" src="#{event_group.icon}">) if event_group.icon %>
-      <%= event_group.title %>
+      <span><%= event_group.title %></span>
     </h1>
     <ul>
       <% event_group.events.each do |event| %>
-        <li class="<%= event.type %>"><img width="20" height="20" src="<%= event.actor[:avatar] %>"><%= event.print %></li>
+        <li class="<%= event.type %>"><%= event.print %></li>
       <% end %>
     </ul>
   </article>
