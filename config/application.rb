@@ -35,7 +35,12 @@ module OctoFeed
     set :sessions, true
     set :session_secret, "BFDPII5fTVbYcCA0dcQdS5YFDTLWqiC8a1Xaxc0miPmUTW5FdMHAPZ2eWtJsBcb"
     set :root, File.expand_path('../../app',  __FILE__)
+    set :public_folder, File.expand_path('../../public',  __FILE__)
     set :erb, :layout => :'layouts/application'
+
+    before do
+      cache_control :public, :must_revalidate, :max_age => 60
+    end
 
     ['/', '/page/:page_number'].each do |path|
       get path do
