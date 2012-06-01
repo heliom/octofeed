@@ -6,6 +6,7 @@ map '/assets' do
   environment.append_path 'app/assets/javascripts'
   environment.append_path 'app/assets/stylesheets'
   Stylus.setup environment
+  # Stylus.use :nib
 
   run environment
 end
