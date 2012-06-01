@@ -1,9 +1,3 @@
-<% if @user %>
-  <a href="/logout">Logout</a>
-<% else %>
-  <a href="/auth/github">Login with GitHub</a>
-<% end %>
-
 <% @event_groups.each do |event_group| %>
   <article>
     <h1>

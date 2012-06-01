@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="/assets/styles.css">
   </head>
   <body>
+    <header>
+      <% if @user %>
+        <a href="/logout">Logout</a>
+      <% else %>
+        <a href="/auth/github">Login with GitHub</a>
+      <% end %>
+    </header>
     <%= yield %>
     <script src="/assets/scripts.js"></script>
   </body>
