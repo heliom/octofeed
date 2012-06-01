@@ -1,4 +1,4 @@
-module GitHubNewsFeed
+module OctoFeed
   class EventGroup
     attr_accessor :id, :icon, :title, :events
     @@instances = []

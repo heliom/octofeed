@@ -1,4 +1,4 @@
-# github-newsfeed
+# OctoFeed
 
 ## Installation
 ```sh
@@ -11,10 +11,10 @@ $ git submodule init && git submodule update
 If you happen to be a collaborator and you’re using the original app (lucky bastard), you’ll need to add these lines to your `/etc/hosts` file:
 
 ```rb
-127.0.0.1 githubnewsfeed.dev
+127.0.0.1 octofeed.dev
 ```
 
-and launch the app with `shotgun` then use http://githubnewsfeed.dev:9393 as your dev environment.
+and launch the app with `shotgun` then use http://octofeed.dev:9393 as your dev environment.
 
 
 ## What this app is not

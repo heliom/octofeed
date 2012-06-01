@@ -1,5 +1,5 @@
-module GitHubNewsFeed
-  class PullRequestEvent < GitHubNewsFeed::Event
+module OctoFeed
+  class PullRequestEvent < OctoFeed::Event
 
     def initialize(json)
       super json

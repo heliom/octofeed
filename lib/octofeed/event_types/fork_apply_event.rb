@@ -1,5 +1,5 @@
-module GitHubNewsFeed
-  class ForkApplyEvent < GitHubNewsFeed::Event
+module OctoFeed
+  class ForkApplyEvent < OctoFeed::Event
 
     def initialize(json)
       super json

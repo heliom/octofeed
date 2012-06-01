@@ -1,5 +1,5 @@
-module GitHubNewsFeed
-  class CommitCommentEvent < GitHubNewsFeed::Event
+module OctoFeed
+  class CommitCommentEvent < OctoFeed::Event
 
     def initialize(json)
       super json

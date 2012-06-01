@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-module GitHubNewsFeed
-  class CreateEvent < GitHubNewsFeed::Event
+module OctoFeed
+  class CreateEvent < OctoFeed::Event
 
     def initialize(json)
       super json

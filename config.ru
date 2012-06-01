@@ -12,5 +12,5 @@ map '/assets' do
 end
 
 map '/' do
-  run GitHubNewsFeed::App
+  run OctoFeed::App
 end

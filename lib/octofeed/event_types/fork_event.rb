@@ -1,5 +1,5 @@
-module GitHubNewsFeed
-  class ForkEvent < GitHubNewsFeed::Event
+module OctoFeed
+  class ForkEvent < OctoFeed::Event
     attr_accessor :object
 
     def initialize(json)

@@ -1,4 +1,4 @@
-module GitHubNewsFeed
+module OctoFeed
   class Event
     attr_accessor :id, :type, :actor, :repo, :object, :created_at, :group
 

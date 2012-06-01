@@ -28,7 +28,7 @@ if File.exists?(File.expand_path('../environment.rb', __FILE__))
   require File.expand_path('../environment', __FILE__)
 end
 
-module GitHubNewsFeed
+module OctoFeed
   class App < Sinatra::Base
     use OmniAuth::Strategies::GitHub, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], :scope => 'repo'
 
@@ -70,8 +70,8 @@ module GitHubNewsFeed
           request = Net::HTTP::Get.new(uri.request_uri)
           response = http.request(request)
 
-          GitHubNewsFeed::EventParser.parse(response.body, watched_repos, session)
-          @event_groups = GitHubNewsFeed::EventGroup.all
+          OctoFeed::EventParser.parse(response.body, watched_repos, session)
+          @event_groups = OctoFeed::EventGroup.all
         end
 
         erb :index
