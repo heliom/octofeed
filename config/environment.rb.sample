@@ -1,4 +1,13 @@
 # cp config/environment.rb.sample config/environment.rb
 
-ENV['GITHUB_KEY'] = 'GITHUB APP KEY'
-ENV['GITHUB_SECRET'] = 'GITHUB APP SECRET'
+# In your GitHub settings (https://github.com/settings/applications)
+# Create 2 apps. Why two? Unique different callback depending on the OmniAuth provider
+#
+# Callbacks: http://yourdomain.com/auth/github_public/callback
+#            http://yourdomain.com/auth/github_private/callback
+
+ENV['GITHUB_PUBLIC_APP_KEY'] = 'GITHUB PUBLIC APP KEY'
+ENV['GITHUB_PUBLIC_APP_SECRET'] = 'GITHUB PUBLIC APP SECRET'
+
+ENV['GITHUB_PRIVATE_APP_KEY'] = 'GITHUB PRIVATE APP KEY'
+ENV['GITHUB_PRIVATE_APP_SECRET'] = 'GITHUB PRIVATE APP SECRET'
