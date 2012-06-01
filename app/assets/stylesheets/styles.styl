@@ -2,6 +2,8 @@
 @import "utils/mixins"
 
 // Base ----------------------------------------------------------------------
+* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box }
+
 html
   font-size: 62.5%
   height: 100%
@@ -10,12 +12,12 @@ body
   font-size: 13
 
 body, legend, input, textarea, button
-  font-family: 'Helvetica Neue'
+  font-family: Helvetica, arial, freesans, clean, sans-serif
   line-height: 1.4
   color: #333
 
-a { color: deeppink }
-a:focus, a:hover  { color: hotpink }
+a { color: #4183C4 }
+a:focus, a:hover  { text-decoration: underline }
 
 p, ul, ol, dl, blockquote, table, figure { margin: .8em 0 }
 
@@ -24,6 +26,21 @@ hgroup > :first-child { margin-bottom: .3em }
 hgroup > :first-child + * { margin-top: .3em }
 
 h1, h2, h3, h4 { line-height: 1.1 }
+
+// Header ---------------------------------------------------------------------
+header
+  height: 50px
+  background: #fafafa
+  background: -webkit-linear-gradient(#fafafa,#eaeaea)
+  background: -moz-linear-gradient(#fafafa,#eaeaea)
+  box-shadow: 0 1px 0 rgba(255,255,255,0.4), 0 0 10px rgba(0,0,0,0.1)
+  border-bottom: 1px solid #cacaca
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#eaeaea')"
+
+// Events ---------------------------------------------------------------------
+article
+  .title { font-weight: bold }
+  & > ul > li { border-bottom: 1px solid #ccc }
 
 // PushEvent -----------------------------------------------------------------
 .PushEvent
