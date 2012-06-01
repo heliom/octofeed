@@ -1,0 +1,18 @@
+{
+  "author": "Heliom <fellowship@heliom.ca>",
+  "name": "github-newsfeed",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/heliom/github-newsfeed.git"
+  },
+  "engines": {
+    "node": "~0.6.10"
+  },
+  "dependencies": {
+    "stylus": "0.24.0",
+    "nib": "0.5.0"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {}
+}
