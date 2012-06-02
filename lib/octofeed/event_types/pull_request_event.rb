@@ -29,17 +29,16 @@ module OctoFeed
       description = md_renderer(description)
 
       super({
-        :title => "#{gh_link @actor[:username]} #{action} #{pull_request_link} on #{gh_link @repo[:name]}",
+        :title => "#{gh_user_link @actor[:username]} #{action} #{pull_request_link} on #{gh_link @repo[:name]}",
         :body => %(<blockquote title="#{@object[:description]}">#{description}</blockquote> <span>#{diff}</span>)
       })
     end
 
     def set_repo_group
-      hash = {
+      super({
         :id => "#{@repo[:name]}-pullrequest-#{@object[:number]}",
         :title => "#{@repo[:name]} #{gh_issue_link @repo[:name], @object[:number], true}"
-      }
-      super hash
+      })
     end
 
   end

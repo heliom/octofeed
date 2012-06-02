@@ -13,7 +13,7 @@ module OctoFeed
     def print
       link = %(<a href="https://github.com/#{@actor[:username]}">#{@object[:team]}</a>)
       super({
-        :title => "#{gh_link @actor[:username]} added #{gh_link @object[:user]} to #{link}"
+        :title => "#{gh_user_link @actor[:username]} added #{gh_link @object[:user]} to #{link}"
       })
     end
 

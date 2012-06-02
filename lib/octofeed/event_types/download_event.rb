@@ -17,7 +17,7 @@ module OctoFeed
       description = md_renderer(description)
 
       super({
-        :title => "#{gh_link @actor[:username]} uploaded a file to #{gh_link @repo[:name]}",
+        :title => "#{gh_user_link @actor[:username]} uploaded a file to #{gh_link @repo[:name]}",
         :body => %("#{@object[:name]}" is at #{link} <blockquote title="#{@object[:description]}">#{description}</blockquote>)
       })
     end

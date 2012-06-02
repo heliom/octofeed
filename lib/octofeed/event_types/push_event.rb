@@ -11,7 +11,10 @@ module OctoFeed
         commits << {
           :message => CGI::escapeHTML(commit['message']),
           :sha => commit['sha'],
-          :author => commit['author']['name']
+          :author => {
+            :name => commit['author']['name'],
+            :email => commit['author']['email']
+          }
         }
       end
 
@@ -30,8 +33,12 @@ module OctoFeed
     def print
       commits_content = ''
       @object[:commits].reverse.each do |commit|
+        email = Digest::MD5.hexdigest(commit[:author][:email])
+        default = CGI::escape('https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png')
+        avatar = "http://www.gravatar.com/avatar/#{email}?d=#{default}&s=40"
         commits_content << %(
           <li>
+            <img width="16" height="16" src="#{avatar}">
             <code>#{gh_sha_link @repo[:name], commit[:sha]}</code>
             <blockquote title="#{commit[:message]}">#{md_renderer commit[:message].split(/\n\n/).first}</blockquote>
           </li>
@@ -39,7 +46,7 @@ module OctoFeed
       end
 
       super({
-        :title => "#{gh_link @actor[:username]} pushed to #{ref} at #{gh_link @repo[:name]}",
+        :title => "#{gh_user_link @actor[:username]} pushed to #{ref} at #{gh_link @repo[:name]}",
         :body => "<ul>#{commits_content}</ul>"
       })
     end

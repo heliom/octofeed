@@ -21,12 +21,12 @@ module OctoFeed
 
       body = case @object[:type]
              when 'repository' then @object[:description]
-             when 'branch' then gh_link "#{@repo[:name]}/compare/#{@object[:ref]}", "Compare #{@object[:ref]} branch with master »"
+             when 'branch' then gh_link "#{@repo[:name]}/compare/#{@object[:ref]}", :label => "Compare #{@object[:ref]} branch with master »"
              else ''
              end
 
       super({
-        :title => "#{gh_link @actor[:username]} created #{@object[:type]} #{link}",
+        :title => "#{gh_user_link @actor[:username]} created #{@object[:type]} #{link}",
         :body => body
       })
     end

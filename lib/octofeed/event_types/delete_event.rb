@@ -17,7 +17,7 @@ module OctoFeed
              end
 
       super({
-        :title => "#{gh_link @actor[:username]} deleted #{@object[:type]} #{link}"
+        :title => "#{gh_user_link @actor[:username]} deleted #{@object[:type]} #{link}"
       })
     end
 

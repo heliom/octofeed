@@ -22,18 +22,17 @@ module OctoFeed
       title = md_renderer(title)
 
       super({
-        :title => "#{gh_link @actor[:username]} #{@object[:action]} #{url} on #{gh_link @repo[:name]}",
+        :title => "#{gh_user_link @actor[:username]} #{@object[:action]} #{url} on #{gh_link @repo[:name]}",
         :body => %(<blockquote title="#{@object[:title]}">#{title}</blockquote>)
       })
     end
 
     def set_repo_group
       type = @object[:is_pull] ? 'pullrequest' : 'issue'
-      hash = {
+      super({
         :id => "#{@repo[:name]}-#{type}-#{@object[:number]}",
         :title => "#{@repo[:name]} #{url}"
-      }
-      super hash
+      })
     end
 
   end

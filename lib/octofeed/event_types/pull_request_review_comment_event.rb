@@ -21,17 +21,16 @@ module OctoFeed
       pull_request_link = %(<a href="#{@object[:url].split('#').first}">pull request #{@object[:number]}</a>)
 
       super({
-        :title => "#{gh_link @actor[:username]} commented on #{gh_link @repo[:name]}",
+        :title => "#{gh_user_link @actor[:username]} commented on #{gh_link @repo[:name]}",
         :body => %(Comment on #{path_link} in #{pull_request_link}: <blockquote title="#{@object[:body]}">#{message}</blockquote>)
       })
     end
 
     def set_repo_group
-      hash = {
+      super({
         :id => "#{@repo[:name]}-pullrequest-#{@object[:number]}",
         :title => "#{@repo[:name]} #{gh_issue_link @repo[:name], @object[:number], true}"
-      }
-      super hash
+      })
     end
 
   end

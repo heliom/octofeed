@@ -7,7 +7,7 @@ module OctoFeed
 
     def print
       super({
-        :title => "#{gh_link @actor[:username]} open sourced #{gh_link @repo[:name]}"
+        :title => "#{gh_user_link @actor[:username]} open sourced #{gh_link @repo[:name]}"
       })
     end
 

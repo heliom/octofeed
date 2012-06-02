@@ -25,7 +25,7 @@ module OctoFeed
       end
 
       super({
-        :title => "#{gh_link @actor[:username]} edited the #{gh_link @repo[:name]} wiki",
+        :title => "#{gh_user_link @actor[:username]} edited the #{gh_link @repo[:name]} wiki",
         :body => "<ul>#{pages_content}</ul>"
       })
     end

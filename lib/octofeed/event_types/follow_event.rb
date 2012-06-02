@@ -16,7 +16,7 @@ module OctoFeed
 
     def print
       super({
-        :title => "#{gh_link @actor[:username]} started following #{gh_link @object[:username]}"
+        :title => "#{gh_user_link @actor[:username]} started following #{gh_link @object[:username]}"
       })
     end
 
