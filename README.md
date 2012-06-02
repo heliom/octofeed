@@ -39,3 +39,4 @@ Each group will have a different heading depending on its type (list above) and 
 
 ## Quirks we “fixed”
 * A pull request is an issue. Its url is the same as an issue, but redirected from https://github.com/user/repo/issues/1 to https://github.com/user/repo/pull/1. When you click on a pull request comment (https://github.com/user/repo/issues/1#issuecomment-1234567) it is redirected to https://github.com/user/repo/issues/1 without the hash. In our version a pull request comment directly link to the correct pull url (https://github.com/user/repo/pull/1#issuecomment-1234567).
+* A few typos like “1 commits” and “0 deletitions” fixes.
