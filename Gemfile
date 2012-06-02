@@ -8,9 +8,9 @@ gem "json"
 gem "html_truncator"
 
 # Assets
-gem "sprockets"
+gem "sprockets", "2.4.3"
 gem "coffee-script"
-gem "stylus", "0.6.0"
+gem "stylus", "0.6.2"
 
 # Development dependencies
 group :development do
