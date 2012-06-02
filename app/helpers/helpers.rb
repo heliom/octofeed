@@ -84,8 +84,15 @@ def truncate(content, opts={})
 end
 
 # Link to `https://github.com/params`
-def gh_link(params, label=nil)
-  %(<a href="https://github.com/#{params}">#{label || params}</a>)
+def gh_link(path, opts={})
+  link_class = %(class="#{opts[:class]}") || ''
+  link_label = opts[:label] || path
+
+  %(<a #{link_class} href="https://github.com/#{path}">#{link_label}</a>)
+end
+
+def gh_user_link(username)
+  gh_link username, :class => 'username'
 end
 
 # Link to an issue/pull request
