@@ -21,7 +21,7 @@ module OctoFeed
 
       @object = {
         :ref => json['payload']['ref'],
-        :commits => commits
+        :commits => commits.reverse
       }
     end
 
@@ -33,7 +33,7 @@ module OctoFeed
 
     def print
       commits_content = ''
-      @object[:commits].reverse.each do |commit|
+      @object[:commits].take(3).each do |commit|
         email = Digest::MD5.hexdigest(commit[:author][:email])
         default = CGI::escape('https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png')
         avatar = "http://www.gravatar.com/avatar/#{email}?d=#{default}&s=40"
@@ -46,6 +46,39 @@ module OctoFeed
             <blockquote title="#{commit[:message]}">#{md_renderer message}</blockquote>
           </li>
         )
+      end
+
+      commit_count = @object[:commits].length
+      if commit_count >= 2
+        first_commit_sha = @object[:commits].first[:sha]
+        last_commit_sha = @object[:commits].last[:sha]
+        uri = URI.parse("https://api.github.com/repos/#{@repo[:name]}/git/commits/#{last_commit_sha}?access_token=#{@session[:user][:token]}")
+
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = true
+        http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+        request = Net::HTTP::Get.new(uri.request_uri)
+        response = http.request(request)
+
+        last_commit = JSON.parse(response.body)
+        previous_commit_sha = last_commit['parents'][0]['sha']
+        link_url = "#{@repo[:name]}/compare/#{previous_commit_sha[0..9]}...#{first_commit_sha[0..9]}"
+
+        if commit_count > 3
+          difference = commit_count - 3
+          plural = difference == 1 ? '' : 's'
+
+          link_label = "#{difference} more commit#{plural} »"
+          link = gh_link link_url, :label => link_label
+
+          commits_content << "<li>#{link}</li>"
+        else
+          link_label = "View comparison for these #{commit_count} commits »"
+          link = gh_link link_url, :label => link_label
+
+          commits_content << "<li>#{link}</li>"
+        end
       end
 
       super({
