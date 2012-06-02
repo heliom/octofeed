@@ -132,12 +132,18 @@ header
 
 // EventGroup ----------------------------------------------------------------
 article
+  position: relative
   padding: 8px
   background-color: #f8f8f8
   border-radius: 3px
   min-height: 89px
 
-  h1 { margin: 0; padding: 0 }
+  h1
+    margin: 0; padding: 0
+
+    img
+      position: absolute
+      top: 32px; left: 8px
 
   img
     vertical-align: middle
@@ -148,12 +154,6 @@ article + article
   margin: 10px 0 0
 
 .user-group
-  position: relative
-
-  h1 img
-    position: absolute
-    top: 32px; left: 8px
-
   & > ul { padding: 8px 0 0 56px }
 
   .title

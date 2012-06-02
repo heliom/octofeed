@@ -2,6 +2,7 @@ class OctoFeed
 
   constructor: ->
     this.initMoreBtn()
+    this.initRepoImages()
 
   initMoreBtn: ->
     $btn = $('.more')
@@ -24,5 +25,15 @@ class OctoFeed
         $btn.removeClass 'loading'
 
         $btn.remove() if !pageNumber
+
+  initRepoImages: ->
+    $('[data-repo-image]').each (i, elem) ->
+      url = elem.getAttribute('data-repo-image')
+      image = new Image()
+
+      $(image).on 'load', (e) ->
+        elem.src = url
+
+      image.src = url
 
 new OctoFeed

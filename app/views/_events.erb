@@ -2,7 +2,11 @@
 <% @event_groups.each do |event_group| %>
   <article class="<%= event_group.type %>">
     <h1>
-      <%= %(<img width="50" height="50" src="#{event_group.icon}">) if event_group.icon %>
+      <% if event_group.type == 'repo-group' %>
+        <img width="50" height="50" src="<%= event_group.icon %>" data-repo-image="<%= event_group.repo_image %>">
+      <% else %>
+        <img width="50" height="50" src="<%= event_group.icon %>">
+      <% end %>
       <span><%= event_group.title %></span>
     </h1>
     <ul>

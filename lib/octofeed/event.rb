@@ -45,7 +45,8 @@ module OctoFeed
       {
         :type => 'repo-group',
         :id => opts[:id] || @repo[:name],
-        :icon => opts[:icon] || nil,
+        :icon => opts[:icon] || '/images/repo-default.png',
+        :repo_image => "https://github.com/#{@repo[:name]}/raw/master/icon.png",
         :title => opts[:title] || @repo[:name]
       }
     end
