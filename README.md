@@ -42,4 +42,4 @@ Each group will have a different heading depending on its type (list above) and 
 
 
 ## Things we won’t do
-* We’re somewhat limited by the API and we’ll not make any more requests than what we have — one for your events and another one for the repos you watch — the app is slow enough. For example: On GitHub when there’s a `PushEvent`, you see the actor’s avatar and all the commits’ author. The `PushEvent` json only provides the author’s full name and email. To be able to print their avatars we’d have to call the API for each commit… no thanks.
+* We’re somewhat limited by the API and we’ll not make any more requests than what we have — one for your events and another one for the repos you watch — the app is slow enough. For example: On GitHub when there’s a `PushEvent`, you see the actor’s avatar and all the commits’ author. The `PushEvent` json only provides the author’s full name and email. <strike>To be able to print their avatars we’d have to call the API for each commit… no thanks</strike>. Turns out I’m using Gravatar to print the avatar.
