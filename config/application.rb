@@ -4,7 +4,7 @@ require File.expand_path('../boot', __FILE__)
 require "net/https"
 require "uri"
 
-# Gems w/ Bundle
+# Gems w/ Bundler
 if defined?(Bundler)
   Bundler.require(:default, ENV['RACK_ENV'])
 end
