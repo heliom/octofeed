@@ -1,17 +1,40 @@
-<% @event_groups.each do |event_group| %>
-  <article>
-    <h1>
-      <%= %(<img width="30" height="30" src="#{event_group.icon}">) if event_group.icon %>
-      <span><%= event_group.title %></span>
-    </h1>
-    <ul>
-      <% event_group.events.each do |event| %>
-        <li class="<%= event.type %>"><%= event.print %></li>
+<% if @event_groups.length > 0 %>
+  <div class="container logged">
+    <section class="feed">
+      <% @event_groups.each do |event_group| %>
+        <article class="<%= event_group.type %>">
+          <h1>
+            <%= %(<img width="50" height="50" src="#{event_group.icon}">) if event_group.icon %>
+            <span><%= event_group.title %></span>
+          </h1>
+          <ul>
+            <% event_group.events.each do |event| %>
+              <li class="<%= event.type %> Event"><%= event.print %></li>
+            <% end %>
+          </ul>
+        </article>
       <% end %>
-    </ul>
-  </article>
-<% end %>
 
-<% if @page_number < 10 && @event_groups.length > 0 %>
-  <a href="/page/<%= @page_number + 1 %>">More</a>
+      <% if @page_number < 10 %>
+        <a class="more" href="/page/<%= @page_number + 1 %>">More</a>
+      <% end %>
+    </section>
+  </div>
+<% else %>
+  <div class="container login">
+    <section class="col-1">
+      <h1>Information saved</h1>
+      <p>The only thing being saved in a database is each of your events unique id to be able to implement the read/unread feature. No further information is saved. Read: If you use the “private app” version, I will not have access to your private repos.</p>
+    </section>
+    <section class="col-2">
+      <h1>Public events</h1>
+      <p>Read-only app, only public events will be listed.</p>
+      <a class="button login" href="/auth/github_public"><span class="github-logo"></span> Login with GitHub</a>
+    </section>
+    <section class="col-2">
+      <h1>Public & private events</h1>
+      <p>The app basically gives read/write access to your repositories, commits and issues. Do note that this is the exact same code as the public one, but you’ll also see your private repos related events. I swear before the Octo god that it does not use its write privilege, but if you don’t trust me, use the public one.</p>
+      <a class="button login" href="/auth/github_private"><span class="github-logo"></span> Login with GitHub</a>
+    </section>
+  </div>
 <% end %>

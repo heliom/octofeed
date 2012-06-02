@@ -7,11 +7,10 @@
   </head>
   <body>
     <header>
-      <% if @user %>
-        <a href="/logout">Logout</a>
-      <% else %>
-        <a href="/auth/github">Login with GitHub</a>
-      <% end %>
+      <div class="container">
+        <h1>OctoFeed</h1>
+        <%= %(<a href="/logout">Logout</a>) if @user %>
+      </div>
     </header>
     <%= yield %>
     <script src="/assets/scripts.js"></script>
