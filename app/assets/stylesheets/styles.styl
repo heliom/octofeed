@@ -2,8 +2,27 @@
 @import "utils/reset"
 @import "utils/mixins"
 
+// Utils ---------------------------------------------------------------------
+.grey-gradient
+  background: #fafafa
+  background: -webkit-linear-gradient(#fafafa, #eaeaea)
+  background: -moz-linear-gradient(#fafafa, #eaeaea)
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#eaeaea')"
+
+.blue-gradient
+  background: #599bdc
+  background: -webkit-linear-gradient(#599bdc, #3072b3)
+  background: -moz-linear-gradient(#599bdc, #3072b3)
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#599bdc',endColorstr='#3072b3')"
+
+.clearfix
+  &:after
+    display: block
+    content: ''
+    clear: both
+
 // Base ----------------------------------------------------------------------
-* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box }
+* { box-sizing: border-box }
 
 html
   font-size: 62.5%
@@ -16,11 +35,13 @@ body, legend, input, textarea, button
   font-family: Helvetica, arial, freesans, clean, sans-serif
   line-height: 1.4
   color: #333
+  // -webkit-font-smoothing: antialiased
 
 a { color: #4183C4 }
 a:focus, a:hover  { text-decoration: underline }
 
-p, ul, ol, dl, blockquote, table, figure { margin: .8em 0 }
+p, ul, ol, dl, blockquote, table, figure { margin: 0 }
+li { list-style-type: none }
 
 // Headings ------------------------------------------------------------------
 hgroup > :first-child { margin-bottom: .3em }
@@ -30,19 +51,130 @@ h1, h2, h3, h4 { line-height: 1.1 }
 
 // Header ---------------------------------------------------------------------
 header
+  @extends .grey-gradient
   height: 50px
-  background: #fafafa
-  background: -webkit-linear-gradient(#fafafa,#eaeaea)
-  background: -moz-linear-gradient(#fafafa,#eaeaea)
-  box-shadow: 0 1px 0 rgba(255,255,255,0.4), 0 0 10px rgba(0,0,0,0.1)
+  box-shadow: 0 1px 0 rgba(255,255,255,0.4), 0 0 10px rgba(0,0,0,.1)
   border-bottom: 1px solid #cacaca
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#eaeaea')"
 
-// Events ---------------------------------------------------------------------
+  h1
+    margin: 0
+
+// Layout ---------------------------------------------------------------------
+.container
+  width: 80%
+  max-width: 920px
+  margin: 0 auto
+
+.button
+  @extends .grey-gradient
+  display: inline-block
+  padding: 5px
+  color: #333
+  font-weight: bold
+  border: 1px solid #d4d4d4
+  border-bottom-color: #bcbcbc
+  text-shadow: 0 1px 0 #fff
+  border-radius: 3px
+
+  &.login
+    @extends .clearfix
+
+    .github-logo
+      display: inline-block
+      background-image: url(/images/github.png)
+      size: 16px 17px
+      position: relative
+      top: -2px
+      vertical-align: middle
+
+.button:hover, .button:focus
+  @extends .blue-gradient
+  color: #fff
+  border-color: #518cc6
+  border-bottom-color: #2a65a0
+  text-decoration: none
+  text-shadow: 0 -1px 0 rgba(0,0,0,.3)
+
+  &.login .github-logo { background-position: 0 -17px }
+
+// Login ----------------------------------------------------------------------
+.login
+  section.col-2
+    float: left
+    width: 50%
+
+// Logged --------------------------------------------------------------------
+.logged
+  padding: 25px 0
+
+  section { float: left }
+  .feed
+    padding: 0 0 52px
+    width: 570px
+
+  .more
+    color: #369
+    display: block
+    border: 1px solid #aad
+    padding: .5em
+    text-align: center
+    margin: 16px 0 0
+
+    &:hover
+      color: #000
+      border-color: #369
+      text-decoration: none
+
+// EventGroup ----------------------------------------------------------------
 article
+  padding: 8px
+  background-color: #f8f8f8
+  border-radius: 3px
+  min-height: 89px
+
+  h1 { margin: 0; padding: 0 }
+
+  img
+    vertical-align: middle
+    padding: 2px
+    border: 1px solid #d0d0d0
+
+article + article
+  margin: 10px 0 0
+
+.user-group
+  position: relative
+
+  h1 img
+    position: absolute
+    top: 32px; left: 8px
+
+  & > ul { padding: 8px 0 0 56px }
+
+  .title
+    img, .username { display: none }
+
+.repo-group
+  & > ul { padding: 0 0 0 56px }
+
+  .Event
+    min-height: 52px
+    padding: 8px 0 0
+
+  .body { padding: 0 0 0 28px }
+  .title img
+    position: absolute
+    top: 28px; left: 0
+    padding: 1px
+
+// Event ---------------------------------------------------------------------
+.Event
+  position: relative
+
   .title { font-weight: bold }
-  & > ul > li { border-bottom: 1px solid #ccc }
+  blockquote { color: #666 }
 
 // PushEvent -----------------------------------------------------------------
 .PushEvent
+  img { padding: 1px }
   blockquote { display: inline }
