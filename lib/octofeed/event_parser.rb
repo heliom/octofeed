@@ -9,7 +9,7 @@ module OctoFeed
       events.each do |event_json|
         event_classname = "OctoFeed::#{event_json['type']}"
         event_class = event_classname.split('::').inject(Object) { |o,c| o.const_get c }
-        if event_class == OctoFeed::FollowEvent
+        if event_class == OctoFeed::FollowEvent || event_class == OctoFeed::PushEvent
           event = event_class.new(event_json, session)
         else
           event = event_class.new(event_json)

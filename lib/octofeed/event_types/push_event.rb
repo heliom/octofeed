@@ -3,8 +3,9 @@
 module OctoFeed
   class PushEvent < OctoFeed::Event
 
-    def initialize(json)
+    def initialize(json, session=nil)
       super json
+      @session = session
 
       commits = []
       json['payload']['commits'].each do |commit|
