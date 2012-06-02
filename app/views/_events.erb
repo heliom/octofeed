@@ -1,0 +1,14 @@
+<%= %(<meta name="page-number" content="#{@page_number}">) if @is_xhr && @page_number < 10 %>
+<% @event_groups.each do |event_group| %>
+  <article class="<%= event_group.type %>">
+    <h1>
+      <%= %(<img width="50" height="50" src="#{event_group.icon}">) if event_group.icon %>
+      <span><%= event_group.title %></span>
+    </h1>
+    <ul>
+      <% event_group.events.each do |event| %>
+        <li class="<%= event.type %> Event"><%= event.print %></li>
+      <% end %>
+    </ul>
+  </article>
+<% end %>

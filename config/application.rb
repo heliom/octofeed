@@ -20,6 +20,7 @@ module OctoFeed
         @user = session[:user]
         @event_groups = []
         @page_number = (params[:page_number] || 1).to_i
+        @is_xhr = request.xhr?
 
         if @user
           # Repos watched
@@ -52,7 +53,11 @@ module OctoFeed
           @event_groups = event_parser.groups
         end
 
-        erb :index
+        if @is_xhr
+          erb :_events, :layout => false
+        else
+          erb :index
+        end
       end
     end
 

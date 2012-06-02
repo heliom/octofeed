@@ -1,22 +1,10 @@
 <% if @event_groups.length > 0 %>
   <div class="container logged">
     <section class="feed">
-      <% @event_groups.each do |event_group| %>
-        <article class="<%= event_group.type %>">
-          <h1>
-            <%= %(<img width="50" height="50" src="#{event_group.icon}">) if event_group.icon %>
-            <span><%= event_group.title %></span>
-          </h1>
-          <ul>
-            <% event_group.events.each do |event| %>
-              <li class="<%= event.type %> Event"><%= event.print %></li>
-            <% end %>
-          </ul>
-        </article>
-      <% end %>
+      <%= erb :_events, :layout => false %>
 
       <% if @page_number < 10 %>
-        <a class="more" href="/page/<%= @page_number + 1 %>">More</a>
+        <a class="more" href="/page/<%= @page_number + 1 %>" data-url-pattern="/page/:number">More</a>
       <% end %>
     </section>
   </div>
