@@ -48,8 +48,8 @@ module OctoFeed
           request = Net::HTTP::Get.new(uri.request_uri)
           response = http.request(request)
 
-          OctoFeed::EventParser.parse(response.body, watched_repos, session)
-          @event_groups = OctoFeed::EventGroup.all
+          event_parser = OctoFeed::EventParser.new(response.body, watched_repos, session)
+          @event_groups = event_parser.groups
         end
 
         erb :index
