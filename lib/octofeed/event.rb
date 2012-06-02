@@ -34,6 +34,7 @@ module OctoFeed
 
     def set_user_group(opts={})
       {
+        :type => 'user-group',
         :id => opts[:id] || @actor[:username],
         :icon => opts[:icon] || @actor[:avatar],
         :title => opts[:title] || @actor[:username]
@@ -42,6 +43,7 @@ module OctoFeed
 
     def set_repo_group(opts={})
       {
+        :type => 'repo-group',
         :id => opts[:id] || @repo[:name],
         :icon => opts[:icon] || nil,
         :title => opts[:title] || @repo[:name]
