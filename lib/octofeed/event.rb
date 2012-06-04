@@ -37,7 +37,8 @@ module OctoFeed
         :type => 'user-group',
         :id => opts[:id] || @actor[:username],
         :icon => opts[:icon] || @actor[:avatar],
-        :title => opts[:title] || @actor[:username]
+        :title => opts[:title] || @actor[:username],
+        :name => @actor[:username]
       }
     end
 
@@ -46,8 +47,8 @@ module OctoFeed
         :type => 'repo-group',
         :id => opts[:id] || @repo[:name],
         :icon => opts[:icon] || '/images/repo-default.png',
-        :repo_image => "https://github.com/#{@repo[:name]}/raw/master/icon.png",
-        :title => opts[:title] || @repo[:name]
+        :title => opts[:title] || @repo[:name],
+        :name => @repo[:name]
       }
     end
 
