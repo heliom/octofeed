@@ -35,10 +35,11 @@ module OctoFeed
     def set_user_group
       if @session && @session[:user][:username] == @object[:username]
         opts = {
-          :id => "being-followed",
-          :title => "New followers",
+          :id => 'being-followed',
+          :title => 'New followers',
           :icon => @object[:avatar],
-          :name => @object[:username]
+          :name => @object[:username],
+          :type => 'user-group current-user'
         }
       end
 
