@@ -43,3 +43,6 @@ Each group will have a different heading depending on its type (list above) and 
 
 ## Things we added
 * Repo icons/avatars. A repo group will display its icon instead of the default image if the repo as an `icon.png` image in `master/root`
+
+## Long-ish exhaustive blog post
+http://heliom.ca/en/blog/octofeed
