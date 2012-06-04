@@ -163,24 +163,41 @@ article + article
   & > ul { padding: 0 0 0 56px }
 
   .Event
-    min-height: 52px
+    min-height: 60px
     padding: 8px 0 0
 
-  .body { padding: 0 0 0 28px }
-  .title img
-    position: absolute
-    top: 28px; left: 0
-    padding: 1px
+  .body { padding: 0 0 0 36px }
+
+  .title
+    position: relative
+
+    img
+      position: absolute
+      bottom: -32px; left: 0
+      padding: 1px
 
 // Event ---------------------------------------------------------------------
 .Event
   position: relative
 
   .title { font-weight: bold }
-  .body, .body * { overflow: ellipsis }
+  .body
+    overflow: ellipsis
+    * { overflow: ellipsis }
+    li + li { padding: 3px 0 0 }
+
   blockquote { color: #666 }
 
 // PushEvent -----------------------------------------------------------------
 .PushEvent
   img { padding: 1px }
   blockquote { display: inline }
+  .body { padding-top: 4px }
+  .title img { bottom: -34px }
+
+// FollowEvent ---------------------------------------------------------------
+.FollowEvent
+  float: left
+
+.FollowEvent + .FollowEvent
+  margin: 0 0 0 2px
