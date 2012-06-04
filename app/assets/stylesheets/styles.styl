@@ -82,6 +82,29 @@ header
   max-width: 920px
   margin: 0 auto
 
+.content, .feed
+  width: 62%
+  float: left
+
+.sidebar
+  width: 38%
+  float: left
+  padding: 0 0 0 20px
+
+  div
+    border: 1px solid #ddd
+    border-radius: 5px
+
+  h1
+    @extends .grey-gradient
+    margin: 0; padding: 1em 10px
+    border-radius: 5px 5px 0 0
+    font-size: 16
+    color: #52595d
+
+  ul
+    padding: 10px
+
 .button
   @extends .grey-gradient
   display: inline-block
@@ -114,37 +137,17 @@ header
 
   &.login-with-gh .github-logo { background-position: 0 -17px }
 
+.login, .logged
+  padding: 25px 0 52px
+
 // Login ----------------------------------------------------------------------
 .login
-  padding: 0 0 52px
-
-  section.col-2 article
+  .col-2
     float: left
     width: 50%
 
 // Logged --------------------------------------------------------------------
 .logged
-  padding: 25px 0 52px
-
-  section { float: left }
-  .feed { width: 62% }
-
-  .sidebar
-    width: 38%
-    padding: 0 0 0 20px
-
-    nav
-      border: 1px solid #ddd
-      border-radius: 5px
-
-      h1
-        @extends .grey-gradient
-        margin: 0; padding: 1em 10px
-        border-radius: 5px 5px 0 0
-
-      ul
-        padding: 10px
-
   .more
     color: #369
     display: block
@@ -188,6 +191,21 @@ header
   article + article
     margin: 10px 0 0
 
+// Event ---------------------------------------------------------------------
+.Event
+  position: relative
+
+  .title { font-weight: bold }
+
+  .body
+    overflow: ellipsis
+    * { overflow: ellipsis }
+    li + li { padding: 3px 0 0 }
+
+  blockquote
+    color: #666
+    padding: 2px 0 0
+
 .user-group
   & > ul { padding: 8px 0 0 56px }
 
@@ -211,21 +229,6 @@ header
       bottom: -32px; left: 0
       padding: 1px
 
-// Event ---------------------------------------------------------------------
-.Event
-  position: relative
-
-  .title { font-weight: bold }
-
-  .body
-    overflow: ellipsis
-    * { overflow: ellipsis }
-    li + li { padding: 3px 0 0 }
-
-  blockquote
-    color: #666
-    padding: 2px 0 0
-
 // PushEvent -----------------------------------------------------------------
 .PushEvent
   img { padding: 1px }
@@ -241,4 +244,4 @@ header
 // Footer --------------------------------------------------------------------
 footer
   text-align: center
-  padding: 0 0 10px
+  padding: 10px 0 0

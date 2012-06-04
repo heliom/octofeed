@@ -7,40 +7,30 @@
         <a class="more" href="/page/<%= @page_number + 1 %>" data-url-pattern="/page/:number">More</a>
       <% end %>
     </section>
-    <section class="sidebar">
-      <nav>
-        <h1>Links you may wanna click</h1>
-        <ul>
-          <li><a href="https://github.com/EtienneLem/octofeed">Fork me on GitHub</a></li>
-          <li><a href="http://heliom.ca/en/blog/octofeed">More info about the experiment</a></li>
-        </ul>
-      </nav>
-    </section>
+    <%= erb :_sidebar, :layout => false %>
   </div>
 <% else %>
   <div class="container login">
-    <section class="col-1">
-      <article>
+    <section class="content">
+      <article class="col-1">
         <h1>Disclaimer</h1>
         <p>This is an unofficial app and isn’t related with GtiHub in any way. It <strong>will</strong> look very familiar to you and is meant to be. We basically copied GitHub’s style on purpose. We don’t want the environment to interfere in the experience.</p>
       </article>
-      <article>
+      <article class="col-1">
         <h1>Information saved</h1>
         <p>The only thing being saved in a database is each of your events unique id to be able to implement the read/unread feature. No further information is saved. Read: If you use the “private app” version, we will not have access to your private repos.</p>
       </article>
-    </section>
-
-    <section class="col-2">
-      <article>
+      <article class="col-2">
         <h1>Public events</h1>
         <p>Read-only app, only public events will be listed.</p>
         <a class="button login-with-gh" href="/auth/github_public"><span class="github-logo"></span> Login with GitHub</a>
       </article>
-      <article>
+      <article class="col-2">
         <h1>Public & private events</h1>
         <p>The app basically gives read/write access to your repositories, commits and issues. Do note that this is the exact same code as the public one, but you’ll also see your private repos related events. I swear before the Octo god that it does not use its write privilege, but if you don’t trust me, use the public one.</p>
         <a class="button login-with-gh" href="/auth/github_private"><span class="github-logo"></span> Login with GitHub</a>
       </article>
     </section>
+    <%= erb :_sidebar, :layout => false %>
   </div>
 <% end %>
