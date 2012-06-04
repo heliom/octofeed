@@ -20,3 +20,5 @@ end
 # Production dependencies
 group :produciton do
 end
+
+gem "shotgun"

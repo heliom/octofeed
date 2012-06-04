@@ -78,17 +78,17 @@ header
 // Layout ---------------------------------------------------------------------
 .container
   @extends .clearfix
-  width: 80%
+  width: 90%
   max-width: 920px
   margin: 0 auto
 
 .content, .feed
-  width: 62%
   float: left
+  width: 62%
 
 .sidebar
-  width: 38%
   float: left
+  width: 38%
   padding: 0 0 0 20px
 
   div
@@ -99,7 +99,7 @@ header
     @extends .grey-gradient
     margin: 0; padding: 1em 10px
     border-radius: 5px 5px 0 0
-    font-size: 16
+    font-size: 13
     color: #52595d
 
   ul
@@ -148,45 +148,61 @@ header
 
 // Logged --------------------------------------------------------------------
 .logged
-  .more
-    color: #369
+  .more 
+    background-color: #369
+    background-image: linear-gradient(top, #fafafa, #eaeaea)
+    border: 1px solid #d4d4d4
+    border-bottom-color: #bcbcbc
     display: block
-    border: 1px solid #aad
-    padding: .5em
-    text-align: center
     margin: 16px 0 0
+    padding: .75em 1em
     overflow: hidden
+    color: #333;
+    font-weight: bold
+    text-align: center
+    text-shadow: 0 1px 0 #fff
+    border-radius: 3px
 
-    &.loading
+    &.loading, &:hover.loading
       background: url(/images/octocat-spinner.gif) center center no-repeat
-      text-indent: -999px
+      text-indent: -9999px
+      border: 1px solid #518CC6
 
-    &:hover
-      color: #000
-      border-color: #369
+    &:hover, &:focus
+      background-image: linear-gradient(top, #599BDC, #3072B3)
+      border: 1px solid #518CC6
+      border-bottom-color: #2A65A0
+      color: #fff
       text-decoration: none
+      text-shadow: 0px -1px 0px rgba(0, 0, 0, .3)
 
 // EventGroup ----------------------------------------------------------------
 .logged
   article
     position: relative
-    padding: 8px
-    background-color: #f8f8f8
+    padding: 8px 8px 16px 8px
+    border-bottom: 1px solid #e5e5e5
     border-radius: 3px
-    min-height: 89px
+    min-height: 80px
 
     h1
       position: relative
       margin: 0; padding: 0
-
-      img
+      padding-left: 56px
+      
+      .avatar
+        display: block
         position: absolute
-        bottom: -58px; left: 0
-
+        bottom: -36px; left: -6px
+        
+        &:hover img, &:focus img
+          border-color: #6991d1
+      
     img
       vertical-align: middle
       padding: 2px
       border: 1px solid #d0d0d0
+      transition: width .12s, height .12s
 
   article + article
     margin: 10px 0 0
@@ -198,16 +214,23 @@ header
   .title { font-weight: bold }
 
   .body
+    color: #555
     overflow: ellipsis
     * { overflow: ellipsis }
     li + li { padding: 3px 0 0 }
 
   blockquote
-    color: #666
+    color: #777
     padding: 2px 0 0
+  
+  time
+    padding-left: .25em
+    color: #aaa
+    font-size: 11px
+    font-weight: normal
 
 .user-group
-  & > ul { padding: 8px 0 0 56px }
+  & > ul { padding: 4px 0 0 56px }
 
   .title
     img, .username { display: none }
@@ -238,10 +261,17 @@ header
 
 // FollowEvent ---------------------------------------------------------------
 .current-user
-  .FollowEvent { float: left }
+  .FollowEvent 
+    float: left
+    a:hover img, a:focus img { border-color: #6991d1 }
+    
   .FollowEvent + .FollowEvent { margin: 0 0 0 2px }
 
 // Footer --------------------------------------------------------------------
 footer
-  text-align: center
+  color: #aaa
   padding: 10px 0 0
+  text-align: center
+  
+// Media Queries -------------------------------------------------------------
+@import "mediaqueries.styl"
