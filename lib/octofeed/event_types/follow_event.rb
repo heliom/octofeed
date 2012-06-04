@@ -15,17 +15,30 @@ module OctoFeed
     end
 
     def print
-      super({
-        :title => "#{gh_user_link @actor[:username]} started following #{gh_link @object[:username]}"
-      })
+      if @session && @session[:user][:username] == @object[:username]
+        time_ago = time_ago Time.parse(@created_at)
+        img_title = "#{@actor[:username]} started following you #{time_ago}"
+        img = %(<img width="30" height="30" src="#{actor[:avatar]}" title="#{img_title}">)
+
+        hash = {
+          :title => '',
+          :body => gh_link(@actor[:username], :label => img),
+          :time_ago => ''
+        }
+      else
+        hash = { :title => "#{gh_user_link @actor[:username]} started following #{gh_link @object[:username]}" }
+      end
+
+      super hash
     end
 
     def set_user_group
       if @session && @session[:user][:username] == @object[:username]
         opts = {
           :id => "being-followed",
-          :title => "#{@object[:username]} new followers",
-          :icon => @object[:avatar]
+          :title => "New followers",
+          :icon => @object[:avatar],
+          :name => @object[:username]
         }
       end
 

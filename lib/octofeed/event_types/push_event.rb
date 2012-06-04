@@ -41,7 +41,7 @@ module OctoFeed
 
         commits_content << %(
           <li>
-            <img width="16" height="16" src="#{avatar}">
+            <img width="20" height="20" src="#{avatar}">
             <code>#{gh_sha_link @repo[:name], commit[:sha]}</code>
             <blockquote title="#{commit[:message]}">#{md_renderer message}</blockquote>
           </li>

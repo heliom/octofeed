@@ -38,7 +38,7 @@ module OctoFeed
         :id => opts[:id] || @actor[:username],
         :icon => opts[:icon] || @actor[:avatar],
         :title => opts[:title] || @actor[:username],
-        :name => @actor[:username]
+        :name => opts[:name] || @actor[:username]
       }
     end
 
@@ -48,16 +48,18 @@ module OctoFeed
         :id => opts[:id] || @repo[:name],
         :icon => opts[:icon] || '/images/repo-default.png',
         :title => opts[:title] || @repo[:name],
-        :name => @repo[:name]
+        :name => opts[:name] || @repo[:name]
       }
     end
 
     def print(msg)
       body = msg[:body] && msg[:body].length > 0 ? %(<div class="body">#{msg[:body]}</div>) : ''
+      time_ago = msg[:time_ago] || time_ago_in_words(Time.parse(@created_at))
+
       %(
         <div class="title">
-          <img width="24" height="24" src="#{@actor[:avatar]}">
-          #{msg[:title]} #{time_ago_in_words Time.parse(@created_at)}
+          <img width="30" height="30" src="#{@actor[:avatar]}">
+          #{msg[:title]} #{time_ago}
         </div>
         #{body}
        )
