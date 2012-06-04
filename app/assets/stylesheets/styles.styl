@@ -35,7 +35,6 @@ body, legend, input, textarea, button
   font-family: Helvetica, arial, freesans, clean, sans-serif
   line-height: 1.4
   color: #333
-  // -webkit-font-smoothing: antialiased
 
 a { color: #4183C4 }
 a:focus, a:hover  { text-decoration: underline }
@@ -52,15 +51,33 @@ h1, h2, h3, h4 { line-height: 1.1 }
 // Header ---------------------------------------------------------------------
 header
   @extends .grey-gradient
-  height: 50px
+  height: 47px
   box-shadow: 0 1px 0 rgba(255,255,255,0.4), 0 0 10px rgba(0,0,0,.1)
   border-bottom: 1px solid #cacaca
+  overflow: hidden
 
   h1
+    float: left
     margin: 0
+    line-height: 49px
+
+  a
+    color: #000
+
+    &:hover, &:focus
+      color: #4183C4
+      text-decoration: none
+
+nav
+  float: right
+  line-height: 49px
+
+  li { float: left }
+  li + li { margin: 0 0 0 12px }
 
 // Layout ---------------------------------------------------------------------
 .container
+  @extends .clearfix
   width: 80%
   max-width: 920px
   margin: 0 auto
@@ -76,7 +93,7 @@ header
   text-shadow: 0 1px 0 #fff
   border-radius: 3px
 
-  &.login
+  &.login-with-gh
     @extends .clearfix
 
     .github-logo
@@ -95,21 +112,22 @@ header
   text-decoration: none
   text-shadow: 0 -1px 0 rgba(0,0,0,.3)
 
-  &.login .github-logo { background-position: 0 -17px }
+  &.login-with-gh .github-logo { background-position: 0 -17px }
 
 // Login ----------------------------------------------------------------------
 .login
-  section.col-2
+  padding: 0 0 52px
+
+  section.col-2 article
     float: left
     width: 50%
 
 // Logged --------------------------------------------------------------------
 .logged
-  padding: 25px 0
+  padding: 25px 0 52px
 
   section { float: left }
   .feed
-    padding: 0 0 52px
     width: 62%
 
   .more
@@ -131,27 +149,28 @@ header
       text-decoration: none
 
 // EventGroup ----------------------------------------------------------------
-article
-  position: relative
-  padding: 8px
-  background-color: #f8f8f8
-  border-radius: 3px
-  min-height: 89px
+.logged
+  article
+    position: relative
+    padding: 8px
+    background-color: #f8f8f8
+    border-radius: 3px
+    min-height: 89px
 
-  h1
-    margin: 0; padding: 0
+    h1
+      margin: 0; padding: 0
+
+      img
+        position: absolute
+        top: 32px; left: 8px
 
     img
-      position: absolute
-      top: 32px; left: 8px
+      vertical-align: middle
+      padding: 2px
+      border: 1px solid #d0d0d0
 
-  img
-    vertical-align: middle
-    padding: 2px
-    border: 1px solid #d0d0d0
-
-article + article
-  margin: 10px 0 0
+  article + article
+    margin: 10px 0 0
 
 .user-group
   & > ul { padding: 8px 0 0 56px }
@@ -202,3 +221,8 @@ article + article
 .current-user
   .FollowEvent { float: left }
   .FollowEvent + .FollowEvent { margin: 0 0 0 2px }
+
+// Footer --------------------------------------------------------------------
+footer
+  text-align: center
+  padding: 0 0 10px
