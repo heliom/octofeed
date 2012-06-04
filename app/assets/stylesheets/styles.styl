@@ -68,12 +68,12 @@ header
       color: #4183C4
       text-decoration: none
 
-nav
-  float: right
-  line-height: 49px
+  nav
+    float: right
+    line-height: 49px
 
-  li { float: left }
-  li + li { margin: 0 0 0 12px }
+    li { float: left }
+    li + li { margin: 0 0 0 12px }
 
 // Layout ---------------------------------------------------------------------
 .container
@@ -127,8 +127,23 @@ nav
   padding: 25px 0 52px
 
   section { float: left }
-  .feed
-    width: 62%
+  .feed { width: 62% }
+
+  .sidebar
+    width: 38%
+    padding: 0 0 0 20px
+
+    nav
+      border: 1px solid #ddd
+      border-radius: 5px
+
+      h1
+        @extends .grey-gradient
+        margin: 0; padding: 1em 10px
+        border-radius: 5px 5px 0 0
+
+      ul
+        padding: 10px
 
   .more
     color: #369
