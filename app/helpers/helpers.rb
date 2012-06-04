@@ -1,6 +1,10 @@
 # http://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html#method-i-time_ago_in_words
 def time_ago_in_words(from_time, include_seconds = false)
-  %(<time datetime="#{from_time}" title="#{from_time.to_s.split(/\s/)[0..1].join(' ')}">#{distance_of_time_in_words(from_time, Time.now, include_seconds)} ago</time>)
+  %(<time datetime="#{from_time}" title="#{from_time.to_s.split(/\s/)[0..1].join(' ')}">#{time_ago(from_time, include_seconds)} ago</time>)
+end
+
+def time_ago(from_time, include_seconds = false)
+  distance_of_time_in_words from_time, Time.now, include_seconds
 end
 
 # http://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html#method-i-distance_of_time_in_words
