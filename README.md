@@ -36,8 +36,8 @@ Each group will have a different heading depending on its type (list above) and 
 ## Things we added
 * Repo icons/avatars. A repo group will display its icon instead of the default image if the repo as an `icon.png` image in `master/root`
 
-## Things that could be updated
-* Your own repos aren’t listed in that list: http://developer.github.com/v3/repos/watching/#list-repos-being-watched
+## Things GitHub could update
+* Your own repos aren’t listed in that list: http://developer.github.com/v3/repos/watching/#list-repos-being-watched. Would make sense if they were, no?
 
 ## Long-ish exhaustive blog post
 http://heliom.ca/en/blog/octofeed
