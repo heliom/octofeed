@@ -5,16 +5,8 @@
 $ cp config/environment.rb.sample config/environment.rb
 # Then set your GitHub app id & secret in `config/environment.rb`
 $ git submodule init && git submodule update
+$ npm install
 ```
-
-### Collaborators
-If you happen to be a collaborator and you’re using the original app (lucky bastard), you’ll need to add these lines to your `/etc/hosts` file:
-
-```rb
-127.0.0.1 octofeed.dev
-```
-
-and launch the app with `shotgun` then use http://octofeed.dev:9393 as your dev environment.
 
 
 ## What this app is not
