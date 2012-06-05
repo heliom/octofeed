@@ -261,22 +261,22 @@ header
   .title img { bottom: -34px }
 
 // FollowEvent ---------------------------------------------------------------
-.current-user
-  background-color: #f5f5f5
-  border: 1px solid #f0f0f0
+.logged
+  .current-user
+    background-color: #f5f5f5
+    border: 1px solid #f0f0f0
 
-  h1
-    border: none !important
-    padding: 0 0 0 62px !important
+    h1
+      border: none
+      padding-bottom: 0
 
-    a.avatar
-        bottom: -36px
+      .avatar { top: 2px }
 
-  .FollowEvent
-    float: left
-    a:hover img, a:focus img { border-color: #6991d1 }
+    .FollowEvent
+      float: left
+      a:hover img, a:focus img { border-color: #6991d1 }
 
-  .FollowEvent + .FollowEvent { margin: 0 0 0 2px }
+    .FollowEvent + .FollowEvent { margin: 0 0 0 2px }
 
 // Footer --------------------------------------------------------------------
 footer
