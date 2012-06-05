@@ -99,7 +99,7 @@ module OctoFeed
 
     def set_repo_group
       hash = get_group_hash
-      hash[:title] = "#{@repo[:name]} — fresh new code"
+      hash[:title] = "#{@repo[:name]}"
       super hash
     end
 
