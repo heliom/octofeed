@@ -149,8 +149,7 @@ header
 // Logged --------------------------------------------------------------------
 .logged
   .more
-    background-color: #369
-    background-image: linear-gradient(top, #fafafa, #eaeaea)
+    @extends .grey-gradient
     border: 1px solid #d4d4d4
     border-bottom-color: #bcbcbc
     display: block
@@ -169,7 +168,7 @@ header
       border: 1px solid #518CC6
 
     &:hover, &:focus
-      background-image: linear-gradient(top, #599BDC, #3072B3)
+      @extends .blue-gradient
       border: 1px solid #518CC6
       border-bottom-color: #2A65A0
       color: #fff
