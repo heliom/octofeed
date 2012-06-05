@@ -8,29 +8,31 @@
     padding: 0
 
 @media (max-width: 480px)
-  .logged
-    article
-      position: relative
-      padding: 8px 8px 16px 8px
-      min-height: 66px
+  html
+    font-size: 9px
 
-      h1
-        position: relative
-        margin: 0
-        padding: 0 0 4px 28px
-        font-size: 13
+  .avatar img { size: 35px }
 
-        .avatar
-          display: block
-          position: absolute
-          bottom: -10px; left: -6px
+  .logged article
+    margin: 0
+    padding: 8px 8px 16px
 
-      img
-        size: 25px
-        padding: 1px
+    h1
+      padding: 0 0 4px 44px
+      font-size: 13
 
-      & > ul
-        padding-left: 28px
+  .repo-group, .user-group
+    & > ul { padding: 0 0 0 44px }
 
-  .current-user h1
-    padding-left: 28px !important
+  .repo-group .body { padding: 1px 0 0 26px }
+  .repo-group .title img { bottom: -24px }
+  .repo-group .Event { min-height: 64px }
+
+  .Event .title img { size: 22px }
+  .Event .body img { size: 16px }
+  .Event .body li + li { padding: 1px 0 0 }
+
+  .PushEvent .title img { bottom: -24px }
+  .PushEvent + .PushEvent { padding: 10px 0 0 }
+
+  .FollowEvent .body img { size: 25px }
