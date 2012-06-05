@@ -20,11 +20,11 @@ When you get an event in your news feed, you’re either:
 * Watching the repo.
 
 Oh! Surely we should make that info more in evidence and group events accordingly. So here we are with 2 ways of grouping our events. But that’s not enough. Based on an event data, we can easily create more specific group types:
-* Pushes to a repo
-* Actions on an issue (open, close, comment)
-* Actions on a pull request (open, close, merge, comment)
-* Generic user actions (follow, watch)
-* Gist activity
+* Pushes to a repo;
+* Actions on an issue (open, close, comment);
+* Actions on a pull request (open, close, merge, comment);
+* Generic user actions (follow, watch, fork);
+* Gist activity.
 
 Each group will have a different heading depending on its type (list above) and if you follow the user or watch the repo.
 
