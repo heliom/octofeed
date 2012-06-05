@@ -37,12 +37,15 @@ Oh! Surely we should make that info more in evidence and group events accordingl
 Each group will have a different heading depending on its type (list above) and if you follow the user or watch the repo.
 
 
-## Quirks we “fixed”
+## Things we fixed
 * A pull request is an issue. Its url is the same as an issue, but redirected from https://github.com/user/repo/issues/1 to https://github.com/user/repo/pull/1. When you click on a pull request comment (https://github.com/user/repo/issues/1#issuecomment-1234567) it is redirected to https://github.com/user/repo/pull/1 without the hash. In our version a pull request comment directly link to the correct pull url (https://github.com/user/repo/pull/1#issuecomment-1234567).
 * A few typos like “1 commits” and “0 deletitions” fixes.
 
 ## Things we added
 * Repo icons/avatars. A repo group will display its icon instead of the default image if the repo as an `icon.png` image in `master/root`
+
+## Things that could be updated
+* Your own repos aren’t listed in that list: http://developer.github.com/v3/repos/watching/#list-repos-being-watched
 
 ## Long-ish exhaustive blog post
 http://heliom.ca/en/blog/octofeed
