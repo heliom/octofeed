@@ -16,7 +16,7 @@ module OctoFeed
 
     def print
       if @session && @session[:user][:username] == @object[:username]
-        time_ago = time_ago Time.parse(@created_at)
+        time_ago = time_ago_in_words Time.parse(@created_at), :html => false
         img_title = "#{@actor[:username]} started following you #{time_ago}"
         img = %(<img width="30" height="30" src="#{actor[:avatar]}" title="#{img_title}">)
 
