@@ -74,9 +74,11 @@ def distance_of_time_in_words(from_time, to_time = 0, include_seconds = false, o
 end
 
 # Little-tiny-homemade Markdown parser.
-# Basically just convert [link](http://example.org)
-def md_renderer(content)
-  content.gsub /\[([^\]]+)\]\(([^)]+)\)/, '<a href="\2">\1</a>'
+# => Convert [link](http://example.org) into a link
+# => Convert SHAs into a link
+def md_renderer(content, repo)
+  content = content.gsub /\[([^\]]+)\]\(([^)]+)\)/, '<a href="\2">\1</a>'
+  content.gsub(/\b([0-9a-f]{40})\b/) { gh_sha_link(repo, $1) }
 end
 
 # Long message/comment truncate helper

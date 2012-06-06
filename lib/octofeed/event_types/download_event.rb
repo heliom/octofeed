@@ -14,7 +14,7 @@ module OctoFeed
     def print
       link = %(<a href="#{@object[:url]}">#{@repo[:name]}/downloads</a>)
       description = truncate @object[:description]
-      description = md_renderer(description)
+      description = md_renderer(description, @repo[:name])
 
       super({
         :title => "#{gh_user_link @actor[:username]} uploaded a file to #{gh_link @repo[:name]}",

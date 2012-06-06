@@ -19,7 +19,7 @@ module OctoFeed
 
     def print
       title = truncate @object[:title]
-      title = md_renderer(title)
+      title = md_renderer(title, @repo[:name])
 
       super({
         :title => "#{gh_user_link @actor[:username]} #{@object[:action]} #{url} on #{gh_link @repo[:name]}",

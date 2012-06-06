@@ -26,7 +26,7 @@ module OctoFeed
       diff = "#{@object[:commits]} #{commit} with #{@object[:additions]} #{addition} and #{@object[:deletitions]} #{deletition}"
 
       title = truncate @object[:title]
-      title = md_renderer(title)
+      title = md_renderer(title, @repo[:name])
 
       super({
         :title => "#{gh_user_link @actor[:username]} #{action} #{pull_request_link} on #{gh_link @repo[:name]}",

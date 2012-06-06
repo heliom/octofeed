@@ -20,7 +20,7 @@ module OctoFeed
     def print
       comment_link = gh_issue_comment_link @object[:issue][:url], @object[:id], @object[:issue][:number], :is_pull => @object[:issue][:is_pull]
       message = truncate @object[:body]
-      message = md_renderer(message)
+      message = md_renderer(message, @repo[:name])
 
       super({
         :title => "#{gh_user_link @actor[:username]} commented on #{comment_link} on #{gh_link @repo[:name]}",

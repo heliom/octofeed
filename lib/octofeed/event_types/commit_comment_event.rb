@@ -18,7 +18,7 @@ module OctoFeed
 
     def print
       message = truncate @object[:body]
-      message = md_renderer(message)
+      message = md_renderer(message, @repo[:name])
 
       super({
         :title => "#{gh_user_link @actor[:username]} commented on #{gh_link @repo[:name]}",

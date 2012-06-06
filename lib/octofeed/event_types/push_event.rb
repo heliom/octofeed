@@ -42,7 +42,7 @@ module OctoFeed
           <li>
             <img width="20" height="20" src="#{avatar}">
             <code>#{gh_sha_link @repo[:name], commit[:sha]}</code>
-            <blockquote title="#{commit[:message]}">#{md_renderer message}</blockquote>
+            <blockquote title="#{commit[:message]}">#{md_renderer message, @repo[:name]}</blockquote>
           </li>
         )
       end
