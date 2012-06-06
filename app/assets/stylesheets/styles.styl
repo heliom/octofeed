@@ -6,6 +6,12 @@
 $bluecolor = #4183c4
 
 // Utils ---------------------------------------------------------------------
+.dark-grey-gradient
+  background: #9c9c9c
+  background: -webkit-linear-gradient(#9c9c9c, #5d5b5b)
+  background: -moz-linear-gradient(#9c9c9c, #5d5b5b)
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#9c9c9c',endColorstr='#5d5b5b')"
+
 .grey-gradient
   background: #fafafa
   background: -webkit-linear-gradient(#fafafa, #eaeaea)
@@ -196,7 +202,21 @@ header
       color: lighten($bluecolor, 40%)
 
       .repo { font-weight: bold }
-      .extra { font-size: 12 }
+
+      .extra a
+        @extends .dark-grey-gradient
+        font-size: 11
+        display: inline-block
+        color: #fff
+        padding: 2px 5px
+        border-radius: 2px
+        text-shadow: 0 -1px 0 rgba(0,0,0,.2)
+        margin: 0 0 0 5px
+        opacity: .7
+
+        &:hover, &:focus
+          opacity: 1
+          text-decoration: none
 
       .avatar
         display: block
