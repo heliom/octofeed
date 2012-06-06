@@ -89,37 +89,54 @@ end
 
 # Link to `https://github.com/params`
 def gh_link(path, opts={})
-  link_class = %(class="#{opts[:class]}") || ''
+  link_class = opts[:class] ? %(class="#{opts[:class]}") : ''
   link_label = opts[:label] || path
 
   %(<a #{link_class} href="https://github.com/#{path}">#{link_label}</a>)
 end
 
-def gh_user_link(username)
-  gh_link username, :class => 'username'
+def gh_user_link(username, opts={})
+  opts[:class] = opts[:class] || 'username'
+  gh_link username, opts
+end
+
+def gh_repo_link(repo, opts={})
+  opts[:class] = opts[:class] || 'repo'
+  gh_link repo, opts
+end
+
+def gh_user_repo_link(repo, opts={})
+  repo_split = repo.split('/')
+  repo_user = repo_split[0]
+  repo_name = repo_split[1]
+
+  "#{gh_link repo_user} / #{gh_repo_link repo, :label => repo_name}"
 end
 
 # Link to an issue/pull request
-def gh_issue_link(repo, number, is_pull)
-  type = is_pull ? 'pull' : 'issues'
-  label = is_pull ? 'pull reqest' : 'issue'
-  %(<a href="https://github.com/#{repo}/#{type}/#{number}">#{label} #{number}</a>)
+def gh_issue_link(repo, number, opts={})
+  type = opts[:is_pull] ? 'pull' : 'issues'
+  label = opts[:is_pull] ? 'pull reqest' : 'issue'
+  link_class = opts[:class] ? %(class="#{opts[:class]}") : ''
+  %(<a #{link_class} href="https://github.com/#{repo}/#{type}/#{number}">#{label} #{number}</a>)
 end
 
 # Link to an issue/pull request comment
-def gh_issue_comment_link(url, comment_id, issue_number, is_pull)
+def gh_issue_comment_link(url, comment_id, issue_number, opts={})
+  link_class = opts[:class] ? %(class="#{opts[:class]}") : ''
   type = 'issue'
-  if is_pull
+  if opts[:is_pull]
     url = url.gsub('/issues/', '/pull/')
     type = 'pull request'
   end
 
-  %(<a href="#{url}#issuecomment-#{comment_id}">#{type} #{issue_number}</a>)
+  %(<a #{link_class} href="#{url}#issuecomment-#{comment_id}">#{type} #{issue_number}</a>)
 end
 
 # Link to a gist
-def gh_gist_link(id, url)
-  %(<a href="#{url}">gist: #{id}</a>)
+def gh_gist_link(id, url, opts={})
+  link_class = opts[:class] ? %(class="#{opts[:class]}") : ''
+  %(<a #{link_class} href="#{url}">gist: #{id}</a>)
 end
 
 # Link to a sha
