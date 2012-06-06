@@ -1,7 +1,5 @@
 # Ruby
-require 'rubygems'
 require 'net/https'
-require 'uri'
 
 # Set up gems listed in the Gemfile.
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
