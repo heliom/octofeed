@@ -2,6 +2,9 @@
 @import "utils/reset"
 @import "utils/mixins"
 
+// Variables -----------------------------------------------------------------
+$bluecolor = #4183c4
+
 // Utils ---------------------------------------------------------------------
 .grey-gradient
   background: #fafafa
@@ -36,7 +39,7 @@ body, legend, input, textarea, button
   line-height: 1.4
   color: #333
 
-a { color: #4183C4 }
+a { color: $bluecolor }
 a:focus, a:hover  { text-decoration: underline }
 
 p, ul, ol, dl, blockquote, table, figure { margin: 0 }
@@ -189,6 +192,11 @@ header
       position: relative
       margin: 0 0 2px 0
       padding: 0 0 8px 62px
+      font-weight: normal
+      color: lighten($bluecolor, 40%)
+
+      .repo { font-weight: bold }
+      .extra { font-size: 12 }
 
       .avatar
         display: block
