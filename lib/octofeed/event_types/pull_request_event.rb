@@ -25,12 +25,12 @@ module OctoFeed
       deletition = @object[:deletitions] > 1 ? 'deletitions' : 'deletition'
       diff = "#{@object[:commits]} #{commit} with #{@object[:additions]} #{addition} and #{@object[:deletitions]} #{deletition}"
 
-      description = truncate @object[:description]
-      description = md_renderer(description)
+      title = truncate @object[:title]
+      title = md_renderer(title)
 
       super({
         :title => "#{gh_user_link @actor[:username]} #{action} #{pull_request_link} on #{gh_link @repo[:name]}",
-        :body => %(<blockquote title="#{@object[:description]}">#{description}</blockquote> <span>#{diff}</span>)
+        :body => %(<blockquote title="#{@object[:title]}">#{title}</blockquote> <span>#{diff}</span>)
       })
     end
 
