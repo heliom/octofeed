@@ -27,3 +27,8 @@ end
 if File.exists?(File.expand_path('../environment.rb', __FILE__))
   require File.expand_path('../environment', __FILE__)
 end
+
+# Database
+uri = URI.parse(ENV['DATABASE_URI'])
+conn = Mongo::Connection.from_uri(ENV['DATABASE_URI'])
+$mongo_db = conn.db(uri.path.gsub(/^\//, ''))
