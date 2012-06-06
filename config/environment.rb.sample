@@ -1,7 +1,6 @@
-# cp config/environment.rb.sample config/environment.rb
-
 # In your GitHub settings (https://github.com/settings/applications)
 # Create 2 apps. Why two? Unique different callback depending on the OmniAuth provider
+# In OctoFeed we use two custom providers that extend GitHub
 #
 # Callbacks: http://yourdomain.com/auth/github_public/callback
 #            http://yourdomain.com/auth/github_private/callback
@@ -11,3 +10,9 @@ ENV['GITHUB_PUBLIC_APP_SECRET'] = 'GITHUB PUBLIC APP SECRET'
 
 ENV['GITHUB_PRIVATE_APP_KEY'] = 'GITHUB PRIVATE APP KEY'
 ENV['GITHUB_PRIVATE_APP_SECRET'] = 'GITHUB PRIVATE APP SECRET'
+
+# Set your database connection uri
+# A connection with authentification would look like this:
+# => mongodb://[user:password@]host[:port][/database]
+# parts in [brackets] are optional
+ENV['DATABASE_URI'] = 'mongodb://localhost/octofeed'
