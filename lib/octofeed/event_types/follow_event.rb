@@ -1,9 +1,8 @@
 module OctoFeed
   class FollowEvent < OctoFeed::Event
 
-    def initialize(json, session=nil)
-      super json
-      @session = session
+    def initialize(json, opts={})
+      super json, opts
 
       @object = {
         :id => json['payload']['target']['id'],
@@ -15,7 +14,7 @@ module OctoFeed
     end
 
     def print
-      if @session && @session[:user][:username] == @object[:username]
+      if @user.username == @object[:username]
         time_ago = time_ago_in_words Time.parse(@created_at), :html => false
         img_title = "#{@actor[:username]} started following you #{time_ago}"
         img = %(<img width="30" height="30" src="#{actor[:avatar]}" title="#{img_title}">)
@@ -33,7 +32,7 @@ module OctoFeed
     end
 
     def set_user_group
-      if @session && @session[:user][:username] == @object[:username]
+      if @user.username == @object[:username]
         opts = {
           :id => 'being-followed',
           :title => 'New followers',

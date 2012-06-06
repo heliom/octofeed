@@ -1,8 +1,8 @@
 module OctoFeed
   class GollumEvent < OctoFeed::Event
 
-    def initialize(json)
-      super json
+    def initialize(json, opts={})
+      super json, opts
 
       pages = []
       json['payload']['pages'].each do |page|

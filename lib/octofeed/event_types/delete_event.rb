@@ -1,8 +1,8 @@
 module OctoFeed
   class DeleteEvent < OctoFeed::Event
 
-    def initialize(json)
-      super json
+    def initialize(json, opts={})
+      super json, opts
 
       @object = {
         :type => json['payload']['ref_type'],

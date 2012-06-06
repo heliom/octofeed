@@ -2,12 +2,13 @@ module OctoFeed
   class Event
     attr_accessor :id, :type, :actor, :repo, :object, :created_at, :group
 
-    def initialize(json)
+    def initialize(json, opts)
       # Event
       @id = json['id']
       @type = json['type']
       @created_at = json['created_at']
       @group = ''
+      @user = opts[:user]
 
       # Actor
       @actor = {

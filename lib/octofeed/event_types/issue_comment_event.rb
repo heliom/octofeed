@@ -1,8 +1,8 @@
 module OctoFeed
   class IssueCommentEvent < OctoFeed::Event
 
-    def initialize(json)
-      super json
+    def initialize(json, opts={})
+      super json, opts
 
       @object =  {
         :action => json['payload']['action'],

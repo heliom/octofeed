@@ -1,8 +1,8 @@
 module OctoFeed
   class TeamAddEvent < OctoFeed::Event
 
-    def initialize(json)
-      super json
+    def initialize(json, opts={})
+      super json, opts
 
       @object = {
         :team => json['payload']['team']['name'],

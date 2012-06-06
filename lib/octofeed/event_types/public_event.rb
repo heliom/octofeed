@@ -1,8 +1,8 @@
 module OctoFeed
   class PublicEvent < OctoFeed::Event
 
-    def initialize(json)
-      super json
+    def initialize(json, opts={})
+      super json, opts
     end
 
     def print

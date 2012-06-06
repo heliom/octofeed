@@ -1,8 +1,8 @@
 module OctoFeed
   class GistEvent < OctoFeed::Event
 
-    def initialize(json)
-      super json
+    def initialize(json, opts={})
+      super json, opts
 
       @object = {
         :action => json['payload']['action'],

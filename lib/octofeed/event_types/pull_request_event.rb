@@ -1,8 +1,8 @@
 module OctoFeed
   class PullRequestEvent < OctoFeed::Event
 
-    def initialize(json)
-      super json
+    def initialize(json, opts={})
+      super json, opts
 
       @object = {
         :action => json['payload']['action'],

@@ -1,9 +1,8 @@
 module OctoFeed
   class ForkEvent < OctoFeed::Event
-    attr_accessor :object
 
-    def initialize(json)
-      super json
+    def initialize(json, opts={})
+      super json, opts
 
       @object = {
         :name => json['payload']['forkee']['name']

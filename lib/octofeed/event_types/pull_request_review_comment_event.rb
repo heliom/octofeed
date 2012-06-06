@@ -1,8 +1,8 @@
 module OctoFeed
   class PullRequestReviewCommentEvent < OctoFeed::Event
 
-    def initialize(json)
-      super json
+    def initialize(json, opts={})
+      super json, opts
 
       @object = {
         :id => json['payload']['comment']['id'],

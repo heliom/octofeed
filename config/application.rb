@@ -49,7 +49,13 @@ module OctoFeed
           request = Net::HTTP::Get.new(uri.request_uri)
           response = http.request(request)
 
-          event_parser = OctoFeed::EventParser.new(response.body, watched_repos, session)
+          # Map database user to an Object
+          # Then set token variable. Not saving it in db
+          user = OctoFeed::User.find_or_create(session[:user][:username])
+          user.token = session[:user][:token]
+
+          # Parse events
+          event_parser = OctoFeed::EventParser.new(response.body, watched_repos, user)
           @event_groups = event_parser.groups
         end
 

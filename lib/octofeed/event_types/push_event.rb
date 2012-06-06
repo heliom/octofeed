@@ -3,9 +3,8 @@
 module OctoFeed
   class PushEvent < OctoFeed::Event
 
-    def initialize(json, session=nil)
-      super json
-      @session = session
+    def initialize(json, opts={})
+      super json, opts
 
       commits = []
       json['payload']['commits'].each do |commit|
@@ -52,7 +51,7 @@ module OctoFeed
       if commit_count >= 2
         first_commit_sha = @object[:commits].first[:sha]
         last_commit_sha = @object[:commits].last[:sha]
-        uri = URI.parse("https://api.github.com/repos/#{@repo[:name]}/git/commits/#{last_commit_sha}?access_token=#{@session[:user][:token]}")
+        uri = URI.parse("https://api.github.com/repos/#{@repo[:name]}/git/commits/#{last_commit_sha}?access_token=#{@user.token}")
 
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = true

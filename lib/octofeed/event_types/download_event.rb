@@ -1,8 +1,8 @@
 module OctoFeed
   class DownloadEvent < OctoFeed::Event
 
-    def initialize(json)
-      super json
+    def initialize(json, opts={})
+      super json, opts
 
       @object = {
         :name => json['payload']['download']['name'],
