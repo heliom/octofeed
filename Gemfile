@@ -7,6 +7,10 @@ gem "omniauth-github"
 gem "json"
 gem "html_truncator"
 
+# Database
+gem "mongo", "~> 1.6.4"
+gem "bson_ext", "~> 1.6.4"
+
 # Assets
 gem "sprockets", "2.4.3"
 gem "coffee-script"
