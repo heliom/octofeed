@@ -22,7 +22,7 @@ module OctoFeed
     def set_user_group
       super({
         :id => "#{@actor[:username]}-gist-#{@object[:id]}",
-        :title => "#{@actor[:username]} #{gh_gist_link @object[:id], @object[:url]}"
+        :title => "#{gh_link @actor[:username]} / #{gh_gist_link @object[:id], @object[:url], :class => 'repo'}"
       })
     end
 

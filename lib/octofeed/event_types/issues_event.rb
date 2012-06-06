@@ -31,7 +31,7 @@ module OctoFeed
       type = @object[:is_pull] ? 'pullrequest' : 'issue'
       super({
         :id => "#{@repo[:name]}-#{type}-#{@object[:number]}",
-        :title => "#{@repo[:name]} #{url}"
+        :title => "#{gh_user_repo_link @repo[:name]} #{extra(url)}"
       })
     end
 

@@ -18,7 +18,7 @@ module OctoFeed
     end
 
     def print
-      comment_link = gh_issue_comment_link @object[:issue][:url], @object[:id], @object[:issue][:number], @object[:issue][:is_pull]
+      comment_link = gh_issue_comment_link @object[:issue][:url], @object[:id], @object[:issue][:number], :is_pull => @object[:issue][:is_pull]
       message = truncate @object[:body]
       message = md_renderer(message)
 
@@ -30,9 +30,10 @@ module OctoFeed
 
     def set_repo_group
       type = @object[:issue][:is_pull] ? 'pullrequest' : 'issue'
+      link_opts = { :is_pull => @object[:issue][:is_pull] }
       super({
         :id => "#{@repo[:name]}-#{type}-#{@object[:issue][:number]}",
-        :title => "#{@repo[:name]} #{gh_issue_link @repo[:name], @object[:issue][:number], @object[:issue][:is_pull]}"
+        :title => "#{gh_user_repo_link @repo[:name]} #{extra(gh_issue_link @repo[:name], @object[:issue][:number], link_opts)}"
       })
     end
 

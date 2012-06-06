@@ -49,12 +49,16 @@ module OctoFeed
     end
 
     private
+    def extra(msg)
+      %(<span class="extra">#{msg}</span>)
+    end
+
     def set_user_group(opts={})
       {
         :type => opts[:type] || 'user-group',
         :id => opts[:id] || @actor[:username],
         :icon => opts[:icon] || @actor[:avatar],
-        :title => opts[:title] || @actor[:username],
+        :title => opts[:title] || gh_link(@actor[:username]),
         :name => opts[:name] || @actor[:username]
       }
     end
@@ -64,7 +68,7 @@ module OctoFeed
         :type => opts[:type] || 'repo-group',
         :id => opts[:id] || @repo[:name],
         :icon => opts[:icon] || '/images/repo-default.png',
-        :title => opts[:title] || @repo[:name],
+        :title => opts[:title] || gh_user_repo_link(@repo[:name]),
         :name => opts[:name] || @repo[:name]
       }
     end

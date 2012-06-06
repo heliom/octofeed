@@ -12,6 +12,10 @@ module OctoFeed
       }
     end
 
+    def url
+      %(<a class="repo" href="https://github.com/#{@repo[:name]}/commit/#{@object[:commit]}">commit #{@object[:commit][0..9]}</a>)
+    end
+
     def print
       message = truncate @object[:body]
       message = md_renderer(message)
@@ -23,9 +27,11 @@ module OctoFeed
     end
 
     def set_repo_group
+      link = gh_link("#{@repo[:name]}/commit/#{@object[:commit]}", :label => "commit #{@object[:commit][0..9]}")
+
       super({
         :id => "#{@repo[:name]}-commitcomment-#{@object[:commit]}",
-        :title => %(#{@repo[:name]} <a href="https://github.com/#{@repo[:name]}/commit/#{@object[:commit]}">commit #{@object[:commit][0..9]}</a>)
+        :title => "#{gh_user_repo_link @repo[:name]} #{extra(link)}"
       })
     end
 

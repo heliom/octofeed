@@ -27,9 +27,11 @@ module OctoFeed
     end
 
     def set_repo_group
+      link_opts = { :is_pull => true }
+
       super({
         :id => "#{@repo[:name]}-pullrequest-#{@object[:number]}",
-        :title => "#{@repo[:name]} #{gh_issue_link @repo[:name], @object[:number], true}"
+        :title => "#{gh_user_repo_link @repo[:name]} #{extra(gh_issue_link @repo[:name], @object[:number], link_opts)}"
       })
     end
 

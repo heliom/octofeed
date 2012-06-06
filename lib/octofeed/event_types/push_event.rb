@@ -92,13 +92,12 @@ module OctoFeed
 
     def set_user_group
       hash = get_group_hash
-      hash[:title] = "#{@actor[:username]} pushed to #{ref} at #{gh_link @repo[:name]}"
+      hash[:title] = "#{gh_link @actor[:username]} => #{gh_repo_link @repo[:name]}"
       super hash
     end
 
     def set_repo_group
       hash = get_group_hash
-      hash[:title] = "#{@repo[:name]}"
       super hash
     end
 
