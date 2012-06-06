@@ -32,6 +32,7 @@ module OctoFeed
                end
     end
 
+    private
     def set_user_group(opts={})
       {
         :type => opts[:type] || 'user-group',
