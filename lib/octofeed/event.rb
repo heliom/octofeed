@@ -33,6 +33,21 @@ module OctoFeed
                end
     end
 
+    def is_new?
+      is_new = is_more_recent? && has_never_been_printed
+      @user.add_event(@id) if is_new
+
+      is_new
+    end
+
+    def is_more_recent?
+      Time.parse(@created_at) > @user.created_at
+    end
+
+    def has_never_been_printed
+      !@user.events.include?(@id)
+    end
+
     private
     def set_user_group(opts={})
       {
