@@ -128,6 +128,7 @@ header
 
   &.login-with-gh
     @extends .clearfix
+    margin: .8em 0 0
 
     .github-logo
       display: inline-block
@@ -152,9 +153,16 @@ header
 
 // Login ----------------------------------------------------------------------
 .login
+  h1 { margin: 0 0 .5em }
+
+  article + article
+    h1 { margin: 1.5em 0 .5em }
+
   .col-2
     float: left
     width: 50%
+
+    &.first { padding: 0 1em 0 0 }
 
 // Logged --------------------------------------------------------------------
 .logged
