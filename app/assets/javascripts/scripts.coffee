@@ -32,7 +32,7 @@ class OctoFeed
     $repos.each (i, elem) =>
       $elem = $(elem)
       repoName = $elem.data 'name'
-      icon = $elem.find 'h1 > img'
+      icon = $elem.find '.avatar > img'
 
       if @cache[repoName]
         icon.attr('src', @cache[repoName]) if @cache[repoName] != 'error'
