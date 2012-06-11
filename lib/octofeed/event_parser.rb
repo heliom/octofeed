@@ -17,6 +17,10 @@ module OctoFeed
 
         group = find_or_create_group(event.group)
         group.add_event event
+
+        # Pushes generic data into an array
+        # Only used by FollowEvent for now
+        group.add_data(event.group[:data]) if event.group[:data]
       end
     end
 

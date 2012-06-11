@@ -35,7 +35,7 @@ module OctoFeed
       if @user.username == @object[:username]
         opts = {
           :id => 'being-followed',
-          :title => 'New followers',
+          :data => @actor[:username],
           :icon => @object[:avatar],
           :name => @object[:username],
           :type => 'user-group current-user'

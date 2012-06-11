@@ -59,7 +59,8 @@ module OctoFeed
         :id => opts[:id] || @actor[:username],
         :icon => opts[:icon] || @actor[:avatar],
         :title => opts[:title] || gh_link(@actor[:username]),
-        :name => opts[:name] || @actor[:username]
+        :name => opts[:name] || @actor[:username],
+        :data => opts[:data] || nil
       }
     end
 
