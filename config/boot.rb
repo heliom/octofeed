@@ -17,6 +17,8 @@ Dir[File.expand_path('../../app/helpers/**/*.rb', __FILE__)].each do |file|
 end
 
 # Lib
+# Make sure Event class is loaded first
+require "#{File.expand_path('lib/octofeed/event.rb')}"
 Dir[File.expand_path('../../lib/**/*.rb', __FILE__)].each do |file|
   dirname = File.dirname(file)
   file_basename = File.basename(file, File.extname(file))
