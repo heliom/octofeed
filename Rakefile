@@ -8,7 +8,7 @@ end
 
 namespace :assets do
   desc 'compile assets'
-  task :precompile => [:compile_js, :compile_css] do
+  task :compile => [:compile_js, :compile_css] do
   end
 
   desc 'compile css assets'
