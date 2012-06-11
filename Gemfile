@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 # App
+gem "rake"
 gem "sinatra", "~> 1.3.2"
 gem "erubis", "~> 2.7.0"
 gem "omniauth-github"
@@ -15,6 +16,7 @@ gem "bson_ext", "~> 1.6.4"
 gem "sprockets", "2.4.3"
 gem "coffee-script"
 gem "stylus", "0.6.2"
+gem "yui-compressor", :require => "yui/compressor"
 
 # Development dependencies
 group :development do
