@@ -209,22 +209,28 @@ header
       font-weight: normal
       color: lighten($bluecolor, 40%)
 
-      .repo { font-weight: bold }
+      .repo
+        font-weight: bold
+        margin: 0 3px 0 0
 
-      .extra a
-        @extends .dark-grey-gradient
-        font-size: 11
+      .extra
+        padding: 2px 0 0
         display: inline-block
-        color: #fff
-        padding: 2px 5px
-        border-radius: 2px
-        text-shadow: 0 -1px 0 rgba(0,0,0,.2)
-        margin: 0 0 0 5px
-        opacity: .7
 
-        &:hover, &:focus
-          opacity: 1
-          text-decoration: none
+        a
+          @extends .dark-grey-gradient
+          font-size: 11
+          line-height: 1.2
+          display: inline-block
+          color: #fff
+          padding: 2px 5px
+          border-radius: 2px
+          text-shadow: 0 -1px 0 rgba(0,0,0,.2)
+          opacity: .7
+
+          &:hover, &:focus
+            opacity: 1
+            text-decoration: none
 
       .avatar
         display: block
