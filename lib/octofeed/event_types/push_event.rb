@@ -61,22 +61,24 @@ module OctoFeed
         response = http.request(request)
 
         last_commit = JSON.parse(response.body)
-        previous_commit_sha = last_commit['parents'][0]['sha']
-        link_url = "#{@repo[:name]}/compare/#{previous_commit_sha[0..9]}...#{first_commit_sha[0..9]}"
+        if last_commit['parents']
+          previous_commit_sha = last_commit['parents'][0]['sha']
+          link_url = "#{@repo[:name]}/compare/#{previous_commit_sha[0..9]}...#{first_commit_sha[0..9]}"
 
-        if commit_count > 3
-          difference = commit_count - 3
-          plural = difference == 1 ? '' : 's'
+          if commit_count > 3
+            difference = commit_count - 3
+            plural = difference == 1 ? '' : 's'
 
-          link_label = "#{difference} more commit#{plural} »"
-          link = gh_link link_url, :label => link_label
+            link_label = "#{difference} more commit#{plural} »"
+            link = gh_link link_url, :label => link_label
 
-          commits_content << "<li>#{link}</li>"
-        else
-          link_label = "View comparison for these #{commit_count} commits »"
-          link = gh_link link_url, :label => link_label
+            commits_content << "<li>#{link}</li>"
+          else
+            link_label = "View comparison for these #{commit_count} commits »"
+            link = gh_link link_url, :label => link_label
 
-          commits_content << "<li>#{link}</li>"
+            commits_content << "<li>#{link}</li>"
+          end
         end
       end
 
@@ -87,7 +89,7 @@ module OctoFeed
     end
 
     def get_group_hash
-      { :id => "#{@repo[:name]}-commits-#{ref}" }
+      { :id => "#{@repo[:name]}-commits-#{@object[:ref].gsub('refs/heads/', '')}" }
     end
 
     def set_user_group

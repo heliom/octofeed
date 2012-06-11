@@ -13,12 +13,17 @@ module OctoFeed
       }
     end
 
-    def print
-      link = case @object[:type]
-             when 'branch', 'tag' then "#{gh_tree_link @repo[:name], @object[:ref]} at #{gh_link @repo[:name]}"
-             else gh_link @repo[:name]
-             end
+    def link(only_ref=false)
+      case @object[:type]
+      when 'branch', 'tag'
+        link = "#{gh_tree_link @repo[:name], @object[:ref]}"
+        link += " at #{gh_link @repo[:name]}" if !only_ref
+        link
+      else gh_link @repo[:name]
+      end
+    end
 
+    def print
       body = case @object[:type]
              when 'repository' then @object[:description]
              when 'branch' then gh_link "#{@repo[:name]}/compare/#{@object[:ref]}", :label => "Compare #{@object[:ref]} branch with master »"
@@ -28,6 +33,13 @@ module OctoFeed
       super({
         :title => "#{gh_user_link @actor[:username]} created #{@object[:type]} #{link}",
         :body => body
+      })
+    end
+
+    def set_repo_group
+      super({
+        :id => "#{@repo[:name]}-commits-#{@object[:ref]}",
+        :title => "#{gh_user_repo_link @repo[:name]} #{extra(link true)}"
       })
     end
 
