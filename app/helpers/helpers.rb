@@ -73,6 +73,20 @@ def distance_of_time_in_words(from_time, to_time = 0, include_seconds = false, o
   end
 end
 
+# Assets tag helper
+# Uses sprockets in development and local precompiled files in production
+def javascript_include_tag(file_name)
+  path_prefix = development? ? '/assets/' : '/js/'
+  min_suffix = development? ? '' : '.min'
+  %(<script src="#{path_prefix}#{file_name}#{min_suffix}.js"></script>)
+end
+
+def stylesheet_include_tag(file_name)
+  path_prefix = development? ? '/assets/' : '/css/'
+  min_suffix = development? ? '' : '.min'
+  %(<link rel="stylesheet" href="#{path_prefix}#{file_name}#{min_suffix}.css">)
+end
+
 # Little-tiny-homemade Markdown parser.
 # => Convert [link](http://example.org) into a link
 # => Convert SHAs into a link
