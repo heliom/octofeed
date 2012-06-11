@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>OctoFeed</title>
-    <link rel="stylesheet" href="/assets/styles.css">
+    <%= stylesheet_include_tag 'styles' %>
   </head>
   <body>
     <header>
@@ -24,6 +24,6 @@
     ('__proto__' in {} ? 'http://zeptojs.com/zepto.min.js' : 'http://code.jquery.com/jquery-1.7.2.min.js') +
     '><\/script>')
     </script>
-    <script src="/assets/scripts.js"></script>
+    <%= javascript_include_tag 'scripts' %>
   </body>
 </html>
