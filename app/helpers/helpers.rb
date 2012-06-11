@@ -118,7 +118,7 @@ end
 # Link to an issue/pull request
 def gh_issue_link(repo, number, opts={})
   type = opts[:is_pull] ? 'pull' : 'issues'
-  label = opts[:is_pull] ? 'pull reqest' : 'issue'
+  label = opts[:is_pull] ? 'pull request' : 'issue'
   link_class = opts[:class] ? %(class="#{opts[:class]}") : ''
   %(<a #{link_class} href="https://github.com/#{repo}/#{type}/#{number}">#{label} #{number}</a>)
 end
