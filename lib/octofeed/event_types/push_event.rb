@@ -24,9 +24,9 @@ module OctoFeed
       }
     end
 
-    def ref
+    def ref(force_link=false)
       ref_name = @object[:ref].gsub('refs/heads/', '')
-      return ref_name if ref_name == 'master'
+      return ref_name if ref_name == 'master' && !force_link
       gh_tree_link @repo[:name], ref_name
     end
 
@@ -98,6 +98,7 @@ module OctoFeed
 
     def set_repo_group
       hash = get_group_hash
+      hash[:title] = "#{gh_user_repo_link @repo[:name]} #{extra(ref true)}"
       super hash
     end
 
