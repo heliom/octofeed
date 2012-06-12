@@ -57,8 +57,9 @@ header nav li + li{margin:0 0 0 12px}
 .logged .more:hover,.logged .more:focus{border:1px solid #518cc6;border-bottom-color:#2a65a0;color:#fff;text-decoration:none;text-shadow:0 -1px 0 rgba(0,0,0,0.30)}
 .logged article{position:relative;padding:8px 8px 16px 8px;min-height:75px;-webkit-border-radius:3px;border-radius:3px;}
 .logged article h1{border-bottom:1px solid #e0e0e0;position:relative;margin:0 0 2px 0;padding:0 0 8px 62px;font-weight:normal;color:#8db5dc;}
-.logged article h1 .repo{font-weight:bold}
-.logged article h1 .extra a{font-size:11px;font-size:1.1rem;display:inline-block;*display:inline;zoom:1;color:#fff;padding:2px 5px;-webkit-border-radius:2px;border-radius:2px;text-shadow:0 -1px 0 rgba(0,0,0,0.20);margin:0 0 0 5px;opacity:.7 ;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=70) ;filter:alpha(opacity=70) ;}
+.logged article h1 .repo{font-weight:bold;margin:0 3px 0 0}
+.logged article h1 .extra{padding:2px 0 0;display:inline-block;*display:inline;zoom:1;}
+.logged article h1 .extra a{font-size:11px;font-size:1.1rem;line-height:1.2;display:inline-block;*display:inline;zoom:1;color:#fff;padding:2px 5px;-webkit-border-radius:2px;border-radius:2px;text-shadow:0 -1px 0 rgba(0,0,0,0.20);opacity:.7 ;-ms-filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=70) ;filter:alpha(opacity=70) ;}
 .logged article h1 .extra a:hover,.logged article h1 .extra a:focus{opacity:1 ;-ms-filter:none;filter:none;text-decoration:none}
 .logged article h1 .avatar{display:block;position:absolute;top:0;left:0;}
 .logged article h1 .avatar:hover img,.logged article h1 .avatar:focus img{border-color:#6991d1}
