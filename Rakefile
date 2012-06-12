@@ -24,10 +24,15 @@ task :bump do
   new_version = "#{major}.#{minor}.#{patch}"
   content = "module OctoFeed\n\s\sVERSION = '#{new_version}'\nend"
 
+  puts "New version will be #{new_version}. Is that alright? (y||x.y.z)"
+  answer = STDIN.gets.chomp
+  new_version = answer == 'y' ? new_version : answer
+
   `echo "#{content}" > lib/octofeed/version.rb`
   `git add lib/octofeed/version.rb && git commit -m "bump version -> #{new_version}"`
   `git tag v#{new_version} && git push --tags`
-  puts "=> Successfully bumped version"
+
+  puts "=> Successfully bumped version to #{new_version}"
 end
 
 namespace :assets do
