@@ -83,7 +83,7 @@ header nav li + li{margin:0 0 0 12px}
 .PushEvent .body{padding-top:4px}
 .PushEvent .body img{padding:1px}
 .PushEvent .title img{bottom:-34px}
-.logged .current-user{background-color:#f9f9f9;border:1px solid #eee;}
+.logged .current-user{background-color:#f9f9f9;border:1px solid #eee;padding-bottom:8px;min-height:72px;}
 .logged .current-user h1{color:#333;border:none;padding-bottom:0;}
 .logged .current-user h1 .avatar{top:2px}
 .logged .current-user .FollowEvent{float:left;}
@@ -106,5 +106,9 @@ footer{color:#aaa;padding:10px 0 0;text-align:center}
 .PushEvent .title img{bottom:-24px}
 .PushEvent + .PushEvent{padding:10px 0 0}
 .FollowEvent .body img{width:25px;height:25px}
+.logged .current-user{min-height:59px;}
+.logged .current-user h1 .avatar{top:3px}
+.logged .current-user > ul{padding-top:.1em}
+.logged .current-user .body img{width:22px;height:22px}
 }@media (max-width: 435px){.login .col-2{float:none;width:auto}
 }
