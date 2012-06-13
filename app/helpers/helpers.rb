@@ -87,10 +87,12 @@ def stylesheet_include_tag(file_name)
   %(<link rel="stylesheet" href="#{path_prefix}#{file_name}#{min_suffix}.css">)
 end
 
-# Little-tiny-homemade Markdown parser.
+# Little-tiny-homemade Markdown parser
+# => Remove images ![alt](http://example.org/image.png)
 # => Convert [link](http://example.org) into a link
 # => Convert SHAs into a link
 def md_renderer(content, repo)
+  content = content.gsub /\!\[([^\]]+)\]\(([^)]+)\)/, ''
   content = content.gsub /\[([^\]]+)\]\(([^)]+)\)/, '<a href="\2">\1</a>'
   content.gsub(/\b([0-9a-f]{40})\b/) { gh_sha_link(repo, $1) }
 end
