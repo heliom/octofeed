@@ -12,13 +12,16 @@
 <% else %>
   <div class="container login">
     <article class="private col-1">
+      <figure>
+        <img src="/images/octofeed.svg" alt="The Octofeed Icon">
+      </figure>
       <h1>Public & private events</h1>
-      <p>The app basically gives read/write access to your repositories, commits and issues. Do note that this is the exact same code as the public one, but you’ll <strong>also see your private repos related events</strong>. I swear before the Octo god that it does not use its write privilege, but if you don’t trust me, use the public one.</p>
+      <p>The app gives read/write access to your repositories, commits and issues. Note that this is only used to <strong>see your private repos related events</strong>. We swear before the Octo God that it does not use its write privilege but if you don’t trust us, use the public one.</p>
       <a class="button login-with-gh" href="/auth/github_private"><span class="github-logo"></span> Login with GitHub</a>
     </article>
     <article class="public col-1">
       <h1>Public events only</h1>
-      <p>Read-only app, only public events will be listed.</p>
+      <p>Read-only app, <strong>only public events will be listed</strong>. We strongly suggest using the private login to maximise your experience.</p>
       <a class="button classy login-with-gh" href="/auth/github_public"><span class="github-logo"></span> Login with GitHub</a>
     </article>
     <div class="content">

@@ -108,7 +108,7 @@ header
     border: 1px solid #ddd
     border-radius: 5px
 
-  h1
+  h2
     @extends .grey-gradient
     margin: 0; padding: 1em 10px
     border-radius: 5px 5px 0 0
@@ -120,16 +120,16 @@ header
     padding: 10px
   
 .button
+  @extends .grey-gradient
   display: inline-block
   padding: 8px 15px
-  background: linear-gradient(top, whiteSmoke, #E5E5E5)
   border-radius: 3px
   border: 1px solid #DDD
   border-bottom-color: #BBB
-  color: #666
+  color: #333
   font-weight: bold
   text-shadow: 0 1px 0 #fff
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, .1)
+  box-shadow: 0 0 0 2px rgba(0,0,0,.05)
   
 
   &.login-with-gh
@@ -156,27 +156,38 @@ header
 
 // Login ----------------------------------------------------------------------
 .login
-  h1 { margin: 0 0 .5em }
+  h1 { margin: .5em 0 .5em }
 
   .public, .private
-    background-color: #EAF2F5
-    background: linear-gradient(top, #F4F9FA, #EAF2F5)
-    border: 1px solid #CEE1E8
-    border-radius: 3px 0 0 3px
-    float: left
-    width: 64%
-    min-height: 220px
-    padding: 2em 4em 3em 2em
-    margin: 0 0 25px 0
-    
-  .public
     background-color: #f4f4f4
     background: linear-gradient(top, #fcfcfc, #f4f4f4)
-    border-color: #ddd
-    width: 36%
-    border-left: none
+    border: 1px solid #ddd
+    border-bottom-color: #ccc
+    border-bottom-width: 2px
     border-radius: 0 3px 3px 0
-
+    float: left
+    width: 36%
+    min-height: 300px
+    padding: 2em
+    margin: 0 0 25px 0
+    
+  .private
+    background-color: #EAF2F5
+    background: linear-gradient(top, #F4F9FA, #EAF2F5)
+    border-color: #CEE1E8
+    border-bottom-color: #B6D2DD
+    width: 64%
+    border-right: none
+    border-radius: 3px 0 0 3px
+    
+    figure
+      display: inline-block
+      float: left
+      width: 48.5%
+      
+      img
+        max-width: 80%
+      
   .col-2
     float: left
     width: 50%
