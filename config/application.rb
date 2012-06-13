@@ -13,6 +13,7 @@ module OctoFeed
 
     before do
       cache_control :public, :must_revalidate, :max_age => 60
+      redirect request.url.gsub('http://', 'https://') unless request.ssl? || development?
     end
 
     ['/', '/page/:page_number'].each do |path|
