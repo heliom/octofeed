@@ -12,6 +12,7 @@ module OctoFeed
     set :erb, :layout => :'layouts/application'
 
     before do
+      @page_title = nil
       cache_control :public, :must_revalidate, :max_age => 60
       redirect request.url.gsub('http://', 'https://') unless request.ssl? || development?
     end
@@ -81,6 +82,11 @@ module OctoFeed
     get '/logout' do
       session.clear
       redirect '/'
+    end
+
+    not_found do
+      @page_title = "404"
+      erb :'404'
     end
 
   end
