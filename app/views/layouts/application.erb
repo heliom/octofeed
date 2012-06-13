@@ -2,8 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>OctoFeed</title>
+    <title><%= "#{@page_title} | " if @page_title %>OctoFeed</title>
     <meta name="viewport" content="width=device-width">
+    <meta name="description" content="GitHub’s news feed revisited and refactored">
+    <meta property="og:title" content="Octofeed">
+    <meta property="og:image" content="http://octofeed.heliom.ca/images/octofeed-fb.png">
+    <meta property="og:description" content="GitHub’s news feed revisited and refactored">
     <%= stylesheet_include_tag 'styles' %>
   </head>
   <body>
