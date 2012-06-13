@@ -30,14 +30,15 @@ hgroup > :first-child{margin-bottom:.3em}
 hgroup > :first-child + *{margin-top:.3em}
 h1,h2,h3,h4{line-height:1.1}
 header{height:47px;-webkit-box-shadow:0 1px 0 rgba(255,255,255,0.40),0 0 10px rgba(0,0,0,0.10);box-shadow:0 1px 0 rgba(255,255,255,0.40),0 0 10px rgba(0,0,0,0.10);border-bottom:1px solid #cacaca;overflow:hidden;}
+header .container{padding:0}
 header h1{float:left;margin:0;line-height:49px}
 header a{color:#000;}
 header a:hover,header a:focus{color:#4183c4;text-decoration:none}
 header nav{float:right;line-height:49px;}
 header nav li{float:left}
 header nav li + li{margin:0 0 0 12px}
-.container{width:90%;max-width:920px;margin:0 auto}
-.content,.feed{float:left;width:62%}
+.container{width:90%;max-width:920px;margin:0 auto;padding:25px 0 52px;}
+.container > section{float:left;width:62%}
 .sidebar{float:left;width:38%;padding:0 0 0 20px;}
 .sidebar div{border:1px solid #ddd;-webkit-border-radius:5px;border-radius:5px}
 .sidebar h1{margin:0;padding:1em 10px;-webkit-border-radius:5px 5px 0 0;border-radius:5px 5px 0 0;font-size:13px;font-size:1.3rem;color:#52595d;border-bottom:1px solid #e1e1e2}
@@ -47,7 +48,6 @@ header nav li + li{margin:0 0 0 12px}
 .button.login-with-gh .github-logo{display:inline-block;*display:inline;zoom:1;background-image:url("/images/github.png");width:16px;height:17px;position:relative;top:-2px;vertical-align:middle}
 .button:hover,.button:focus{color:#fff;border-color:#518cc6;border-bottom-color:#2a65a0;text-decoration:none;text-shadow:0 -1px 0 rgba(0,0,0,0.30);}
 .button:hover.login-with-gh .github-logo,.button:focus.login-with-gh .github-logo{background-position:0 -17px}
-.login,.logged{padding:25px 0 52px}
 .login h1{margin:0 0 .5em}
 .login article + article h1{margin:1.5em 0 .5em}
 .login .col-2{float:left;width:50%;}
@@ -76,7 +76,7 @@ header nav li + li{margin:0 0 0 12px}
 .user-group .title img,.user-group .title .username{display:none}
 .repo-group > ul{padding:0 0 0 62px}
 .repo-group .Event{min-height:60px;padding:8px 0 0}
-.repo-group .body{padding:0 0 0 36px}
+.repo-group .body{min-height:30px;padding:0 0 0 36px}
 .repo-group .title{position:relative;}
 .repo-group .title img{position:absolute;bottom:-32px;left:0;padding:1px}
 .PushEvent blockquote{display:inline;font-size:12px;font-size:1.2rem}
@@ -97,7 +97,7 @@ footer{color:#aaa;padding:10px 0 0;text-align:center}
 .logged article{margin:0;padding:8px 8px 16px;}
 .logged article h1{padding:0 0 4px 44px;font-size:13px;font-size:1.3rem}
 .repo-group > ul,.user-group > ul{padding:0 0 0 44px}
-.repo-group .body{padding:1px 0 0 26px}
+.repo-group .body{min-height:25px;padding:1px 0 0 26px}
 .repo-group .title img{bottom:-24px}
 .repo-group .Event{min-height:64px}
 .Event .title img{width:22px;height:22px}
