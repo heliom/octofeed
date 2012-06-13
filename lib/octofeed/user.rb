@@ -1,3 +1,4 @@
+# A tiny-custom-homemade ORM class
 module OctoFeed
   class User
     attr_accessor :id, :username, :events, :token, :created_at
@@ -35,6 +36,8 @@ module OctoFeed
       @created_at = data['created_at']
     end
 
+    # Add an event id to the database
+    # To be able to test if an event has already been read by the user
     def add_event(event_id)
       OctoFeed::User.update @username, {'$push' => {'events' => event_id}}
     end

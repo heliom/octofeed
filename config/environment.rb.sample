@@ -12,6 +12,7 @@ ENV['GITHUB_PRIVATE_APP_KEY'] = 'GITHUB PRIVATE APP KEY'
 ENV['GITHUB_PRIVATE_APP_SECRET'] = 'GITHUB PRIVATE APP SECRET'
 
 # Set your database connection uri
+# In production I suggest http://mongolab.com
 # A connection with authentification would look like this:
 # => mongodb://[user:password@]host[:port][/database]
 # parts in [brackets] are optional

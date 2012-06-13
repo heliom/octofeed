@@ -2,6 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 module OctoFeed
   class App < Sinatra::Base
+    # Using custom OmniAuth sttategies to ask for different privileges
     use OmniAuth::Strategies::GitHubPublic, ENV['GITHUB_PUBLIC_APP_KEY'], ENV['GITHUB_PUBLIC_APP_SECRET']
     use OmniAuth::Strategies::GitHubPrivate, ENV['GITHUB_PRIVATE_APP_KEY'], ENV['GITHUB_PRIVATE_APP_SECRET'], :scope => 'repo'
 
@@ -25,7 +26,8 @@ module OctoFeed
         @is_xhr = request.xhr?
 
         if @user
-          # Repos watched
+          # Get repos being watched by the user
+          # We will need that list to build a repo-group or a user-group if not watching the repo
           repos_uri = URI.parse("https://api.github.com/user/watched?access_token=#{@user[:token]}")
 
           repos_http = Net::HTTP.new(repos_uri.host, repos_uri.port)
@@ -41,7 +43,8 @@ module OctoFeed
             watched_repos << repo['full_name']
           end
 
-          # Events
+          # Get events that a user has received
+          # Will list private repos events if the user has selected the private app
           uri = URI.parse("https://api.github.com/users/#{@user[:username]}/received_events?access_token=#{@user[:token]}&page=#{@page_number}")
 
           http = Net::HTTP.new(uri.host, uri.port)
@@ -61,6 +64,8 @@ module OctoFeed
           @event_groups = event_parser.groups
         end
 
+        # If the request is an xhr one (`load more` ajax button), render a partial without layout
+        # Else render the index
         if @is_xhr
           erb :_events, :layout => false
         else
@@ -69,6 +74,9 @@ module OctoFeed
       end
     end
 
+    # GitHub apps callback
+    # => /auth/github_private/callback
+    # => /auth/github_public/callback
     get '/auth/:provider/callback' do
       user = request.env['omniauth.auth']
       session[:user] = {

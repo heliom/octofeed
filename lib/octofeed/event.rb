@@ -1,3 +1,5 @@
+# The OctoFeed::Event is a superclass
+# All event_types extends this class
 module OctoFeed
   class Event
     attr_accessor :id, :type, :actor, :repo, :object, :created_at, :group
@@ -25,6 +27,11 @@ module OctoFeed
       }
     end
 
+    # Public method
+    # Set the event group depending on if the repo is being watched or not
+    # This will create a `user-group` or `repo-group` event type
+    # Each event_types class has (or not) its own set_repo_group and set_user_group methods
+    # These methods set a hash of options and call `super`
     def set_group(watched_repo)
       @repo[:watched] = watched_repo
       @group = case watched_repo
@@ -33,26 +40,39 @@ module OctoFeed
                end
     end
 
+    # Public method
+    # If both are true, the event is added to the database
     def is_new?
-      is_new = is_more_recent? && has_never_been_printed
+      is_new = is_more_recent? && has_never_been_printed?
       @user.add_event(@id) if is_new
 
       is_new
     end
 
+    # Public method
+    # Test if an event is more recent than the created_at value of a user
+    # No need to add older events in the database, for they will never be flagged `new`
     def is_more_recent?
       Time.parse(@created_at) > @user.created_at
     end
 
-    def has_never_been_printed
+    # Public method
+    # Test if an event has never been printed before
+    def has_never_been_printed?
       !@user.events.include?(@id)
     end
 
     private
+    # Helper that wraps extra/meta group data into a span
+    # Extras are for example: pull request and issue number, branch of the group, etc.
     def extra(msg)
       %(<span class="extra">#{msg}</span>)
     end
 
+    # This is almost always called by child classes
+    # Will create a 'user-group' type event
+    # This hash is accessible via `@group`
+    # The id of an `event.group` is used to group said events
     def set_user_group(opts={})
       {
         :type => opts[:type] || 'user-group',
@@ -74,6 +94,9 @@ module OctoFeed
       }
     end
 
+    # Protected print method
+    # Each event types has a public print method that calls super(hash)
+    # Easier to maintain / update events html
     def print(msg)
       body = msg[:body] && msg[:body].length > 0 ? %(<div class="body">#{msg[:body]}</div>) : ''
       time_ago = msg[:time_ago] || time_ago_in_words(Time.parse(@created_at))

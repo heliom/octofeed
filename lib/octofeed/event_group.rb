@@ -12,7 +12,10 @@ module OctoFeed
       @events = []
     end
 
+    # Prints the group title
     def title
+      # When a group of people following the logged user the title is different
+      # Else the title is set by the events inside the group
       if @type.include?('current-user')
         others_length = @data.length - 1
         if others_length == 1
@@ -27,10 +30,13 @@ module OctoFeed
       end
     end
 
+    # Add an event to the events array
     def add_event(event)
       @events.push event
     end
 
+    # Add generic data to an array
+    # Only used by the FollowEvent for now
     def add_data(data)
       @data.push data
     end

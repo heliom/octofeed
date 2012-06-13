@@ -4,8 +4,15 @@ require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
 if defined?(Bundler)
   Bundler.require(:default)
 end
+
+# App version
 require './lib/octofeed/version'
 
+# `bundle exec rake deploy`
+# * Compile and commit assets
+# * Bump version
+# * Create a new tag and push it
+# * Push to Heroku
 desc 'deploy app to heroku'
 task :deploy => [:'assets:compile', :'assets:commit', :bump] do
   puts "Pushing to heroku"
@@ -13,6 +20,10 @@ task :deploy => [:'assets:compile', :'assets:commit', :bump] do
   puts "=> Successfully pushed to heroku"
 end
 
+# `bundle exec rake bump`
+# * Bump version
+#   => increment the patch only (Major.Minor.Patch)
+# * Create a new tag and push it
 desc 'bump version'
 task :bump do
   puts "Bumping version"
@@ -36,10 +47,15 @@ task :bump do
 end
 
 namespace :assets do
+  # `bundle exec rake assets:compile`
+  # * Compile stylesheets and javascripts
   desc 'compile assets'
-  task :compile => [:compile_js, :compile_css] do
+  task :compile => [:compile_css, :compile_js] do
   end
 
+  # `bundle exec rake assets:compile_css`
+  # IN  => /app/assets/stylesheets/styles.styl
+  # OUT => /public/css/styles.min.css
   desc 'compile css assets'
   task :compile_css do
     puts "Compiling stylesheets"
@@ -59,6 +75,9 @@ namespace :assets do
     puts "=> Successfully compiled css assets"
   end
 
+  # `bundle exec rake assets:compile_js`
+  # IN  => /app/assets/javascripts/scripts.coffee
+  # OUT => /public/js/scripts.min.js
   desc 'compile javascript assets'
   task :compile_js do
     puts "Compiling javascripts"
@@ -76,6 +95,8 @@ namespace :assets do
     puts "=> Successfully compiled js assets"
   end
 
+  # `bundle exec rake assets:commit`
+  # => Commit compiled assets if there are modifications
   desc 'commit compiled assets'
   task :commit do
     puts "Commiting compiled assets"

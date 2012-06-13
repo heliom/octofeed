@@ -11,6 +11,7 @@ map '/assets' do
   run environment
 end
 
+# Main application
 map '/' do
   run OctoFeed::App
 end

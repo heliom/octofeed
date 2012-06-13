@@ -114,16 +114,19 @@ def gh_link(path, opts={})
   %(<a #{link_class} href="#{link_url}">#{link_label}</a>)
 end
 
+# Link to a user
 def gh_user_link(username, opts={})
   opts[:class] = opts[:class] || 'username'
   gh_link username, opts
 end
 
+# Link to a repo
 def gh_repo_link(repo, opts={})
   opts[:class] = opts[:class] || 'repo'
   gh_link repo, opts
 end
 
+# Convert a full repo name (user/repo) into 2 links
 def gh_user_repo_link(repo, opts={})
   repo_split = repo.split('/')
   repo_user = repo_split[0]

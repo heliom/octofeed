@@ -1,3 +1,5 @@
+# Custom strategies extending Github
+# This way we can use 2 apps with the same base strategy
 module OmniAuth
   module Strategies
 
