@@ -134,7 +134,7 @@ header
 
   &.login-with-gh
     @extends .clearfix
-    margin: .8em 0 0
+    margin: 1.5em 0 0
 
     .github-logo
       display: inline-block
@@ -155,8 +155,12 @@ header
   &.login-with-gh .github-logo { background-position: 0 -17px }
 
 // Login ----------------------------------------------------------------------
+@-webkit-keyframes update
+  0%, 95% { margin-top: -25% }
+  100% { margin-top: 0 }
+
 .login
-  h1 { margin: .5em 0 .5em }
+  h1 { margin: 0 0 1em }
 
   .public, .private
     background-color: #f4f4f4
@@ -180,13 +184,36 @@ header
     border-right: none
     border-radius: 3px 0 0 3px
     
-    figure
-      display: inline-block
+  figure
+    display: block
+    float: left
+    position: relative
+    width: 48.5%
+    
+    img { max-width: 80% }
+    
+    figcaption
+      display: block
       float: left
-      width: 48.5%
+      position: absolute
+      top: 24%; right: 39%
+      width: 30%
+      height: 25%
+      overflow: hidden
+      color: #fff
+      font-size: 1px
       
-      img
-        max-width: 80%
+      ul
+        margin-top: -25%
+        -webkit-animation: update 5s 1s infinite ease-out backwards
+        
+      li 
+        background-color: #fff
+        width: 100%
+        margin: 0 0 14% 0
+        padding: 7% 0 
+        border-radius: 20px
+        text-align: center
       
   .col-2
     float: left
