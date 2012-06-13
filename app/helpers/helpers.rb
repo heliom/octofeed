@@ -103,12 +103,13 @@ def truncate(content, opts={})
   HTML_Truncator.truncate content, length, :length_in_chars => length_in_chars
 end
 
-# Link to `https://github.com/params`
+# Link to `https://github.com/path`
 def gh_link(path, opts={})
   link_class = opts[:class] ? %(class="#{opts[:class]}") : ''
   link_label = opts[:label] || path
+  link_url = opts[:url] || "https://github.com/#{path}"
 
-  %(<a #{link_class} href="https://github.com/#{path}">#{link_label}</a>)
+  %(<a #{link_class} href="#{link_url}">#{link_label}</a>)
 end
 
 def gh_user_link(username, opts={})
@@ -133,39 +134,51 @@ end
 def gh_issue_link(repo, number, opts={})
   type = opts[:is_pull] ? 'pull' : 'issues'
   label = opts[:is_pull] ? 'pull request' : 'issue'
-  link_class = opts[:class] ? %(class="#{opts[:class]}") : ''
-  %(<a #{link_class} href="https://github.com/#{repo}/#{type}/#{number}">#{label} #{number}</a>)
+
+  opts[:label] = "#{label} #{number}"
+  gh_link "#{repo}/#{type}/#{number}", opts
 end
 
 # Link to an issue/pull request comment
 def gh_issue_comment_link(url, comment_id, issue_number, opts={})
-  link_class = opts[:class] ? %(class="#{opts[:class]}") : ''
   type = 'issue'
   if opts[:is_pull]
     url = url.gsub('/issues/', '/pull/')
     type = 'pull request'
   end
 
-  %(<a #{link_class} href="#{url}#issuecomment-#{comment_id}">#{type} #{issue_number}</a>)
+  opts[:label] = "#{type} #{issue_number}"
+  opts[:url] = "#{url}#issuecomment-#{comment_id}"
+
+  gh_link nil, opts
 end
 
 # Link to a gist
 def gh_gist_link(id, url, opts={})
-  link_class = opts[:class] ? %(class="#{opts[:class]}") : ''
-  %(<a #{link_class} href="#{url}">gist: #{id}</a>)
+  opts[:label] = "gist: #{id}"
+  opts[:url] = url
+
+  gh_link nil, opts
 end
 
 # Link to a sha
 def gh_sha_link(repo, sha)
-  %(<a href="https://github.com/#{repo}/commit/#{sha}">#{sha[0..6]}</a>)
+  path = "#{repo}/commit/#{sha}"
+  label = sha[0..6]
+
+  gh_link path, :label => label
 end
 
 # Link to a branch/tag
 def gh_tree_link(repo, tree_node)
-  %(<a href="https://github.com/#{repo}/tree/#{tree_node}">#{tree_node}</a>)
+  path = "#{repo}/tree/#{tree_node}"
+  gh_link path, :label => tree_node
 end
 
 # Link to a file comment
 def gh_commit_comment_link(repo, comment_id, commit_id)
-  %(<a href="https://github.com/#{repo}/commit/#{commit_id}#commitcomment-#{comment_id}">#{commit_id[0..9]}</a>)
+  path = "#{repo}/commit/#{commit_id}#commitcomment-#{comment_id}"
+  label = commit_id[0..9]
+
+  gh_link path, :label => label
 end
