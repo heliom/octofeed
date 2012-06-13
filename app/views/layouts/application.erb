@@ -25,6 +25,19 @@
     ('__proto__' in {} ? 'http://zeptojs.com/zepto.min.js' : 'http://code.jquery.com/jquery-1.7.2.min.js') +
     '><\/script>')
     </script>
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '4fd8ba9af5a1f53fe3000060');
+        t.src = '//secure.gaug.es/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
     <%= javascript_include_tag 'scripts' %>
   </body>
 </html>
