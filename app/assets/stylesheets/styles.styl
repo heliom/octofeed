@@ -56,6 +56,7 @@ hgroup > :first-child { margin-bottom: .3em }
 hgroup > :first-child + * { margin-top: .3em }
 
 h1, h2, h3, h4 { line-height: 1.1 }
+h2 { font-size: 16px }
 
 // Header ---------------------------------------------------------------------
 header
@@ -117,17 +118,19 @@ header
 
   ul
     padding: 10px
-
+  
 .button
-  @extends .grey-gradient
   display: inline-block
-  padding: 5px
-  color: #333
-  font-weight: bold
-  border: 1px solid #d4d4d4
-  border-bottom-color: #bcbcbc
-  text-shadow: 0 1px 0 #fff
+  padding: 8px 15px
+  background: linear-gradient(top, whiteSmoke, #E5E5E5)
   border-radius: 3px
+  border: 1px solid #DDD
+  border-bottom-color: #BBB
+  color: #666
+  font-weight: bold
+  text-shadow: 0 1px 0 #fff
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, .1)
+  
 
   &.login-with-gh
     @extends .clearfix
@@ -155,14 +158,29 @@ header
 .login
   h1 { margin: 0 0 .5em }
 
-  article + article
-    h1 { margin: 1.5em 0 .5em }
+  .public, .private
+    background-color: #EAF2F5
+    background: linear-gradient(top, #F4F9FA, #EAF2F5)
+    border: 1px solid #CEE1E8
+    border-radius: 3px 0 0 3px
+    float: left
+    width: 64%
+    min-height: 220px
+    padding: 2em 4em 3em 2em
+    margin: 0 0 25px 0
+    
+  .public
+    background-color: #f4f4f4
+    background: linear-gradient(top, #fcfcfc, #f4f4f4)
+    border-color: #ddd
+    width: 36%
+    border-left: none
+    border-radius: 0 3px 3px 0
 
   .col-2
     float: left
     width: 50%
-
-    &.first { padding: 0 1em 0 0 }
+    padding: 0 1em 0 0
 
 // Logged --------------------------------------------------------------------
 .logged
