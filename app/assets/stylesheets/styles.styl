@@ -65,6 +65,8 @@ header
   border-bottom: 1px solid #cacaca
   overflow: hidden
 
+  .container { padding: 0 }
+
   h1
     float: left
     margin: 0
@@ -90,10 +92,11 @@ header
   width: 90%
   max-width: 920px
   margin: 0 auto
+  padding: 25px 0 52px
 
-.content, .feed
-  float: left
-  width: 62%
+  & > section
+    float: left
+    width: 62%
 
 .sidebar
   float: left
@@ -147,9 +150,6 @@ header
   text-shadow: 0 -1px 0 rgba(0,0,0,.3)
 
   &.login-with-gh .github-logo { background-position: 0 -17px }
-
-.login, .logged
-  padding: 25px 0 52px
 
 // Login ----------------------------------------------------------------------
 .login
