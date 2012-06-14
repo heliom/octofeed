@@ -185,6 +185,7 @@ header
     border-radius: 3px 0 0 3px
 
   figure
+    z-index: 1
     display: block
     float: left
     position: relative
@@ -215,7 +216,8 @@ header
         border-radius: 20px
         text-align: center
 
-    &:after
+    &:before
+      z-index: -1
       content: ''
       display: block
       position: absolute
