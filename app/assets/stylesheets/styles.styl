@@ -118,7 +118,7 @@ header
 
   ul
     padding: 10px
-  
+
 .button
   @extends .grey-gradient
   display: inline-block
@@ -130,7 +130,7 @@ header
   font-weight: bold
   text-shadow: 0 1px 0 #fff
   box-shadow: 0 0 0 2px rgba(0,0,0,.05)
-  
+
 
   &.login-with-gh
     @extends .clearfix
@@ -174,7 +174,7 @@ header
     min-height: 300px
     padding: 2em
     margin: 0 0 25px 0
-    
+
   .private
     background-color: #EAF2F5
     background: linear-gradient(top, #F4F9FA, #EAF2F5)
@@ -183,38 +183,47 @@ header
     width: 64%
     border-right: none
     border-radius: 3px 0 0 3px
-    
+
   figure
     display: block
     float: left
     position: relative
     width: 48.5%
-    
+
     img { max-width: 80% }
-    
+
     figcaption
       display: block
       float: left
       position: absolute
-      top: 24%; right: 39%
-      width: 30%
-      height: 25%
+      top: 24%; left: 50%
+      margin-left: -23%
+      size: 30% 25%
       overflow: hidden
       color: #fff
       font-size: 1px
-      
+
       ul
         margin-top: -25%
         -webkit-animation: update 5s 1s infinite ease-out backwards
-        
-      li 
+
+      li
         background-color: #fff
         width: 100%
         margin: 0 0 14% 0
-        padding: 7% 0 
+        padding: 7% 0
         border-radius: 20px
         text-align: center
-      
+
+    &:after
+      content: ''
+      display: block
+      position: absolute
+      bottom: -1px; left: 7%
+      size: 70% 15%
+      background-color: rgba(0,0,0,.08)
+      border-radius: 100%
+
   .col-2
     float: left
     width: 50%
@@ -355,7 +364,7 @@ header
 
 // PushEvent -----------------------------------------------------------------
 .PushEvent
-  blockquote 
+  blockquote
     display: inline
     font-size: 12
   .body { padding-top: 4px }
