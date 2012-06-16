@@ -88,20 +88,15 @@ module OctoFeed
       })
     end
 
-    def get_group_hash
-      { :id => "#{@repo[:name]}-commits-#{@object[:ref].gsub('refs/heads/', '')}" }
-    end
-
     def set_user_group
-      hash = get_group_hash
-      hash[:title] = "#{gh_link @actor[:username]} => #{gh_repo_link @repo[:name]}"
-      super hash
+      set_repo_group
     end
 
     def set_repo_group
-      hash = get_group_hash
-      hash[:title] = "#{gh_user_repo_link @repo[:name]} #{extra(ref true)}"
-      super hash
+      super({
+        :id => "#{@repo[:name]}-commits-#{@object[:ref].gsub('refs/heads/', '')}",
+        :title => "#{gh_user_repo_link @repo[:name]} #{extra(ref true)}"
+      })
     end
 
   end
