@@ -35,7 +35,7 @@ module OctoFeed
       @object[:commits].take(3).each do |commit|
         email = Digest::MD5.hexdigest(commit[:author][:email])
         default = CGI::escape('https://a248.e.akamai.net/assets.github.com/images/gravatars/gravatar-140.png')
-        avatar = "http://www.gravatar.com/avatar/#{email}?d=#{default}&s=40"
+        avatar = "https://secure.gravatar.com/avatar/#{email}?d=#{default}&s=40"
         message = truncate commit[:message].split(/\n\n/).first, :length => 70
 
         commits_content << %(
