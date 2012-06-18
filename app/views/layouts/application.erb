@@ -14,6 +14,7 @@
     <header>
       <div class="container">
         <h1><a href="/">OctoFeed</a></h1>
+        <h2>The GitHub news feed you’ve wished for</h2>
         <% if @user %>
           <nav>
             <ul>
@@ -24,6 +25,7 @@
       </div>
     </header>
     <%= yield %>
+    <footer>A user experience test by <a href="http://heliom.ca">Heliom</a></footer>
     <script>
     document.write('<script src=' +
     ('__proto__' in {} ? '/js/zepto.min.js' : '/js/jquery.min.js') +

@@ -69,9 +69,13 @@ header
   .container { padding: 0 }
 
   h1
+    font-family: Trebuchet MS
     float: left
     margin: 0
     line-height: 49px
+
+  h2
+    float: left
 
   a
     color: #000
@@ -91,33 +95,9 @@ header
 .container
   @extends .clearfix
   width: 90%
-  max-width: 920px
+  max-width: 560px
   margin: 0 auto
-  padding: 25px 0 52px
-
-  & > section
-    float: left
-    width: 62%
-
-.sidebar
-  float: left
-  width: 38%
-  padding: 0 0 0 20px
-
-  div
-    border: 1px solid #ddd
-    border-radius: 5px
-
-  h2
-    @extends .grey-gradient
-    margin: 0; padding: 1em 10px
-    border-radius: 5px 5px 0 0
-    font-size: 13
-    color: #52595d
-    border-bottom: 1px solid #e1e1e2
-
-  ul
-    padding: 10px
+  padding: 25px 0 0
 
 .button
   @extends .grey-gradient
@@ -155,10 +135,6 @@ header
   &.login-with-gh .github-logo { background-position: 0 -17px }
 
 // Login ----------------------------------------------------------------------
-@-webkit-keyframes update
-  0%, 95% { margin-top: -25% }
-  100% { margin-top: 0 }
-
 .login
   h1 { margin: 0 0 1em }
 
@@ -168,63 +144,15 @@ header
     border: 1px solid #ddd
     border-bottom-color: #ccc
     border-bottom-width: 2px
-    border-radius: 0 3px 3px 0
-    float: left
-    width: 36%
-    min-height: 300px
+    border-radius: 3px
     padding: 2em
     margin: 0 0 25px 0
 
   .private
-    background-color: #EAF2F5
+    background-color: #eaf2f5
+    border-color: #cee1e8
+    border-bottom-color: #b6d2dd
     background: linear-gradient(top, #F4F9FA, #EAF2F5)
-    border-color: #CEE1E8
-    border-bottom-color: #B6D2DD
-    width: 64%
-    border-right: none
-    border-radius: 3px 0 0 3px
-
-  figure
-    z-index: 1
-    display: block
-    float: left
-    position: relative
-    width: 48.5%
-
-    img { max-width: 80% }
-
-    figcaption
-      display: block
-      float: left
-      position: absolute
-      top: 24%; left: 50%
-      margin-left: -23%
-      size: 30% 25%
-      overflow: hidden
-      color: #fff
-      font-size: 1px
-
-      ul
-        margin-top: -25%
-        -webkit-animation: update 5s 1s infinite ease-out backwards
-
-      li
-        background-color: #fff
-        width: 100%
-        margin: 0 0 14% 0
-        padding: 7% 0
-        border-radius: 20px
-        text-align: center
-
-    &:before
-      z-index: -1
-      content: ''
-      display: block
-      position: absolute
-      bottom: -1px; left: 7%
-      size: 70% 15%
-      background-color: rgba(106, 120, 149, 0.2)
-      border-radius: 100%
 
   .col-2
     float: left
@@ -400,7 +328,7 @@ header
 // Footer --------------------------------------------------------------------
 footer
   color: #aaa
-  padding: 10px 0 0
+  padding: 20px 0 40px
   text-align: center
 
 // Media Queries -------------------------------------------------------------
