@@ -271,7 +271,7 @@ header
     h1
       border-bottom: 1px solid #e0e0e0
       position: relative
-      margin: 0 0 2px 0
+      margin: 0
       padding: 0 0 8px 62px
       font-weight: normal
       color: lighten($bluecolor, 40%)
@@ -314,6 +314,8 @@ header
       border: 1px solid #d0d0d0
       transition: width .12s, height .12s
 
+    & > ul { margin-top: 6px }
+
   article + article
     margin: 10px 0 0
 
@@ -339,8 +341,11 @@ header
     font-size: 11px
     font-weight: normal
 
+.new
+  background-color: #eaf2f5
+
 .user-group
-  & > ul { padding: 4px 0 0 62px }
+  & > ul { padding-left: 62px }
 
   .title
     img, .username { display: none }
@@ -349,8 +354,11 @@ header
   & > ul { padding: 0 0 0 62px }
 
   .Event
-    min-height: 60px
-    padding: 8px 0 0
+    min-height: 52px
+
+    & + .Event
+      min-height: 64px
+      padding: 12px 0 0
 
   .body
     min-height: 30px
