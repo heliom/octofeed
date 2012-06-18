@@ -41,25 +41,9 @@ module OctoFeed
     end
 
     # Public method
-    # If both are true, the event is added to the database
+    # Test if an event is more recent than the last_updated value of a user
     def is_new?
-      is_new = is_more_recent? && has_never_been_printed?
-      @user.add_event(@id) if is_new
-
-      is_new
-    end
-
-    # Public method
-    # Test if an event is more recent than the created_at value of a user
-    # No need to add older events in the database, for they will never be flagged `new`
-    def is_more_recent?
-      Time.parse(@created_at) > @user.created_at
-    end
-
-    # Public method
-    # Test if an event has never been printed before
-    def has_never_been_printed?
-      !@user.events.include?(@id)
+      Time.parse(@created_at) > @user.last_updated
     end
 
     private

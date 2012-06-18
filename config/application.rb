@@ -62,6 +62,9 @@ module OctoFeed
           # Parse events
           event_parser = OctoFeed::EventParser.new(response.body, watched_repos, user)
           @event_groups = event_parser.groups
+
+          # Update user `last_updated` once everything is done
+          user.update_last_updated
         end
 
         # If the request is an xhr one (`load more` ajax button), render a partial without layout

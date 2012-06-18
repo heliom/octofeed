@@ -1,7 +1,7 @@
 # A tiny-custom-homemade ORM class
 module OctoFeed
   class User
-    attr_accessor :id, :username, :events, :token, :created_at
+    attr_accessor :id, :username, :token, :last_updated
 
     # Static
     def self.find_or_create(username)
@@ -16,8 +16,7 @@ module OctoFeed
     def self.create(username)
       id = $mongo_db['users'].insert({
         'username' => username,
-        'events' => [],
-        'created_at' => Time.now
+        'last_updated' => Time.now
       })
 
       $mongo_db['users'].find_one(id)
@@ -31,15 +30,14 @@ module OctoFeed
     def initialize(data)
       @id = data['_id']
       @username = data['username']
-      @events = data['events']
       @token = nil
-      @created_at = data['created_at']
+      @last_updated = data['last_updated']
     end
 
-    # Add an event id to the database
+    # Set the `last_updated` value of the user to `Time.now`
     # To be able to test if an event has already been read by the user
-    def add_event(event_id)
-      OctoFeed::User.update @username, {'$push' => {'events' => event_id}}
+    def update_last_updated
+      OctoFeed::User.update @username, {'$set' => {'last_updated' => Time.now}}
     end
 
   end
