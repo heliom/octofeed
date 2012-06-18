@@ -1,3 +1,4 @@
+# encoding: utf-8
 require File.expand_path('../boot', __FILE__)
 
 module OctoFeed
@@ -26,6 +27,7 @@ module OctoFeed
         @is_xhr = request.xhr?
 
         if @user
+          @page_title = "#{@user[:username]}’s feed"
           # Get repos being watched by the user
           # We will need that list to build a repo-group or a user-group if not watching the repo
           repos_uri = URI.parse("https://api.github.com/user/watched?access_token=#{@user[:token]}")
