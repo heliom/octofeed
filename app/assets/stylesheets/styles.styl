@@ -71,10 +71,13 @@ header
   h1
     float: left
     margin: 0
+    font-size: 24
     line-height: 49px
 
   a
     color: #222
+    transition: color .15s ease-in 0
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5)
 
     &:hover, &:focus
       color: #4183C4
@@ -87,10 +90,6 @@ header
 
     li { float: left }
     li + li { margin: 0 0 0 12px }
-    
-    a 
-      transition: color .15s ease-in 0
-      text-shadow: 0 1px 0 rgba(255,255,255,0.5)
 
 // Layout ---------------------------------------------------------------------
 .container
@@ -110,7 +109,7 @@ header
   color: #333
   font-weight: bold
   text-shadow: 0 1px 0 #fff
-  box-shadow: 0 0 0 2px rgba(0,0,0,.05)
+  // box-shadow: 0 0 0 2px rgba(0,0,0,.05)
 
 
   &.login-with-gh
@@ -137,11 +136,17 @@ header
 
 // Login ----------------------------------------------------------------------
 .login
+  text-align: center
+  
   h1 { margin: 0 0 1em }
+  p { color: #666 }
+  strong { color: #333; }
   
   .tagline
-    font-size: 27
     margin: 1em 0 1.5em
+    color: #495961
+    font-size: 27
+    font-weight: lighter
   
   .public, .private
     background-color: #f4f4f4
@@ -151,6 +156,9 @@ header
     border-bottom-width: 2px
     border-radius: 0 0 3px 3px
     padding: 2em
+    
+    p
+        font-size: 15
       
   .private
     background: linear-gradient(top, #F4F9FA, #EAF2F5)
@@ -162,7 +170,8 @@ header
     border-top: none
   
   .col-1
-    margin: 2em 0
+    margin: 4em 0 0
+    text-align: left
 
 // Logged --------------------------------------------------------------------
 .logged
