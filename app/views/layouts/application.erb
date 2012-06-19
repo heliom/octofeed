@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title><%= "#{@page_title} | " if @page_title %>OctoFeed</title>
+    <title><%= "#{@page_title} | " if @page_title %>OctoFeed — The GitHub news feed you’ve wished for</title>
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="GitHub’s news feed revisited and refactored">
     <meta property="og:title" content="Octofeed">
@@ -14,14 +14,15 @@
     <header>
       <div class="container">
         <h1><a href="/">OctoFeed</a></h1>
-        <h2>The GitHub news feed you’ve wished for</h2>
-        <% if @user %>
-          <nav>
-            <ul>
-              <li><a href="/logout">Logout</a></li>
-            </ul>
-          </nav>
-        <% end %>
+        <nav>
+          <ul>
+            <% if !@user %>
+            <li><a href="/auth/github_private">Login</a></li>
+            <% else %>
+            <li><a href="/logout">Logout</a></li>
+            <% end %>
+          </ul>
+        </nav>
       </div>
     </header>
     <%= yield %>

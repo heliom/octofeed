@@ -69,16 +69,12 @@ header
   .container { padding: 0 }
 
   h1
-    font-family: Trebuchet MS
     float: left
     margin: 0
     line-height: 49px
 
-  h2
-    float: left
-
   a
-    color: #000
+    color: #222
 
     &:hover, &:focus
       color: #4183C4
@@ -86,10 +82,15 @@ header
 
   nav
     float: right
+    font-weight: bold
     line-height: 49px
 
     li { float: left }
     li + li { margin: 0 0 0 12px }
+    
+    a 
+      transition: color .15s ease-in 0
+      text-shadow: 0 1px 0 rgba(255,255,255,0.5)
 
 // Layout ---------------------------------------------------------------------
 .container
@@ -137,27 +138,31 @@ header
 // Login ----------------------------------------------------------------------
 .login
   h1 { margin: 0 0 1em }
-
+  
+  .tagline
+    font-size: 27
+    margin: 1em 0 1.5em
+  
   .public, .private
     background-color: #f4f4f4
     background: linear-gradient(top, #fcfcfc, #f4f4f4)
     border: 1px solid #ddd
     border-bottom-color: #ccc
     border-bottom-width: 2px
-    border-radius: 3px
+    border-radius: 0 0 3px 3px
     padding: 2em
-    margin: 0 0 25px 0
-
+      
   .private
-    background-color: #eaf2f5
-    border-color: #cee1e8
-    border-bottom-color: #b6d2dd
     background: linear-gradient(top, #F4F9FA, #EAF2F5)
-
-  .col-2
-    float: left
-    width: 50%
-    padding: 0 1em 0 0
+    background-color: #eaf2f5
+    border-bottom: 1px solid #cee1e8
+    border-radius:3px 3px 0 0
+    
+  .public 
+    border-top: none
+  
+  .col-1
+    margin: 2em 0
 
 // Logged --------------------------------------------------------------------
 .logged
@@ -203,7 +208,12 @@ header
       padding: 0 0 .6em 62px
       font-weight: normal
       color: lighten($bluecolor, 40%)
-
+      
+      & > span { color: #495961 }
+      
+      span a
+        color: #495961
+      
       .repo
         font-weight: bold
         margin: 0 .2em 0 0
@@ -213,11 +223,18 @@ header
 
         a
           @extends .dark-grey-gradient
-          font-size: 11
-          line-height: 1.2
           display: inline-block
+<<<<<<< HEAD
           color: #fff
           padding: .18em .45em
+=======
+          position: relative
+          top: -2px;
+          padding: 2px 5px
+          color: #fff
+          font-size: 11
+          line-height: 1.2
+>>>>>>> Update login layout and avatar's CSS
           border-radius: 2px
           text-shadow: 0 -1px 0 rgba(0,0,0,.2)
           opacity: .7
@@ -225,6 +242,8 @@ header
           &:hover, &:focus
             opacity: 1
             text-decoration: none
+        
+        
 
       .avatar
         display: block
@@ -237,8 +256,9 @@ header
     img
       background-color: #fff
       vertical-align: middle
-      padding: 2px
+      padding: 1px
       border: 1px solid #d0d0d0
+      border-radius: 2px
       transition: width .12s, height .12s
 
     & > ul { margin-top: .45em }
