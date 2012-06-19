@@ -1,16 +1,34 @@
 # OctoFeed
 
-## Installation
+## Intallation
+
+### GitHub apps
+You will have to [register 2 GitHub apps](https://github.com/settings/applications) with the following callbacks:
+```
+http://yourdomain.com/auth/github_public/callback
+http://yourdomain.com/auth/github_private/callback
+```
+
+Personally, I added `127.0.0.1 octofeed.dev` in my `/etc/hosts` file and serve the app with [Shotgun](https://github.com/rtomayko/shotgun/). The domain of the apps is `http://octofeed.dev:9393`.
+
+### Environment configuration
+Set your GitHub apps id & secret in `config/environment.rb`. You may also want to change your database URI.
 ```sh
 $ cp config/environment.rb.sample config/environment.rb
-# Then set your GitHub app id & secret in `config/environment.rb`
-$ git submodule init && git submodule update
+```
+
+### Node.js modules (dev dependencies)
+The app is developed with [Stylus](https://github.com/Learnboost/stylus) (with [nib](https://github.com/visionmedia/nib)) & [CoffeeScript](https://github.com/jashkenas/coffee-script). Both are required if you want to run the app locally.
+```sh
 $ npm install
 ```
 
-## What this app is not
-* This is not meant to be a third party tool. This is only a proof concept, a UX redesign of your lovely GitHub news feed. I do believe it would be usable, but not quite fast just yet.
-* This is not a “we made a more performant news feed” kind of app. We’re only trying to fix/suggest what’s lacking and performance is not the issue here.
+### Submodules
+* [heliom/stylus-utils](https://github.com/heliom/stylus-utils)
+
+```sh
+$ git submodule init && git submodule update
+```
 
 ## The Thinking
 http://heliom.ca/en/blog/octofeed
@@ -22,5 +40,5 @@ http://heliom.ca/en/blog/octofeed
 ## Things we added
 * Repo icons/avatars. A repo group will display its icon instead of the default image if the repo as an `icon.png` image in `master/root`
 
-## Things GitHub could update
-* Your own repos aren’t listed in that list: http://developer.github.com/v3/repos/watching/#list-repos-being-watched. Would make sense if they were, no?
+## Things we noted
+* There seems to be some irregularities with your watching repos list (http://developer.github.com/v3/repos/watching/#list-repos-being-watched). Your own repos and some other private repos that you’re collaborating aren’t listed.
