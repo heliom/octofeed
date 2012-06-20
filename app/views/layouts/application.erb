@@ -14,19 +14,17 @@
     <header>
       <div class="container">
         <h1><a href="/">OctoFeed</a></h1>
+        <div class="nav">
         <% if @user %>
-          <nav>
             <div class="user">
               <%= gh_link @user[:username], :label => %(<img width="20" height="20" src="#{@user[:avatar]}" alt=""#{@user[:username]}">) %>
               <%= gh_link @user[:username] %>
             </div>
-            <li><a href="/logout">Logout</a></li>
-          </nav>
+            <a href="/logout" class="subtle">Log out</a>
         <% else %>
-          <nav>
-            <li><a href="/auth/github_private">Login</a></li>
-          </nav>
+          <a href="/auth/github_private">Login</a></li>
         <% end %>
+        </div>
       </div>
     </header>
     <%= yield %>

@@ -82,19 +82,23 @@ header
       color: #4183C4
       text-decoration: none
 
-  nav
+  .nav
     float: right
     font-weight: bold
     line-height: 49px
-
-    li { float: left }
-    li + li { margin: 0 0 0 12px }
+    
+    a.subtle
+      color: rgba(0,0,0,.5)
+      font-size: 12
+      font-weight: normal
+      
+      &:hover, &:focus { color: #4183C4 }
 
     .user
       float: left
-      margin-right: 1em
+      margin-right: .75em
 
-      a { float: left }
+      a { float: left }     
 
       img
         position: relative
