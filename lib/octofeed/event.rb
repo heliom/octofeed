@@ -11,6 +11,7 @@ module OctoFeed
       @created_at = json['created_at']
       @group = ''
       @user = opts[:user]
+      @private = !json['public']
 
       # Actor
       @actor = {
@@ -47,6 +48,11 @@ module OctoFeed
     end
 
     private
+    # Test if the event repo is yours
+    def yours?
+      @repo[:name].include?("#{@user.username}/")
+    end
+
     # Helper that wraps extra/meta group data into a span
     # Extras are for example: pull request and issue number, branch of the group, etc.
     def extra(msg)
@@ -69,10 +75,12 @@ module OctoFeed
     end
 
     def set_repo_group(opts={})
+      repo_status = @private ? 'private' : yours? ? 'public-yours' : 'public'
+
       {
         :type => opts[:type] || 'repo-group',
         :id => opts[:id] || @repo[:name],
-        :icon => opts[:icon] || '/images/repo-default.png',
+        :icon => opts[:icon] || "/images/repo-#{repo_status}.png",
         :title => opts[:title] || gh_user_repo_link(@repo[:name]),
         :name => opts[:name] || @repo[:name]
       }
