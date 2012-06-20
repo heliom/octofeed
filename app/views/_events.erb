@@ -1,6 +1,6 @@
 <%= %(<meta name="page-number" content="#{@page_number}">) if @is_xhr && @page_number < 10 %>
 <% @event_groups.each do |event_group| %>
-  <article class="<%= event_group.type %>" data-name="<%= event_group.name %>">
+  <article class="<%= event_group.type %> group" data-name="<%= event_group.name %>">
     <h1>
       <%= gh_link event_group.name, :class => 'avatar', :label => %(<img width="50" height="50" src="#{event_group.icon}" alt="#{event_group.name}">) %>
       <span><%= event_group.title %></span>
