@@ -14,7 +14,7 @@ require './lib/octofeed/version'
 # * Create a new tag and push it
 # * Push to Heroku
 desc 'deploy app to heroku'
-task :deploy => [:'assets:compile', :'assets:commit', :bump] do
+task :deploy => [:bump, :'assets:compile', :'assets:commit', :tag] do
   puts "Pushing to heroku"
   `git push -f heroku master`
   puts "=> Successfully pushed to heroku"
@@ -22,8 +22,7 @@ end
 
 # `bundle exec rake bump`
 # * Bump version
-#   => increment the patch only (Major.Minor.Patch)
-# * Create a new tag and push it
+#   => increment the version patch (Major.Minor.Patch)
 desc 'bump version'
 task :bump do
   puts "Bumping version"
@@ -33,17 +32,29 @@ task :bump do
   patch = version[2].to_i
   patch += 1
   new_version = "#{major}.#{minor}.#{patch}"
-  content = "module OctoFeed\n\s\sVERSION = '#{new_version}'\nend"
 
   puts "New version will be #{new_version}. Is that alright? (y||x.y.z)"
   answer = STDIN.gets.chomp
-  new_version = answer == 'y' ? new_version : answer
+  @new_version = answer == 'y' || answer == '' ? new_version : answer
 
+  if @new_version.match(/^[0-9]+.[0-9]+.[0-9]+$/) == nil
+    puts "=> Invalid version #{@new_version}"
+    puts '=> Aborting'
+    exit
+  end
+
+  content = "module OctoFeed\n\s\sVERSION = '#{@new_version}'\nend"
   `echo "#{content}" > lib/octofeed/version.rb`
-  `git add lib/octofeed/version.rb && git commit -m "bump version -> #{new_version}"`
-  `git tag v#{new_version} && git push --tags`
+  puts "=> Successfully bumped version to #{@new_version}"
+end
 
-  puts "=> Successfully bumped version to #{new_version}"
+# `bundle exec rake tag`
+# * Create a new tag and push it
+desc 'create a new version tag'
+task :tag do
+  version = @new_version || OctoFeed::VERSION
+  `git add lib/octofeed/version.rb && git commit -m "Bump version to #{version}"`
+  `git tag v#{version} && git push --tags`
 end
 
 namespace :assets do
@@ -59,6 +70,8 @@ namespace :assets do
   desc 'compile css assets'
   task :compile_css do
     puts "Compiling stylesheets"
+    version = @new_version || OctoFeed::VERSION
+
     sprockets = Sprockets::Environment.new
     sprockets.append_path 'app/assets/stylesheets'
     Stylus.setup sprockets
@@ -67,7 +80,7 @@ namespace :assets do
 
     asset = sprockets['styles.styl']
     outpath = File.join('public', 'css')
-    outfile = Pathname.new(outpath).join('styles.min.css')
+    outfile = Pathname.new(outpath).join("styles.min-#{version}.css")
 
     FileUtils.mkdir_p outfile.dirname
 
@@ -81,13 +94,15 @@ namespace :assets do
   desc 'compile javascript assets'
   task :compile_js do
     puts "Compiling javascripts"
+    version = @new_version || OctoFeed::VERSION
+
     sprockets = Sprockets::Environment.new
     sprockets.js_compressor = YUI::JavaScriptCompressor.new :munge => true, :optimize => true
     sprockets.append_path 'app/assets/javascripts'
 
     asset     = sprockets['scripts.coffee']
     outpath   = File.join('public', 'js')
-    outfile   = Pathname.new(outpath).join('scripts.min.js')
+    outfile   = Pathname.new(outpath).join("scripts.min-#{version}.js")
 
     FileUtils.mkdir_p outfile.dirname
 
@@ -99,9 +114,15 @@ namespace :assets do
   # => Commit compiled assets if there are modifications
   desc 'commit compiled assets'
   task :commit do
+    puts "Removing #{OctoFeed::VERSION} assets"
+
+    js_remove_path = "public/js/scripts.min-#{OctoFeed::VERSION}.js"
+    css_remove_path = "public/css/styles.min-#{OctoFeed::VERSION}.css"
+    `git rm #{js_remove_path} #{css_remove_path}`
+
     puts "Commiting compiled assets"
     `git add public/css public/js`
-    `git commit -m "update compiled assets"`
+    `git commit -m "Update compiled assets"`
     puts "=> Successfully commited static assets"
   end
 end
