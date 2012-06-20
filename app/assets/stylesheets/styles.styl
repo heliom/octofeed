@@ -258,10 +258,7 @@ pre, code { font: 12px Consolas, Menlo, "Liberation Mono", Courier, monospace }
     border: 1px solid #d0d0d0
     border-radius: 2px
 
-  & > ul
-    padding: 1px 0 0 51px
-    & > li:first-child { padding-top: .65em }
-    & > li { padding: 0 11px }
+  & > ul { padding: 1px 0 0 51px }
 
   .group + .group
     margin: 1em 0 0
@@ -269,6 +266,7 @@ pre, code { font: 12px Consolas, Menlo, "Liberation Mono", Courier, monospace }
 // Event ---------------------------------------------------------------------
 .Event
   position: relative
+  padding: 0 11px
 
   .title { font-weight: bold }
 
@@ -290,17 +288,18 @@ pre, code { font: 12px Consolas, Menlo, "Liberation Mono", Courier, monospace }
     font-weight: normal
     float: right
 
-.new
-  background-color: #eaf2f5
+.Event:first-child { padding-top: .65em }
+
+.new { background-color: #eaf2f5 }
+.new + .new { margin-top: 1px }
 
 .user-group
   .title
     img, .username { display: none }
 
 .repo-group
-  .Event + .Event
-    padding-top: .8em
-    padding-bottom: .2em
+  .Event { padding-bottom: .5em }
+  .Event + .Event { padding-top: .3em }
 
   .body
     min-height: 35px
