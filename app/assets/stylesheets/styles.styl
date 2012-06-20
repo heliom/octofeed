@@ -343,23 +343,17 @@ pre, code {
 
 // FollowEvent ---------------------------------------------------------------
 .current-user
-  background-color: #f9f9f9
-  border: 1px solid #eee
-  padding-bottom: .6em
-  min-height: 72px
-
-  h1
-    color: #333
-    border: none
-    padding-bottom: 0
-
-    .avatar { top: 2px }
+  & > ul
+    @extends .clearfix
+    padding: .65em 0 0 62px
 
   .FollowEvent
     float: left
+    padding: 0
+
     a:hover img, a:focus img { border-color: #6991d1 }
 
-  .FollowEvent + .FollowEvent { margin: 0 0 0 .15em }
+  .FollowEvent + .FollowEvent { margin-left: .5em }
 
 // DeleteEvent ---------------------------------------------------------------
 .DeleteEvent
