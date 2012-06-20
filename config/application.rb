@@ -14,7 +14,7 @@ module OctoFeed
     set :erb, :layout => :'layouts/application'
 
     before do
-      cache_control :public, :must_revalidate, :max_age => 60
+      cache_control :private
       redirect request.url.gsub('http://', 'https://') unless request.ssl? || development?
     end
 
