@@ -1,3 +1,14 @@
+def https_request(url)
+  uri = URI.parse(url)
+
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+
+  request = Net::HTTP::Get.new(uri.request_uri)
+  http.request(request)
+end
+
 # http://api.rubyonrails.org/classes/ActionView/Helpers/DateHelper.html#method-i-time_ago_in_words
 def time_ago_in_words(from_time, opts={})
   if opts[:html] == false
