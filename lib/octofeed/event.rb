@@ -91,7 +91,6 @@ module OctoFeed
     # Each event types has a public print method that calls super(hash)
     # Easier to maintain / update events html
     def print(msg)
-      body = msg[:body] && msg[:body].length > 0 ? %(<div class="body">#{msg[:body]}</div>) : ''
       time_ago = msg[:time_ago] || time_ago_in_words(Time.parse(@created_at))
 
       %(
@@ -99,7 +98,7 @@ module OctoFeed
           <img width="30" height="30" src="#{@actor[:avatar]}">
           #{msg[:title]} #{time_ago}
         </div>
-        #{body}
+        <div class="body">#{msg[:body]}</div>
        )
     end
 

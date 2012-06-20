@@ -24,7 +24,8 @@ module OctoFeed
 
     def print
       super({
-        :title => "#{gh_user_link @actor[:username]} deleted #{@object[:type]} #{ref}"
+        :title => "#{gh_user_link @actor[:username]} deleted #{@object[:type]} #{ref}",
+        :body => "Deleted #{@object[:type]} was at <span>/#{@repo[:name]}/tree/#{@object[:ref]}</span>"
       })
     end
 
