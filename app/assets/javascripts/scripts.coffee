@@ -1,3 +1,19 @@
+$.fn.onClickOrTouch = (callback) ->
+  if window.ontouchend != undefined
+    this.each -> this._touchMoveCount = 0
+    this.on 'click', -> return false
+
+    this.on 'touchmove', ->
+      this._touchMoveCount++
+
+    this.on 'touchend', (e) ->
+      if this._touchMoveCount < 3
+        callback.call this, e
+
+      this._touchMoveCount = 0
+  else
+    this.on 'click', callback
+
 class OctoFeed
 
   constructor: ->
@@ -9,7 +25,7 @@ class OctoFeed
     $btn = $('.more')
     urlPattern = $btn.data('url-pattern')
 
-    $btn.on 'click', (e) =>
+    $btn.onClickOrTouch (e) =>
       return false if $btn.hasClass 'loading'
 
       e.preventDefault()
