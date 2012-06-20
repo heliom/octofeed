@@ -1,5 +1,7 @@
 require File.expand_path('../config/application',  __FILE__)
 
+use Rack::Deflater
+
 # Sprockets
 map '/assets' do
   environment = Sprockets::Environment.new
