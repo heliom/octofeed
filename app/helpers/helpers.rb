@@ -14,7 +14,8 @@ def time_ago_in_words(from_time, opts={})
   if opts[:html] == false
     distance_of_time_in_words(from_time, Time.now, false)
   else
-    %(<time datetime="#{from_time}" title="#{from_time.to_s.split(/\s/)[0..1].join(' ')}">#{distance_of_time_in_words(from_time, Time.now, false)} ago</time>)
+    text = "#{distance_of_time_in_words(from_time, Time.now, false)} ago".gsub(' ', '&nbsp;')
+    %(<time datetime="#{from_time}" title="#{from_time.to_s.split(/\s/)[0..1].join(' ')}">#{text}</time>)
   end
 end
 
