@@ -41,12 +41,12 @@ body
   font-size: 13
 
 body, legend, input, textarea, button
-  font-family: Helvetica, arial, freesans, clean, sans-serif
+  font-family: Helvetica, Arial, sans-serif
   line-height: 1.4
   color: #333
 
 a { color: $bluecolor }
-a:focus, a:hover  { text-decoration: underline }
+a:focus, a:hover { text-decoration: underline }
 
 p, ul, ol, dl, blockquote, table, figure { margin: 0 }
 li { list-style-type: none }
@@ -62,9 +62,8 @@ h2 { font-size: 16px }
 header
   @extends .grey-gradient
   height: 47px
-  box-shadow: 0 1px 0 rgba(255,255,255,0.4), 0 0 10px rgba(0,0,0,.1)
+  box-shadow: 0 1px 0 rgba(255,255,255,.4), 0 0 10px rgba(0,0,0,.1)
   border-bottom: 1px solid #cacaca
-  overflow: hidden
 
   .container { padding: 0 }
 
@@ -77,7 +76,7 @@ header
   a
     color: #222
     transition: color .15s ease-in 0
-    text-shadow: 0 1px 0 rgba(255,255,255,0.5)
+    text-shadow: 0 1px 0 rgba(255,255,255,.5)
 
     &:hover, &:focus
       color: #4183C4
@@ -96,7 +95,7 @@ header
   @extends .clearfix
   width: 90%
   max-width: 560px
-  margin: 0 auto
+  margin: auto
   padding: 1.9em 0 0
 
 .button
@@ -104,8 +103,8 @@ header
   display: inline-block
   padding: .6em 1.15em
   border-radius: 3px
-  border: 1px solid #DDD
-  border-bottom-color: #BBB
+  border: 1px solid #ddd
+  border-bottom-color: #bbb
   color: #333
   font-weight: bold
   text-shadow: 0 1px 0 #fff
@@ -136,18 +135,18 @@ header
 // Login ----------------------------------------------------------------------
 .login
   text-align: center
-  text-shadow: 0 1px 0 rgba(255,255,255,0.5)
-  
+  text-shadow: 0 1px 0 rgba(255,255,255,.5)
+
   h1 { margin: 0 0 1em }
   p { color: #666 }
-  strong { color: #333; }
-  
+  strong { color: #333 }
+
   .tagline
     margin: 1em 0 1.5em
     color: #495961
     font-size: 27
     font-weight: lighter
-  
+
   .public, .private
     background-color: #f4f4f4
     background: linear-gradient(top, #fcfcfc, #f4f4f4)
@@ -156,18 +155,18 @@ header
     border-bottom-width: 2px
     border-radius: 0 0 3px 3px
     padding: 2em
-    
+
     p { font-size: 15 }
-      
+
   .private
-    background: linear-gradient(top, #F4F9FA, #EAF2F5)
+    background: linear-gradient(top, #f4f9fa, #eaf2f5)
     background-color: #eaf2f5
     border-bottom: 1px solid #cee1e8
-    border-radius:3px 3px 0 0
-    
-  .public 
+    border-radius: 3px 3px 0 0
+
+  .public
     border-top: none
-  
+
   .col-1
     margin: 3em 0 0
     text-align: left
@@ -182,7 +181,7 @@ header
     margin: 1.3em 0 0
     padding: .75em 1em
     overflow: hidden
-    color: #333;
+    color: #333
     font-weight: bold
     font-size: 15
     text-align: center
@@ -200,7 +199,7 @@ header
       border-bottom-color: #2a65a0
       color: #fff
       text-decoration: none
-      text-shadow: 0px -1px 0px rgba(0, 0, 0, .3)
+      text-shadow: 0px -1px 0px rgba(0,0,0,.3)
 
 // EventGroup ----------------------------------------------------------------
 .logged
@@ -217,9 +216,9 @@ header
       padding: 0 0 .5em 62px
       font-size: 17
       font-weight: normal
-      
+
       & > span { color: #666 }
-      
+
       .repo
         font-weight: bold
         margin: 0 .2em 0 0
@@ -231,7 +230,7 @@ header
           @extends .dark-grey-gradient
           padding: .18em .45em
           position: relative
-          top: -1px;
+          top: -1px
           padding: 2px 5px
           color: #fff
           font-size: 11
@@ -243,8 +242,6 @@ header
           &:hover, &:focus
             opacity: 1
             text-decoration: none
-        
-        
 
       .avatar
         display: block
@@ -260,7 +257,6 @@ header
       padding: 1px
       border: 1px solid #d0d0d0
       border-radius: 2px
-      transition: width .12s, height .12s
 
     & > ul { margin-top: .75em }
 
@@ -295,14 +291,6 @@ header
   margin: -5px 0 -8px -12px
   padding: .75em 12px 1em
   margin: -.65em 0 -1em -12px
-  
-  // content: ""
-  // background-color: #4194d9
-  // background: linear-gradient(top, #52b2e8, #3473d5)
-  // size: 6px
-  // border-radius: 10px
-  // position: absolute
-  // top: .5em; left: -8px
 
 .user-group
   & > ul { padding-left: 62px }
@@ -314,7 +302,7 @@ header
   & > ul { padding: 0 0 0 62px }
 
   .Event + .Event
-    margin: 1em 0 0
+    margin-top: 1em
 
   .body
     min-height: 32px
