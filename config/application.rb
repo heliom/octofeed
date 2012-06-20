@@ -37,6 +37,16 @@ module OctoFeed
             watched_repos << repo['full_name']
           end
 
+          # Get users being followed by the user
+          # Used to know if you have unfollowed a user or a repo
+          users_response = https_request("https://api.github.com/user/following?access_token=#{@user[:token]}")
+
+          users = JSON.parse(users_response.body)
+          followed_users = []
+          users.each do |user|
+            followed_users << user['login']
+          end
+
           # Get events that a user has received
           # Will list private repos events if the user has selected the private app
           response = https_request(
@@ -49,11 +59,12 @@ module OctoFeed
           user.token = session[:user][:token]
 
           # Parse events
-          event_parser = OctoFeed::EventParser.new(response.body, watched_repos, user)
+          event_parser = OctoFeed::EventParser.new(response.body, watched_repos, followed_users, user)
           @event_groups = event_parser.groups
 
           # Update user `last_updated` once everything is done
-          user.update_last_updated
+          # Only if not an xhr request
+          user.update_last_updated unless @is_xhr
         end
 
         # If the request is an xhr one (`load more` ajax button), render a partial without layout

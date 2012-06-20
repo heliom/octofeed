@@ -47,12 +47,13 @@ module OctoFeed
       Time.parse(@created_at) > @user.last_updated
     end
 
-    private
+    # Public method
     # Test if the event repo is yours
-    def yours?
+    def is_yours?
       @repo[:name].include?("#{@user.username}/")
     end
 
+    private
     # Helper that wraps extra/meta group data into a span
     # Extras are for example: pull request and issue number, branch of the group, etc.
     def extra(msg)
@@ -75,7 +76,7 @@ module OctoFeed
     end
 
     def set_repo_group(opts={})
-      repo_status = @private ? 'private' : yours? ? 'public-yours' : 'public'
+      repo_status = @private ? 'private' : is_yours? ? 'public-yours' : 'public'
 
       {
         :type => opts[:type] || 'repo-group',

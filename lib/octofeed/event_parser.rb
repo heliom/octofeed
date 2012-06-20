@@ -2,10 +2,11 @@ module OctoFeed
   class EventParser
     attr_accessor :groups
 
-    def initialize(raw_json, watched_repos, user)
+    def initialize(raw_json, watched_repos, followed_users, user)
       @groups = []
       @user = user
       @watched_repos = watched_repos
+      @followed_users = followed_users
       events = JSON.parse(raw_json)
 
       # Loop through each js object received
@@ -20,22 +21,29 @@ module OctoFeed
         event = event_class.new(event_json, { :user => @user })
         event.set_group is_watching?(event.repo[:name])
 
-        # Find or create a group with the event group data
-        # Then add the event to the group
-        group = find_or_create_group(event.group)
-        group.add_event event
+        # Do not show unfollowed users events & unwatched repos events
+        if event.is_yours? || is_watching?(event.repo[:name]) || is_following?(event.actor[:username])
+          # Find or create a group with the event group data
+          # Then add the event to the group
+          group = find_or_create_group(event.group)
+          group.add_event event
 
-        # Pushes generic data into an array
-        # Only used by FollowEvent for now
-        group.add_data(event.group[:data]) if event.group[:data]
+          # Pushes generic data into an array
+          # Only used by FollowEvent for now
+          group.add_data(event.group[:data]) if event.group[:data]
+        end
       end
     end
 
-    # Returns a boolean
     # Test if repo is in the watched repos list
     # Test if the user name is in the repo name (user/repo), because your own repos aren’t in that list
     def is_watching?(repo_name)
-      @watched_repos.include?(repo_name) || repo_name.include?(@user.username)
+      @watched_repos.include?(repo_name) || repo_name.include?("#{@user.username}/")
+    end
+
+    # Test if actor is in the followed users list
+    def is_following?(username)
+      @followed_users.include?(username)
     end
 
     # Loop through already created groups
