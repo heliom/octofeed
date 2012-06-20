@@ -171,96 +171,97 @@ header
     margin: 3em 0 0
     text-align: left
 
-// Logged --------------------------------------------------------------------
-.logged
-  .more
-    @extends .grey-gradient
-    border: 1px solid #d4d4d4
-    border-bottom-color: #bcbcbc
-    display: block
-    margin: 1.3em 0 0
-    padding: .75em 1em
-    overflow: hidden
-    color: #333
-    font-weight: bold
-    font-size: 15
-    text-align: center
-    text-shadow: 0 1px 0 #fff
-    border-radius: 3px
+// BTN More -------------------------------------------------------------------
+.more
+  @extends .grey-gradient
+  border: 1px solid #d4d4d4
+  border-bottom-color: #bcbcbc
+  display: block
+  margin: 1.3em 0 0
+  padding: .75em 1em
+  overflow: hidden
+  color: #333
+  font-weight: bold
+  font-size: 15
+  text-align: center
+  text-shadow: 0 1px 0 #fff
+  border-radius: 3px
 
-    &.loading, &:hover.loading
-      background: url(/images/octocat-spinner.gif) center center no-repeat
-      text-indent: -9999px
-      border: 1px solid #518cc6
+  &.loading, &:hover.loading
+    background: url(/images/octocat-spinner.gif) center center no-repeat
+    text-indent: -9999px
+    border: 1px solid #518cc6
 
-    &:hover, &:focus
-      @extends .blue-gradient
-      border: 1px solid #518cc6
-      border-bottom-color: #2a65a0
-      color: #fff
-      text-decoration: none
-      text-shadow: 0px -1px 0px rgba(0,0,0,.3)
+  &:hover, &:focus
+    @extends .blue-gradient
+    border: 1px solid #518cc6
+    border-bottom-color: #2a65a0
+    color: #fff
+    text-decoration: none
+    text-shadow: 0px -1px 0px rgba(0,0,0,.3)
 
 // EventGroup ----------------------------------------------------------------
-.logged
-  article
+.group
+  position: relative
+  padding: .6em 0 1.2em
+  min-height: 75px
+  border-radius: 3px
+
+  h1
+    border-bottom: 1px solid #e0e0e0
     position: relative
-    padding: .6em 0 1.2em
-    min-height: 75px
-    border-radius: 3px
+    margin: 0
+    padding: 0 0 .5em 62px
+    font-size: 17
+    font-weight: normal
 
-    h1
-      border-bottom: 1px solid #e0e0e0
-      position: relative
-      margin: 0
-      padding: 0 0 .5em 62px
-      font-size: 17
-      font-weight: normal
+    & > span { color: #666 }
 
-      & > span { color: #666 }
+    .repo
+      font-weight: bold
+      margin: 0 .2em 0 0
 
-      .repo
-        font-weight: bold
-        margin: 0 .2em 0 0
+    .extra
+      display: inline-block
 
-      .extra
-        display: inline-block
+      a
+        @extends .dark-grey-gradient
+        padding: .18em .45em
+        position: relative
+        top: -1px
+        padding: 2px 5px
+        color: #fff
+        font-size: 11
+        line-height: 1.2
+        border-radius: 2px
+        text-shadow: 0 -1px 0 rgba(0,0,0,.2)
+        opacity: .7
 
-        a
-          @extends .dark-grey-gradient
-          padding: .18em .45em
-          position: relative
-          top: -1px
-          padding: 2px 5px
-          color: #fff
-          font-size: 11
-          line-height: 1.2
-          border-radius: 2px
-          text-shadow: 0 -1px 0 rgba(0,0,0,.2)
-          opacity: .7
+        &:hover, &:focus
+          opacity: 1
+          text-decoration: none
 
-          &:hover, &:focus
-            opacity: 1
-            text-decoration: none
+    .avatar
+      display: block
+      position: absolute
+      top: 0; left: 0
 
-      .avatar
-        display: block
-        position: absolute
-        top: 0; left: 0
+      &:hover img, &:focus img
+        border-color: #6991d1
 
-        &:hover img, &:focus img
-          border-color: #6991d1
+  img
+    background-color: #fff
+    vertical-align: middle
+    padding: 1px
+    border: 1px solid #d0d0d0
+    border-radius: 2px
 
-    img
-      background-color: #fff
-      vertical-align: middle
-      padding: 1px
-      border: 1px solid #d0d0d0
-      border-radius: 2px
+  & > ul
+    padding: 1px 0 0 50px
+    & > li:first-child { padding-top: .65em }
+    & > li { padding: 0 12px }
 
-    & > ul { margin-top: .75em }
-
-  article + article
+  .group + .group
     margin: 1em 0 0
 
 // Event ---------------------------------------------------------------------
@@ -287,25 +288,18 @@ header
 
 .new
   background-color: #eaf2f5
-  padding: 5px 12px 7px
-  margin: -5px 0 -8px -12px
-  padding: .75em 12px 1em
-  margin: -.65em 0 -1em -12px
 
 .user-group
-  & > ul { padding-left: 62px }
-
   .title
     img, .username { display: none }
 
 .repo-group
-  & > ul { padding: 0 0 0 62px }
-
   .Event + .Event
-    margin-top: 1em
+    padding-top: .8em
+    padding-bottom: .2em
 
   .body
-    min-height: 32px
+    min-height: 35px
     padding: 0 0 0 36px
 
   .title
@@ -326,25 +320,24 @@ header
   .title img { bottom: -34px }
 
 // FollowEvent ---------------------------------------------------------------
-.logged
-  .current-user
-    background-color: #f9f9f9
-    border: 1px solid #eee
-    padding-bottom: .6em
-    min-height: 72px
+.current-user
+  background-color: #f9f9f9
+  border: 1px solid #eee
+  padding-bottom: .6em
+  min-height: 72px
 
-    h1
-      color: #333
-      border: none
-      padding-bottom: 0
+  h1
+    color: #333
+    border: none
+    padding-bottom: 0
 
-      .avatar { top: 2px }
+    .avatar { top: 2px }
 
-    .FollowEvent
-      float: left
-      a:hover img, a:focus img { border-color: #6991d1 }
+  .FollowEvent
+    float: left
+    a:hover img, a:focus img { border-color: #6991d1 }
 
-    .FollowEvent + .FollowEvent { margin: 0 0 0 .15em }
+  .FollowEvent + .FollowEvent { margin: 0 0 0 .15em }
 
 // Footer --------------------------------------------------------------------
 footer
@@ -355,4 +348,4 @@ footer
   p { margin: .2em 0 }
 
 // Media Queries -------------------------------------------------------------
-@import "mediaqueries.styl"
+@import "mediaqueries"
