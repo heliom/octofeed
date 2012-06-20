@@ -70,12 +70,12 @@ module OctoFeed
             plural = difference == 1 ? '' : 's'
 
             link_label = "#{difference} more commit#{plural} »"
-            link = gh_link link_url, :label => link_label
+            link = gh_link link_url, :label => link_label, :class => 'diff'
 
             commits_content << "<li>#{link}</li>"
           else
             link_label = "View comparison for these #{commit_count} commits »"
-            link = gh_link link_url, :label => link_label
+            link = gh_link link_url, :label => link_label, :class => 'diff'
 
             commits_content << "<li>#{link}</li>"
           end
