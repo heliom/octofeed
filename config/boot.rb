@@ -9,6 +9,9 @@ if defined?(Bundler)
   Bundler.require(:default, ENV['RACK_ENV'])
 end
 
+# Require app version first
+require "#{File.expand_path('lib/octofeed/version.rb')}"
+
 # Require helper files
 Dir[File.expand_path('../../app/helpers/**/*.rb', __FILE__)].each do |file|
   dirname = File.dirname(file)
