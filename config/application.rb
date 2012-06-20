@@ -14,7 +14,6 @@ module OctoFeed
     set :erb, :layout => :'layouts/application'
 
     before do
-      @page_title = nil
       cache_control :public, :must_revalidate, :max_age => 60
       redirect request.url.gsub('http://', 'https://') unless request.ssl? || development?
     end
@@ -27,7 +26,7 @@ module OctoFeed
         @is_xhr = request.xhr?
 
         if @user
-          @page_title = "#{@user[:username]}’s feed"
+          @page_title = "#{@user[:username]}’s OctoFeed"
           # Get repos being watched by the user
           # We will need that list to build a repo-group or a user-group if not watching the repo
           repos_uri = URI.parse("https://api.github.com/user/watched?access_token=#{@user[:token]}")
@@ -98,7 +97,7 @@ module OctoFeed
     end
 
     not_found do
-      @page_title = "404"
+      @page_title = 'No OctoFeed here…'
       erb :'404'
     end
 

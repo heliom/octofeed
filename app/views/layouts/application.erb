@@ -2,12 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title><%= "#{@page_title} | " if @page_title %>OctoFeed — The GitHub news feed you’ve wished for</title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="description" content="GitHub’s news feed revisited and refactored">
-    <meta property="og:title" content="Octofeed">
+    <title><%= @page_title || 'OctoFeed' %></title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+    <meta name="description" content="The GitHub News Feed You’ve Wished For">
+    <meta property="og:title" content="OctoFeed">
     <meta property="og:image" content="http://octofeed.heliom.ca/images/octofeed-fb.png">
-    <meta property="og:description" content="GitHub’s news feed revisited and refactored">
+    <meta property="og:description" content="The GitHub News Feed You’ve Wished For">
     <%= stylesheet_include_tag 'styles' %>
   </head>
   <body>
@@ -27,25 +27,23 @@
     </header>
     <%= yield %>
     <footer>
-      <div class="container">A user experience test by <a href="http://heliom.ca">Heliom</a>.<br> Read the <a href="http://heliom.ca/en/blog/octofeed">blog post</a>, <a href="http://news.ycombinator.com/">upvote on HN</a> and <a href="https://github.com/EtienneLem/octofeed">fork</a>.</div>
+      <div class="container">
+        <p>A user experience test by <a href="http://heliom.ca">Heliom</a>.</p>
+        <p>
+          Read the <a href="http://heliom.ca/en/blog/octofeed">blog post</a>,
+          <a href="http://news.ycombinator.com/">upvote on HN</a> and
+          <a href="https://github.com/EtienneLem/octofeed">fork</a>.
+        </p>
+      </div>
     </footer>
+    <script>document.write('<script src=' + ('__proto__' in {} ? '/js/zepto.min.js' : '/js/jquery.min.js') + '><\/script>')</script>
     <script>
-    document.write('<script src=' +
-    ('__proto__' in {} ? '/js/zepto.min.js' : '/js/jquery.min.js') +
-    '><\/script>')
-    </script>
-    <script type="text/javascript">
       var _gauges = _gauges || [];
       (function() {
-        var t   = document.createElement('script');
-        t.type  = 'text/javascript';
-        t.async = true;
-        t.id    = 'gauges-tracker';
-        t.setAttribute('data-site-id', '4fd8ba9af5a1f53fe3000060');
-        t.src = '//secure.gaug.es/track.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(t, s);
-      })();
+        var t = document.createElement('script'); t.async = true; t.id = 'gauges-tracker'
+        t.setAttribute('data-site-id', '4fd8ba9af5a1f53fe3000060'); t.src = '//secure.gaug.es/track.js'
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(t, s)
+      })()
     </script>
     <%= javascript_include_tag 'scripts' %>
   </body>
