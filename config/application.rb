@@ -84,7 +84,8 @@ module OctoFeed
       user = request.env['omniauth.auth']
       session[:user] = {
         :username => user.info.nickname,
-        :token => user.credentials.token
+        :token => user.credentials.token,
+        :avatar => user.extra.raw_info.avatar_url
       }
 
       redirect '/'

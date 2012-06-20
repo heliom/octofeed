@@ -75,7 +75,6 @@ header
 
   a
     color: #222
-    transition: color .15s ease-in 0
     text-shadow: 0 1px 0 rgba(255,255,255,.5)
 
     &:hover, &:focus
@@ -89,6 +88,19 @@ header
 
     li { float: left }
     li + li { margin: 0 0 0 12px }
+
+    .user
+      float: left
+      margin-right: 1em
+
+      a { float: left }
+
+      img
+        position: relative
+        top: -2px
+        vertical-align: middle
+        border-radius: 3px
+        margin-right: .35em
 
 // Layout ---------------------------------------------------------------------
 pre, code { font: 12px Consolas, Menlo, "Liberation Mono", Courier, monospace }
