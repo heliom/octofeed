@@ -88,14 +88,14 @@ end
 # Uses sprockets in development and local precompiled files in production
 def javascript_include_tag(file_name)
   path_prefix = development? ? '/assets/' : '/js/'
-  min_suffix = development? ? '' : '.min'
-  %(<script src="#{path_prefix}#{file_name}#{min_suffix}.js"></script>)
+  suffix = development? ? '' : ".min-#{OctoFeed::VERSION}"
+  %(<script src="#{path_prefix}#{file_name}#{suffix}.js"></script>)
 end
 
 def stylesheet_include_tag(file_name)
   path_prefix = development? ? '/assets/' : '/css/'
-  min_suffix = development? ? '' : '.min'
-  %(<link rel="stylesheet" href="#{path_prefix}#{file_name}#{min_suffix}.css">)
+  suffix = development? ? '' : ".min-#{OctoFeed::VERSION}"
+  %(<link rel="stylesheet" href="#{path_prefix}#{file_name}#{suffix}.css">)
 end
 
 # Little-tiny-homemade Markdown parser
