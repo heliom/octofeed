@@ -15,9 +15,5 @@ module OctoFeed
       })
     end
 
-    def set_repo_group
-      set_user_group
-    end
-
   end
 end

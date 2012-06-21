@@ -370,6 +370,13 @@ pre, code {
 
   .FollowEvent + .FollowEvent { margin-left: .5em }
 
+// WatchEvent ----------------------------------------------------------------
+.repo-group .WatchEvent
+  padding-bottom: 0
+
+  & + .WatchEvent { padding-top: 0 }
+  .title img, .body { display: none }
+
 // DeleteEvent ---------------------------------------------------------------
 .DeleteEvent
   .body span { color: #808080 }
