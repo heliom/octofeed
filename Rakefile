@@ -80,7 +80,7 @@ namespace :assets do
 
     asset = sprockets['styles.styl']
     outpath = File.join('public', 'css')
-    outfile = Pathname.new(outpath).join("styles.min-#{version}.css")
+    outfile = Pathname.new(outpath).join("styles-#{version}.min.css")
 
     FileUtils.mkdir_p outfile.dirname
 
@@ -102,7 +102,7 @@ namespace :assets do
 
     asset     = sprockets['scripts.coffee']
     outpath   = File.join('public', 'js')
-    outfile   = Pathname.new(outpath).join("scripts.min-#{version}.js")
+    outfile   = Pathname.new(outpath).join("scripts-#{version}.min.js")
 
     FileUtils.mkdir_p outfile.dirname
 
@@ -116,8 +116,8 @@ namespace :assets do
   task :commit do
     puts "Removing #{OctoFeed::VERSION} assets"
 
-    js_remove_path = "public/js/scripts.min-#{OctoFeed::VERSION}.js"
-    css_remove_path = "public/css/styles.min-#{OctoFeed::VERSION}.css"
+    js_remove_path = "public/js/scripts-#{OctoFeed::VERSION}.min.js"
+    css_remove_path = "public/css/styles-#{OctoFeed::VERSION}.min.css"
     `git rm #{js_remove_path} #{css_remove_path}`
 
     puts "Commiting compiled assets"
