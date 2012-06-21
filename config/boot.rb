@@ -1,4 +1,5 @@
 # Ruby requirements
+require 'digest/md5'
 require 'net/https'
 
 # Set up gems listed in the Gemfile

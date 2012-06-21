@@ -14,7 +14,7 @@ module OctoFeed
     set :erb, :layout => :'layouts/application'
 
     before do
-      cache_control :private
+      cache_control :no_cache
       redirect request.url.gsub('http://', 'https://') unless request.ssl? || development?
     end
 
@@ -70,10 +70,13 @@ module OctoFeed
         # If the request is an xhr one (`load more` ajax button), render a partial without layout
         # Else render the index
         if @is_xhr
-          erb :_events, :layout => false
+          response_body = erb :_events, :layout => false
         else
-          erb :index
+          response_body = erb :index
         end
+
+        etag Digest::MD5.hexdigest(response_body)
+        response_body
       end
     end
 
