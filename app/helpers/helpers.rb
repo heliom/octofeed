@@ -91,13 +91,13 @@ end
 # Uses sprockets in development and local precompiled files in production
 def javascript_include_tag(file_name)
   path_prefix = development? ? '/assets/' : '/js/'
-  suffix = development? ? '' : ".min-#{OctoFeed::VERSION}"
+  suffix = development? ? '' : "-#{OctoFeed::VERSION}.min"
   %(<script src="#{path_prefix}#{file_name}#{suffix}.js"></script>)
 end
 
 def stylesheet_include_tag(file_name)
   path_prefix = development? ? '/assets/' : '/css/'
-  suffix = development? ? '' : ".min-#{OctoFeed::VERSION}"
+  suffix = development? ? '' : "-#{OctoFeed::VERSION}.min"
   %(<link rel="stylesheet" href="#{path_prefix}#{file_name}#{suffix}.css">)
 end
 
