@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Server
+gem 'unicorn'
+
 # App
 gem "rake"
 gem "sinatra", "~> 1.3.2"
