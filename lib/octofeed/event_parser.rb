@@ -2,12 +2,13 @@ module OctoFeed
   class EventParser
     attr_accessor :groups
 
-    def initialize(raw_json, watched_repos, followed_users, user)
+    def initialize(raw_json, watched_repos, followed_users, user, limit=0)
       @groups = []
       @user = user
       @watched_repos = watched_repos
       @followed_users = followed_users
       events = JSON.parse(raw_json)
+      events = events[0..limit] if limit > 0
 
       # Loop through each js object received
       # Figures out the class and instantiate a new event
