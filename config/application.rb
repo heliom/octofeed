@@ -15,12 +15,12 @@ module OctoFeed
 
     before do
       cache_control :no_cache
+      @user = session[:user]
       redirect request.url.gsub('http://', 'https://') unless request.ssl? || development?
     end
 
     ['/', '/page/:page_number'].each do |path|
       get path do
-        @user = session[:user]
         @event_groups = []
         @page_number = (params[:page_number] || 1).to_i
         @is_xhr = request.xhr?
