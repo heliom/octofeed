@@ -27,6 +27,7 @@ module OctoFeed
 
         if @user
           @page_title = "#{@user[:username]}’s OctoFeed"
+
           # Get repos being watched by the user
           # We will need that list to build a repo-group or a user-group if not watching the repo
           repos_response = https_request("https://api.github.com/user/watched?access_token=#{@user[:token]}")
@@ -101,6 +102,17 @@ module OctoFeed
 
     not_found do
       @page_title = 'No OctoFeed here…'
+
+      # Get first event of the public events feed
+      response = https_request("https://api.github.com/events")
+      event = JSON.parse(response.body).first
+      username = event['actor']['login']
+      user = OctoFeed::User.new({'username' => username, 'last_updated' => Time.now})
+
+      # Parse the event
+      event_parser = OctoFeed::EventParser.new(response.body, [], [username], user, 1)
+      @event_groups = event_parser.groups
+
       erb :'404'
     end
 

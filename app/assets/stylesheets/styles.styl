@@ -57,7 +57,11 @@ hgroup > :first-child { margin-bottom: .3em }
 hgroup > :first-child + * { margin-top: .3em }
 
 h1, h2, h3, h4 { line-height: 1.1 }
-h2 { font-size: 16px }
+h2
+  margin: 1em 0 1.5em
+  color: #495961
+  font-size: 27
+  font-weight: lighter
 
 // Header ---------------------------------------------------------------------
 header
@@ -162,12 +166,6 @@ pre, code {
   h1 { margin: 0 0 .75em }
   p { color: #666 }
   strong { color: #333 }
-
-  .tagline
-    margin: 1em 0 1.5em
-    color: #495961
-    font-size: 27
-    font-weight: lighter
 
   .public, .private
     background-color: #f4f4f4
@@ -372,6 +370,10 @@ pre, code {
 // DeleteEvent ---------------------------------------------------------------
 .DeleteEvent
   .body span { color: #808080 }
+
+// 404 -----------------------------------------------------------------------
+.four-o-four
+  h2 { margin-bottom: .5em }
 
 // Footer --------------------------------------------------------------------
 footer
