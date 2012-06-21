@@ -96,6 +96,11 @@ module OctoFeed
       redirect '/'
     end
 
+    # GitHub apps login failure
+    get 'auth/failure' do
+      redirect '/'
+    end
+
     get '/logout' do
       session.clear
       redirect '/'
