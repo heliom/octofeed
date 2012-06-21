@@ -66,7 +66,7 @@ namespace :assets do
 
   # `bundle exec rake assets:compile_css`
   # IN  => /app/assets/stylesheets/styles.styl
-  # OUT => /public/css/styles.min.css
+  # OUT => /public/css/styles-<version>.min.css
   desc 'compile css assets'
   task :compile_css do
     puts "Compiling stylesheets"
@@ -90,7 +90,7 @@ namespace :assets do
 
   # `bundle exec rake assets:compile_js`
   # IN  => /app/assets/javascripts/scripts.coffee
-  # OUT => /public/js/scripts.min.js
+  # OUT => /public/js/scripts-<version>.min.js
   desc 'compile javascript assets'
   task :compile_js do
     puts "Compiling javascripts"
