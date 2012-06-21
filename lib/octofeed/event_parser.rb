@@ -8,7 +8,7 @@ module OctoFeed
       @watched_repos = watched_repos
       @followed_users = followed_users
       events = JSON.parse(raw_json)
-      events = events[0..limit] if limit > 0
+      events = events[0...limit] if limit > 0
 
       # Loop through each js object received
       # Figures out the class and instantiate a new event
