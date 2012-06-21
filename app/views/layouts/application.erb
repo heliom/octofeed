@@ -38,15 +38,17 @@
         </p>
       </div>
     </footer>
-    <script>document.write('<script src=' + ('__proto__' in {} ? '/js/lib/zepto-1.0rc1.min.js' : '/js/lib/jquery-1.7.2.min.js') + '><\/script>')</script>
-    <script>
-      var _gauges = _gauges || [];
-      (function() {
-        var t = document.createElement('script'); t.async = true; t.id = 'gauges-tracker'
-        t.setAttribute('data-site-id', '4fd8ba9af5a1f53fe3000060'); t.src = '//secure.gaug.es/track.js'
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(t, s)
-      })()
-    </script>
+    <% if production? %>
+      <script>
+        var _gauges = _gauges || [];
+        (function() {
+          var t = document.createElement('script'); t.async = true; t.id = 'gauges-tracker'
+          t.setAttribute('data-site-id', '4fd8ba9af5a1f53fe3000060'); t.src = '//secure.gaug.es/track.js'
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(t, s)
+        })()
+      </script>
+    <% end %>
+    <script>document.write('<script src=/js/lib/' + ('__proto__' in {} ? 'zepto-1.0rc1.min.js' : 'jquery-1.7.2.min.js') + '><\/script>')</script>
     <%= javascript_include_tag 'scripts' %>
   </body>
 </html>
