@@ -27,5 +27,5 @@ group :development do
 end
 
 # Production dependencies
-group :produciton do
+group :production do
 end
