@@ -58,6 +58,7 @@ module OctoFeed
           # Then set token variable. Not saving it in db
           user = OctoFeed::User.find_or_create(session[:user][:username])
           user.token = session[:user][:token]
+          @last_updated = params[:last_updated] ? Time.parse(params[:last_updated]) : user.last_updated
 
           # Parse events
           event_parser = OctoFeed::EventParser.new(response.body, watched_repos, followed_users, user)

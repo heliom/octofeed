@@ -7,7 +7,7 @@
     </h1>
     <ul>
       <% event_group.events.each do |event| %>
-        <li class="<%= event.type %> Event<%= ' new' if event.is_new? %>"><%= event.print %></li>
+        <li class="<%= event.type %> Event<%= ' new' if event.is_new?(@last_updated) %>"><%= event.print %></li>
       <% end %>
     </ul>
   </article>

@@ -4,7 +4,7 @@
       <%= erb :_events, :layout => false %>
 
       <% if @page_number < 10 %>
-        <a class="more" href="/page/<%= @page_number + 1 %>" data-url-pattern="/page/:number">More</a>
+        <a class="more" href="/page/<%= @page_number + 1 %>?last_updated=<%= @last_updated %>" data-url-pattern="/page/:number?last_updated=<%= @last_updated %>">More</a>
       <% end %>
     </section>
   </div>

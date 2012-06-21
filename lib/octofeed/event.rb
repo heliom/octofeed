@@ -43,8 +43,9 @@ module OctoFeed
 
     # Public method
     # Test if an event is more recent than the last_updated value of a user
-    def is_new?
-      Time.parse(@created_at) > @user.last_updated
+    def is_new?(last_updated=nil)
+      last = last_updated || @user.last_updated
+      Time.parse(@created_at) > last
     end
 
     # Public method
