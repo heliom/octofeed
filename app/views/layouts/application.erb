@@ -17,7 +17,7 @@
         <div class="nav">
         <% if @user %>
             <div class="user">
-              <%= gh_link @user[:username], :label => %(<img width="20" height="20" src="#{@user[:avatar]}" alt=""#{@user[:username]}">) %>
+              <%= gh_link @user[:username], :label => %(<img width="20" height="20" src="#{@user[:avatar]}" alt="#{@user[:username]}">) %>
               <%= gh_link @user[:username] %>
             </div>
             <a href="/logout" class="subtle">Log out</a>
