@@ -22,18 +22,14 @@ module OctoFeed
         event = event_class.new(event_json, { :user => @user })
         event.set_group is_watching?(event.repo[:name])
 
-        # Do not show unfollowed users events & unwatched repos events
-        # We don’t want these rules applied to the FollowEvents
-        if event.is_yours? || is_watching?(event.repo[:name]) || is_following?(event.actor[:username]) || event.type == 'FollowEvent'
-          # Find or create a group with the event group data
-          # Then add the event to the group
-          group = find_or_create_group(event.group)
-          group.add_event event
+        # Find or create a group with the event group data
+        # Then add the event to the group
+        group = find_or_create_group(event.group)
+        group.add_event event
 
-          # Pushes generic data into an array
-          # Only used by FollowEvent for now
-          group.add_data(event.group[:data]) if event.group[:data]
-        end
+        # Pushes generic data into an array
+        # Only used by FollowEvent for now
+        group.add_data(event.group[:data]) if event.group[:data]
       end
     end
 
