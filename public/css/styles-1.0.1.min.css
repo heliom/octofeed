@@ -99,6 +99,9 @@ pre,code{font-size:12px;font-size:1.2rem;font-family:Consolas,Menlo,"Liberation 
 .current-user .FollowEvent{float:left;padding:0;}
 .current-user .FollowEvent a:hover img,.current-user .FollowEvent a:focus img{border-color:#6991d1}
 .current-user .FollowEvent + .FollowEvent{margin-left:.5em}
+.repo-group .WatchEvent{padding-bottom:0;}
+.repo-group .WatchEvent + .WatchEvent{padding-top:0}
+.repo-group .WatchEvent .title img,.repo-group .WatchEvent .body{display:none}
 .DeleteEvent .body span{color:#808080}
 .four-o-four h2,.four-o-four p{text-align:center}
 .four-o-four h2{margin-bottom:.5em}
