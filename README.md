@@ -54,7 +54,6 @@ http://heliom.ca/en/blog/octofeed
 
 ## Things we added
 * Repo icon/avatar. If a repo has an `/icon.png` image in its `master` branch, it will be displayed in repo-related feed entries.
-* Unfollowed users and unwatched repos events are not listed.
 
 ## Things we noted
 * There seems to be some irregularities with your watched repos list (http://developer.github.com/v3/repos/watching/#list-repos-being-watched). Your own repos and some other private repos you’re collaborating on aren’t listed.
