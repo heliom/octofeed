@@ -16,7 +16,6 @@ module OctoFeed
     before do
       cache_control :no_cache
       @user = session[:user]
-      redirect request.url.gsub('http://', 'https://') unless request.ssl? || development?
     end
 
     ['/', '/page/:page_number'].each do |path|
