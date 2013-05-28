@@ -33,7 +33,7 @@ module OctoFeed
 
           # Get repos being watched by the user
           # We will need that list to build a repo-group or a user-group if not watching the repo
-          repos_response = https_request("https://api.github.com/user/watched?access_token=#{@user[:token]}")
+          repos_response = https_request("https://api.github.com/user/subscriptions?access_token=#{@user[:token]}")
 
           repos = JSON.parse(repos_response.body)
           watched_repos = []
