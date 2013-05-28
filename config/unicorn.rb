@@ -1,2 +1,7 @@
-worker_processes 4 # amount of unicorn workers to spin up
-timeout 30         # restarts workers that hang for 30 seconds
+if ENV['RACK_ENV'] == 'development'
+  worker_processes 1
+else
+  worker_processes 4
+end
+
+timeout 30
