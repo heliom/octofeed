@@ -6,6 +6,7 @@ gem 'unicorn'
 # App
 gem "rake"
 gem "sinatra", "~> 1.3.2"
+gem "sinatra-contrib"
 gem "erubis", "~> 2.7.0"
 gem "omniauth-github"
 gem "json"

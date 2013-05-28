@@ -13,6 +13,10 @@ module OctoFeed
     set :public_folder, File.expand_path('../../public',  __FILE__)
     set :erb, :layout => :'layouts/application'
 
+    configure :development do
+      register Sinatra::Reloader
+    end
+
     before do
       cache_control :no_cache
       @user = session[:user]
