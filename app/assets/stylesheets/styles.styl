@@ -40,6 +40,7 @@ html
 
 body
   font-size: 13
+  height: 100%
 
 body, legend, input, textarea, button
   font-family: Helvetica, Arial, sans-serif
@@ -118,6 +119,11 @@ pre, code {
   font-size: 12
   font-family: Consolas, Menlo, "Liberation Mono", Courier, monospace
 }
+
+.wrap
+  position: relative
+  min-height: 100%
+  padding-bottom: 105px
 
 .container
   @extends .clearfix
@@ -392,6 +398,9 @@ pre, code {
 
 // Footer --------------------------------------------------------------------
 footer
+  width: 100%
+  position: absolute
+  bottom: 0; left: 0
   color: #aaa
   padding: 1em 0 2em
   text-align: center

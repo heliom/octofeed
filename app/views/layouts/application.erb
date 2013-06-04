@@ -11,32 +11,37 @@
     <%= stylesheet_include_tag 'styles' %>
   </head>
   <body>
-    <header>
-      <div class="container">
-        <h1><a href="/">OctoFeed</a></h1>
-        <div class="nav">
-        <% if @user %>
-            <div class="user">
-              <%= gh_link @user[:username], :label => %(<img width="20" height="20" src="#{@user[:avatar]}" alt="#{@user[:username]}">) %>
-              <%= gh_link @user[:username] %>
-            </div>
-            <a href="/logout" class="subtle">Log out</a>
-        <% else %>
-          <a href="/auth/github_private">Login</a></li>
-        <% end %>
+    <div class="wrap">
+      <header>
+        <div class="container">
+          <h1><a href="/">OctoFeed</a></h1>
+          <div class="nav">
+          <% if @user %>
+              <div class="user">
+                <%= gh_link @user[:username], :label => %(<img width="20" height="20" src="#{@user[:avatar]}" alt="#{@user[:username]}">) %>
+                <%= gh_link @user[:username] %>
+              </div>
+              <a href="/logout" class="subtle">Log out</a>
+          <% else %>
+            <a href="/auth/github_private">Login</a></li>
+          <% end %>
+          </div>
         </div>
-      </div>
-    </header>
-    <%= yield %>
-    <footer>
-      <div class="container">
-        <p>Made by <a href="http://heliom.ca">Heliom</a>.</p>
-        <p>
-          Read the <a href="http://heliom.ca/en/blog/octofeed">blog post</a> or
-          <a href="https://github.com/heliom/octofeed">fork</a>.
-        </p>
-      </div>
-    </footer>
+      </header>
+
+      <%= yield %>
+
+      <footer>
+        <div class="container">
+          <p>Made by <a href="http://heliom.ca">Heliom</a>.</p>
+          <p>
+            Read the <a href="http://heliom.ca/en/blog/octofeed">blog post</a> or
+            <a href="https://github.com/heliom/octofeed">fork</a>.
+          </p>
+        </div>
+      </footer>
+    </div>
+
     <% if production? %>
       <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
