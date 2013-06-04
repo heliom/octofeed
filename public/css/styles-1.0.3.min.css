@@ -20,7 +20,7 @@ address{font-style:normal}
 .clearfix:after,.container:after,.button.login-with-gh:after,.current-user > ul:after{display:block;content:'';clear:both}
 *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 html{font-size:62.5%;height:100%;-webkit-text-size-adjust:none}
-body{font-size:13px;font-size:1.3rem}
+body{font-size:13px;font-size:1.3rem;height:100%}
 body,legend,input,textarea,button{font-family:Helvetica,Arial,sans-serif;line-height:1.4;color:#333}
 a{color:#4183c4}
 a:focus,a:hover{text-decoration:underline}
@@ -43,6 +43,7 @@ header .nav .user{float:left;margin-right:.75em;}
 header .nav .user a{float:left}
 header .nav .user img{position:relative;top:-2px;vertical-align:middle;-webkit-border-radius:3px;border-radius:3px;margin-right:.35em}
 pre,code{font-size:12px;font-size:1.2rem;font-family:Consolas,Menlo,"Liberation Mono",Courier,monospace}
+.wrap{position:relative;min-height:100%;padding-bottom:105px}
 .container{width:93%;max-width:560px;margin:auto;padding:1.9em 0 0}
 .button{display:inline-block;*display:inline;zoom:1;padding:.6em 1.15em;-webkit-border-radius:3px;border-radius:3px;border:1px solid #ddd;border-bottom-color:#bbb;color:#333;font-weight:bold;text-shadow:0 1px 0 #fff;}
 .button.login-with-gh{margin:1.5em 0 0;}
@@ -106,7 +107,7 @@ pre,code{font-size:12px;font-size:1.2rem;font-family:Consolas,Menlo,"Liberation 
 .four-o-four h2,.four-o-four p{text-align:center}
 .four-o-four h2{margin-bottom:.5em}
 .four-o-four p{margin:0 0 1.75em;color:#888;font-size:17px;font-size:1.7rem}
-footer{color:#aaa;padding:1em 0 2em;text-align:center;}
+footer{width:100%;position:absolute;bottom:0;left:0;color:#aaa;padding:1em 0 2em;text-align:center;}
 footer p{margin:.2em 0}
 @media (max-width: 480px){html{font-size:9px}
 .avatar img{width:35px;height:35px}
